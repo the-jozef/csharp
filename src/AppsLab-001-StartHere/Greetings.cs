@@ -1,16 +1,18 @@
-﻿namespace AppsLab_001_StartHere;
+﻿
+using System.ComponentModel;
+using System.Threading.Channels;
 
-/// <summary>
-/// Represents a class that provides greeting messages.
-/// </summary>
-public class Greetings
+namespace AppsLab_001_StartHere;
 {
-    /// <summary>
-    /// Returns a greeting message.
-    /// </summary>
-    /// <returns>A string containing the greeting message.</returns>
-    public string Hello()
+    public class Cvicenia
     {
-        return "Hello World!";
+        static void Main(string[] args)
+        {
+
+        Console.WriteLine("AHOJ");
+
+
+        
+   
     }
 }
