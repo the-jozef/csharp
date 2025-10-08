@@ -11,22 +11,7 @@ namespace Cvicenia_1
 
             string a = Console.ReadLine();
 
-            Console.WriteLine("Ahoj "  + a + ", tesi ma.");
-        /*
-
-            if (a == "Jozef")
-            {
-                Console.WriteLine("Ahoj Jozef, tesi ma.");
-            }
-            else if (a == "Tamara")
-            {
-                Console.WriteLine("Ahoj Tamara, tesi ma.");
-            }
-            else if (a == "Anna")
-            {
-                Console.WriteLine("Ahoj Anna, tesi ma.");
-            }
-             */  
+            Console.WriteLine("Ahoj " + a + ", tesi ma.");
             
             Console.WriteLine("Chcel by si si vytvorit pyramidu?");
                 
