@@ -107,6 +107,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skusanie", "Skusanie\Skusan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listy", "Listy\Listy.csproj", "{02D6FD4C-EDAA-48ED-98E4-5A168E3F8BDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Switch", "Switch\Switch.csproj", "{B619B322-E8B2-4327-ADEE-9528CC8746E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -705,6 +707,18 @@ Global
 		{02D6FD4C-EDAA-48ED-98E4-5A168E3F8BDB}.Release|x64.Build.0 = Release|Any CPU
 		{02D6FD4C-EDAA-48ED-98E4-5A168E3F8BDB}.Release|x86.ActiveCfg = Release|Any CPU
 		{02D6FD4C-EDAA-48ED-98E4-5A168E3F8BDB}.Release|x86.Build.0 = Release|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Debug|x64.Build.0 = Debug|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Debug|x86.Build.0 = Debug|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Release|x64.ActiveCfg = Release|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Release|x64.Build.0 = Release|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Release|x86.ActiveCfg = Release|Any CPU
+		{B619B322-E8B2-4327-ADEE-9528CC8746E8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
