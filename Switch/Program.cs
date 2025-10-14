@@ -23,6 +23,7 @@ namespace Switch
             Console.WriteLine("get (napisat cislo na danom indexe)");
             Console.WriteLine("help (vypise vsetky prikazy)");
             Console.WriteLine("adds (pridanie viacej cisiel naraza le musi byt za nimi medzera)");
+            Console.WriteLine("cal (spocitanie vsetkych cisiel)");
 
             while (true)
              {
@@ -126,6 +127,44 @@ namespace Switch
                             Console.WriteLine(c);
                             break;
                         }
+                        case "cal":
+                        {
+                            Console.WriteLine("Napis ake znamienko chces");
+                            string a = Console.ReadLine();
+                            if (a == "+")
+                            {
+                                int sum = 0;
+                                foreach (int count in list)
+                                    sum += count;
+                                Console.WriteLine(sum);
+                            }
+                            else if (a == "-")
+                            {
+                                int sum = 0;
+                                foreach (int count in list)
+                                    sum -= count;
+                                Console.WriteLine(sum);
+                            }
+                            else if (a == "*")
+                            {
+                                int sum = 1;
+                                foreach (int count in list)
+                                    sum *= count;
+                                Console.WriteLine(sum);
+                            }
+                            else if (a == "/")
+                            {
+                                double sum = list[0];
+                                for (int i = 1; i < list.Count; i++)
+                                    sum /= list[i];
+                                Console.WriteLine(sum);
+                            }
+                                break;
+
+
+
+
+                        }
                     case "help":
                         {
                             Console.WriteLine("Zoznam:");
@@ -142,6 +181,7 @@ namespace Switch
                             Console.WriteLine("get (napisat cislo na danom indexe)");
                             Console.WriteLine("help (vypise vsetky prikazy)");
                             Console.WriteLine("adds (pridanie viacej cisiel naraza le musi byt za nimi medzera)");
+                            Console.WriteLine("cal (spocitanie vsetkych cisiel)");
                             break;
                         }
                     case "end":
