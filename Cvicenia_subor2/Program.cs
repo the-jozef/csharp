@@ -16,7 +16,7 @@ namespace Cvicenia_subor2
         }
         public static void moneycount(string[] text) 
             {
-            int value = 500000;
+             int value = 500000;
              string person = "";
              foreach (string line in text.Skip(1))
                 {
@@ -26,10 +26,11 @@ namespace Cvicenia_subor2
                 if (accountvalue > value)
                 {
                     value = accountvalue;
-                    person = split[0] +"" +split[4];      
-                }             
-           }
-           Console.WriteLine(person);
+                    person = split[0] + " " +split[4];      
+                }
+                Console.WriteLine(person);
+            }
+           
         }
     }
 }
