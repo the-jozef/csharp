@@ -24,8 +24,9 @@ namespace Switch
             Console.WriteLine("help (vypise vsetky prikazy)");
             Console.WriteLine("adds (pridanie viacej cisiel naraza le musi byt za nimi medzera)");
             Console.WriteLine("cal (spocitanie vsetkych cisiel)");
-
-            while (true)
+            
+            bool running = true;
+            while (running)
              {
                 string command = Console.ReadLine();
                 switch (command)
@@ -186,6 +187,7 @@ namespace Switch
                         }
                     case "end":
                         {
+                            running = false;
                             return;
                         }
                 }
