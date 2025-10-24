@@ -119,6 +119,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uloha_2", "Uloha_2\Uloha_2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Switch_dometod", "Switch_dometod\Switch_dometod.csproj", "{C9E13023-04F4-4E8A-8391-9ED39D2B031C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skusanie_3", "Skusanie_3\Skusanie_3.csproj", "{593FA20F-0D2E-436F-8043-E6FED962189E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -789,6 +791,18 @@ Global
 		{C9E13023-04F4-4E8A-8391-9ED39D2B031C}.Release|x64.Build.0 = Release|Any CPU
 		{C9E13023-04F4-4E8A-8391-9ED39D2B031C}.Release|x86.ActiveCfg = Release|Any CPU
 		{C9E13023-04F4-4E8A-8391-9ED39D2B031C}.Release|x86.Build.0 = Release|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Debug|x64.Build.0 = Debug|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Debug|x86.Build.0 = Debug|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Release|x64.ActiveCfg = Release|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Release|x64.Build.0 = Release|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Release|x86.ActiveCfg = Release|Any CPU
+		{593FA20F-0D2E-436F-8043-E6FED962189E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
