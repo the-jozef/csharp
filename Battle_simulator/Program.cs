@@ -16,7 +16,7 @@
             while (true)
             {
                 monster.Monstereffect(ourHero);
-                Console.WriteLine("Hero HP: " + ourHero.HP);
+                Console.WriteLine("Hero HP: " + ourHero.HP + " ENG: " + ourHero.ENG);
 
                // ourHero.Heroeffect(monster);
                 bool Attack = ourHero.Heroeffect(monster);

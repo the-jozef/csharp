@@ -127,6 +127,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_metody", "OOP_metody\OO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle_simulator", "Battle_simulator\Battle_simulator.csproj", "{15D2C8B2-EE42-4E9E-8505-C1C693B7FE4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle_2", "Battle_2\Battle_2.csproj", "{C7541651-3C8C-4E22-92B0-A56C2DF94486}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -845,6 +847,18 @@ Global
 		{15D2C8B2-EE42-4E9E-8505-C1C693B7FE4D}.Release|x64.Build.0 = Release|Any CPU
 		{15D2C8B2-EE42-4E9E-8505-C1C693B7FE4D}.Release|x86.ActiveCfg = Release|Any CPU
 		{15D2C8B2-EE42-4E9E-8505-C1C693B7FE4D}.Release|x86.Build.0 = Release|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Debug|x64.Build.0 = Debug|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Debug|x86.Build.0 = Debug|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|x64.ActiveCfg = Release|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|x64.Build.0 = Release|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|x86.ActiveCfg = Release|Any CPU
+		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
