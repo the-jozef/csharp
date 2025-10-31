@@ -20,20 +20,14 @@ namespace Battle_simulator
             DMG = dMG;
             HP = hP;
         }
-
-      
-
         public void Monstereffect(Hero ourHero)
         {
-            ourHero.HP = ourHero.HP - DMG;
-
-
-
+           if (ourHero.ARMOR - DMG >= 0 )
+            {
+                ourHero.ARMOR = ourHero.ARMOR - DMG;
+            }
+           else
+                ourHero.HP = ourHero.HP - DMG;
         }
-
-
-
-
-
     }
 }

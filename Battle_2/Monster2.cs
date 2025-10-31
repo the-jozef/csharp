@@ -13,11 +13,11 @@ namespace Battle_2
         public int WindDMG { get; set; }
         public int Mana { get; set; }
 
-        public Monster2(string racetype, int hP, int wind, int mana)
+        public Monster2(string racetype, int hP, int windDMG, int mana)
         {
             Racetype = racetype;
             HP = hP;        
-            WindDMG = wind;
+            WindDMG = windDMG;
             Mana = mana;
         }
         public void MonsterAttack(Hero hero)

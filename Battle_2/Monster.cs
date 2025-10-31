@@ -18,9 +18,12 @@ namespace Battle_2
             DMG = dMG;
             HP = hP;
         }  
-        public void MonsterAttack(Hero hero)
+        public void MonsterAttack(Hero hero) 
         {
-            hero.HP= hero.HP - DMG;
+  
+
+
+                hero.HP= hero.HP - DMG;
         }
     }
 }

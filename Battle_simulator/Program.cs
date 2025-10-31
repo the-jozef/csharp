@@ -7,18 +7,11 @@
             Hero ourHero = new Hero();
             Monster monster = new Monster("Goblin",150,5);
 
-            //Console.WriteLine(ourHero.HP);
-            //Console.WriteLine(monster.HP);
-
-            //ourHero.HP = ourHero.HP - monster.DMG;
-
-            //Console.WriteLine(ourHero.HP);
             while (true)
             {
                 monster.Monstereffect(ourHero);
-                Console.WriteLine("Hero HP: " + ourHero.HP + " ENG: " + ourHero.ENG);
+                Console.WriteLine("Hero HP: " + ourHero.HP + " ENG: " + ourHero.ENG + " Armor " + ourHero.ARMOR);
 
-               // ourHero.Heroeffect(monster);
                 bool Attack = ourHero.Heroeffect(monster);
 
 
@@ -29,7 +22,7 @@
                 }
                 else 
                 {
-                    Console.WriteLine("Not enought energy to attack. Restoring energz.....");
+                    Console.WriteLine("Not enought energy to attack. Restoring energy.....");
                     Console.WriteLine("Hero energy: " + ourHero.ENG);
                 }
                 
@@ -46,11 +39,7 @@
                     Console.WriteLine("Monster is dead");
                     break;
                 }
-
-                //armor
-            }
-
-            
+            }            
         }
     }
 }
