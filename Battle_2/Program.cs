@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace Battle_2
 {
@@ -45,13 +46,13 @@ namespace Battle_2
                 else if (answer == "no")
                 {
                     Console.WriteLine("Monster appeared behind you and killed you");
-                    Thread.Sleep(800);
+                    Thread.Sleep(1500);
                     return;
                 }
                 else
                 {
                     Console.WriteLine("You typed wrong code,try again");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                 }
             }
         }
@@ -75,11 +76,17 @@ namespace Battle_2
                         Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
 
                         Console.WriteLine(monster.Racetype + " is dead");
+                        Thread.Sleep(1000);
                         return true;
                     }
                     if (hero.HP <= 0)
                     {
                         hero.HP = 0;
+                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+
+                        Console.WriteLine(hero.Name + " is dead");
+                        Thread.Sleep(1000);
                         return false;
                     }
                     if (hero.ENG < 20)
@@ -106,11 +113,17 @@ namespace Battle_2
                             Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
 
                             Console.WriteLine(monster.Racetype + " is dead");
+                            Thread.Sleep(1000);
                             return true;
                         }
                         if (hero.HP < 0)
                         {
                             hero.HP = 0;
+                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+
+                            Console.WriteLine(hero.Name + " is dead");
+                            Thread.Sleep(1000);
                             return false;
                         }
                         if (hero.Mana < 35)
@@ -136,7 +149,6 @@ namespace Battle_2
             {
                 if (hero.HP == 0)
                 {
-                    Console.WriteLine("Hero is dead");
                     break;
                 }
                 else if (monster.HP == 0)
@@ -180,12 +192,23 @@ namespace Battle_2
                         Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
 
                         Console.WriteLine(monster2.Racetype + " is dead");
+                        Thread.Sleep(1000);
+
+                        Console.WriteLine("The END");
+                        Thread.Sleep(1000);
                         return true;
                     }
                     if (hero.HP <= 0)
                     {
                         hero.HP = 0;
-                        return false;
+                        Console.WriteLine(monster2.Racetype + " HP: " + monster2.HP);
+                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+
+                        Console.WriteLine(hero.Name + " is dead");
+                        Thread.Sleep(1000); 
+                        Console.WriteLine("You lost the GAME");
+                        Thread.Sleep(1000);
+                        break;
                     }
                     if (hero.ENG < 20)
                     {
