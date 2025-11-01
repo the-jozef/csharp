@@ -87,6 +87,8 @@ namespace Battle_2
 
                         Console.WriteLine(hero.Name + " is dead");
                         Thread.Sleep(1000);
+                        Console.WriteLine("You lost the GAME");
+                        Thread.Sleep(1000);
                         return false;
                     }
                     if (hero.ENG < 20)
@@ -116,13 +118,15 @@ namespace Battle_2
                             Thread.Sleep(1000);
                             return true;
                         }
-                        if (hero.HP < 0)
+                        if (hero.HP <= 0)
                         {
                             hero.HP = 0;
                             Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
                             Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
 
                             Console.WriteLine(hero.Name + " is dead");
+                            Thread.Sleep(1000);
+                            Console.WriteLine("You lost the GAME");
                             Thread.Sleep(1000);
                             return false;
                         }
@@ -234,12 +238,23 @@ namespace Battle_2
                             Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
 
                             Console.WriteLine(monster2.Racetype + " is dead");
+                            Thread.Sleep(1000);
+
+                            Console.WriteLine("The END");
+                            Thread.Sleep(1000);
                             return true;
                         }
-                        if (hero.HP < 0)
+                        if (hero.HP <= 0)
                         {
                             hero.HP = 0;
-                            return false;
+                            Console.WriteLine(monster2.Racetype + " HP: " + monster2.HP);
+                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+
+                            Console.WriteLine(hero.Name + " is dead");
+                            Thread.Sleep(1000);
+                            Console.WriteLine("You lost the GAME");
+                            Thread.Sleep(1000);
+                            break;
                         }
                         if (hero.Mana < 35)
                         {

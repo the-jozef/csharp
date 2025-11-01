@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Battle_simulator
 {
-    internal class Monster
+    internal class Monster2
     {
         public string Racetype { get; set; }
 
@@ -14,13 +14,13 @@ namespace Battle_simulator
 
         public int HP { get; set; }
 
-        public Monster(string racetype, int hP, int dMG)
+        public Monster2(string racetype, int hP, int dMG)
         {
             Racetype = racetype;
             DMG = dMG;
             HP = hP;
         }
-        public void Monstereffect(Hero ourHero) 
+        public void Monstereffect(Hero ourHero)
         {
             if (ourHero.ARMOR >= 0)
             {
