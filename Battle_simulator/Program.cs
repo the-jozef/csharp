@@ -24,7 +24,7 @@ namespace Battle_simulator
                 
                 Console.WriteLine();
                 Console.WriteLine("Ready to a second fight!");
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 Console.WriteLine();
                 
                 bool battle2 = Battle2(monster2, ourHero);

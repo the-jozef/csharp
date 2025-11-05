@@ -129,6 +129,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle_simulator", "Battle_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle_2", "Battle_2\Battle_2.csproj", "{C7541651-3C8C-4E22-92B0-A56C2DF94486}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Random_number_cvicenie", "Random_number_cvicenie\Random_number_cvicenie.csproj", "{08FBF546-FD2F-4C9E-9249-1A501F913F6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -859,6 +861,18 @@ Global
 		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|x64.Build.0 = Release|Any CPU
 		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|x86.ActiveCfg = Release|Any CPU
 		{C7541651-3C8C-4E22-92B0-A56C2DF94486}.Release|x86.Build.0 = Release|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Debug|x64.Build.0 = Debug|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Debug|x86.Build.0 = Debug|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|x64.ActiveCfg = Release|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|x64.Build.0 = Release|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|x86.ActiveCfg = Release|Any CPU
+		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

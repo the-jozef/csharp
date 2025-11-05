@@ -32,7 +32,10 @@ namespace Battle_simulator
                 }
             }
             else
+            {
                 ourHero.HP = ourHero.HP - DMG;
+            }
+            DMG = DMG + 1;
         }
     }
 }
