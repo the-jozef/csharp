@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace Battle_2
@@ -37,6 +38,7 @@ namespace Battle_2
                     bool battle = Battle(monster, hero, monster2);
 
                     bool deadmonster = Death(monster, monster2, hero);
+
 
                     Console.WriteLine();
                     Console.WriteLine("Ready to a second fight!");
@@ -144,7 +146,7 @@ namespace Battle_2
                     }
                 }
             }
-            return true;
+            return false;
         }
         public static bool Death(Monster monster, Monster2 monster2, Hero hero)
         {
@@ -167,15 +169,16 @@ namespace Battle_2
                     {
                         Console.WriteLine(monster2.Racetype + " casted a spell and killed you");
                         Thread.Sleep(800);
-                        break;
+                        Environment.Exit(0);
                     }
                     else
                     {
                         Console.WriteLine("You typed wrong code,try again");
+                        Thread.Sleep(1000);
                     }
                 }
             }
-            return false;
+            return false;            
         }
         public static bool Battle2(Monster2 monster2, Hero hero)
         {
