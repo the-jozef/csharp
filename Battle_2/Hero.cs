@@ -14,8 +14,8 @@ namespace Battle_2
         public int ENG { get; set; } = 100;
         public int FireDMG { get; set; } = 25;
         public int Mana { get; set; } = 100;
+       
         //public int Gold { get; set; } 
-
         public bool HeroAttack(Monster monster)
         {
             if (ENG - 20 >= 0)
