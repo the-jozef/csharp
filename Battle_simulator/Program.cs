@@ -43,8 +43,11 @@ namespace Battle_simulator
             while (running)
             {
                 monster.Monstereffect(ourHero);
+                Console.WriteLine($"{monster.Racetype} dealed {monster.DMG} DMG on {ourHero.Name}");
                 monster2.Monstereffect(ourHero);
+                Console.WriteLine($"{monster2.Racetype} dealed {monster2.DMG} DMG on {ourHero.Name}");
                 monster3.Monstereffect(ourHero);
+                Console.WriteLine($"{monster3.Racetype} dealed {monster3.DMG} DMG on {ourHero.Name}");
 
                 bool Attack = ourHero.Heroattack(monster);
                 if (Attack)

@@ -199,7 +199,7 @@ namespace Battle_2
                 Thread.Sleep(1000);
             }
             return true;
-        }   
+        }
         public static bool Battle(Monster monster, Hero hero, Monster2 monster2)
         {
             {
@@ -252,53 +252,51 @@ namespace Battle_2
                         }
                         else
                             Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                            
-                    }                    
-                if (hero.ENG <= 20)
-                {
-                    Console.WriteLine("You don't have enought energy");
-                }               
-                if (attacktype == "2")
-                {                   
-                
-                
-                
-                    //Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                    //Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                        
-                    Console.WriteLine("Restoring your energy.");
-                    Thread.Sleep(800);
-                    hero.EnergyRegen2(monster2);
-                    Console.WriteLine("Energy restored: " + hero.ENG);                 
-                }
-                if (attacktype == "3")
-                {
+                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
 
-                }
-                if (attacktype == "4")
-                {
-
-                }
-                if (attacktype == "5")
-                {
-
-                }
-                if (attacktype == "6")
-                {
-                    {
-                        Console.WriteLine("Type a number which attack do you want to perform.");
-                        Console.WriteLine("1--> Melle attack");
-                        Console.WriteLine("2--> Restore energy");
-                        Console.WriteLine("3--> Fire attack (50% chance)");
-                        Console.WriteLine("4--> Restore mana");
-                        Console.WriteLine("5--> Block");
-                        Console.WriteLine("6--> Info");
                     }
-                    Thread.Sleep(800);
+                    if (hero.ENG <= 20)
+                    {
+                        Console.WriteLine("You don't have enought energy");
+                    }
+                    if (attacktype == "2")
+                    {
+                        //Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        //Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+
+                        Console.WriteLine("Restoring your energy.");
+                        Thread.Sleep(800);
+                        hero.EnergyRegen2(monster2);
+                        Console.WriteLine("Energy restored: " + hero.ENG);
+                    }
+                    if (attacktype == "3")
+                    {
+
+                    }
+                    if (attacktype == "4")
+                    {
+
+                    }
+                    if (attacktype == "5")
+                    {
+
+                    }
+                    if (attacktype == "6")
+                    {
+                        {
+                            Console.WriteLine("Type a number which attack do you want to perform.");
+                            Console.WriteLine("1--> Melle attack");
+                            Console.WriteLine("2--> Restore energy");
+                            Console.WriteLine("3--> Fire attack (50% chance)");
+                            Console.WriteLine("4--> Restore mana");
+                            Console.WriteLine("5--> Block");
+                            Console.WriteLine("6--> Info");
+                        }
+                        Thread.Sleep(800);
+                    }
                 }
-            }
-                return true;
+                
+            }return true;
         }
 
         /*
