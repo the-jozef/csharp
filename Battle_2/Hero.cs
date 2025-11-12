@@ -11,7 +11,7 @@ namespace Battle_2
         public string Name { get; set; } = "nothing";
         public int HP { get; set; } = 150;
         public int DMG { get; set; } = 10;
-        public int ENG { get; set; } = 100;
+        public int ENG { get; set; } = 10;
         public int FireDMG { get; set; } = 25;
         public int Mana { get; set; } = 100;
        

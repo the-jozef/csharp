@@ -213,8 +213,8 @@ namespace Battle_2
             }
             Thread.Sleep(800);
             Console.WriteLine();
-            Console.Write("Perform: ");
-            
+            Console.Write("Which type of attack do you want to perform: ");
+
 
             bool running = true;
             while (running)
@@ -250,25 +250,27 @@ namespace Battle_2
                             Thread.Sleep(1000);
                             Environment.Exit(0);
                         }
-                        if (hero.ENG < 20)
-                        {
-                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                            hero.EnergyRegen2(monster2);
-                            Console.WriteLine("Not enought energy to attack. Restoring energy.....");
-                            Console.WriteLine("Energy restored: " + hero.ENG);
-                        }
                         else
                             Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                    }
-                     Console.WriteLine("Which type of attack do you want to perform? ");
-                }
-
-
-
-                if (attacktype == "2")
+                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                            
+                    }                    
+                if (hero.ENG <= 20)
                 {
+                    Console.WriteLine("You don't have enought energy");
+                }               
+                if (attacktype == "2")
+                {                   
+                
+                
+                
+                    //Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                    //Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                        
+                    Console.WriteLine("Restoring your energy.");
+                    Thread.Sleep(800);
+                    hero.EnergyRegen2(monster2);
+                    Console.WriteLine("Energy restored: " + hero.ENG);                 
                 }
                 if (attacktype == "3")
                 {

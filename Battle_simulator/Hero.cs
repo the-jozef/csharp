@@ -9,8 +9,8 @@ namespace Battle_simulator
     internal class Hero
     {
         public string Name { get; set; }
-        public int DMG { get; set; } = 10;
-        public int HP { get; set; } = 150;
+        public int DMG { get; set; } = 20;
+        public int HP { get; set; } = 1500;
         public int ENG { get; set; } = 100;
         public int ARMOR { get; set; } = 15;
 

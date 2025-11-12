@@ -10,7 +10,7 @@ namespace Battle_simulator
             Hero ourHero = new Hero();
             Monster monster = new Monster("Goblin", 100, 5);
             Monster2 monster2 = new Monster2("Orc", 150, 10);
-
+            Monster3 monster3 = new Monster3("Dark elf", 200, 8);
             while (true)
             {
                 Console.WriteLine();
@@ -18,20 +18,92 @@ namespace Battle_simulator
                 Thread.Sleep(1000);
                 Console.WriteLine();
                 
-                bool battle = Battle(ourHero, monster);
+                bool battle = Battle(ourHero, monster,monster2,monster3);
 
-                ourHero.RegenAll(ourHero);
+               // ourHero.RegenAll(ourHero);
                 
-                Console.WriteLine();
-                Console.WriteLine("Ready to a second fight!");
-                Thread.Sleep(1500);
-                Console.WriteLine();
+                //Console.WriteLine();
+                //Console.WriteLine("Ready to a second fight!");
+                //Thread.Sleep(1500);
+                //Console.WriteLine();
                 
-                bool battle2 = Battle2(monster2, ourHero);
+               // bool battle2 = Battle2(monster2, ourHero);
                 return;
             }
         }
-        public static bool Battle(Hero ourHero, Monster monster)
+       
+        public static bool Battle (Hero ourHero, Monster monster,Monster2 monster2,Monster3 monster3)
+        {
+            Console.WriteLine("If you will kill Goblin you win");
+            
+            Console.WriteLine("Hero HP: " + ourHero.HP + " ENG: " + ourHero.ENG + " Armor " + ourHero.ARMOR);
+            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+
+            bool running = true;
+            while (running)
+            {
+                monster.Monstereffect(ourHero);
+                monster2.Monstereffect(ourHero);
+                monster3.Monstereffect(ourHero);
+
+                bool Attack = ourHero.Heroattack(monster);
+                if (Attack)
+                {
+                    if (monster.HP <= 0)
+                    {
+                        monster.HP = 0;
+
+                        Console.WriteLine("You dealed the highest dammage.");
+                        Thread.Sleep(800);
+                        monster2.HP = monster2.HP - monster2.HP;
+                        monster3.HP = monster3.HP - monster3.HP;
+                        Console.WriteLine("You killed all enemies.");
+                        Thread.Sleep(1000);
+
+                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        Console.WriteLine(monster2.Racetype + " HP " + monster2.HP);
+                        Console.WriteLine(monster3.Racetype + " HP " + monster3.HP);
+
+                        Console.WriteLine("Hero" + " HP: " + ourHero.HP + " ENG: " + ourHero.ENG + " Armor: " + ourHero.ARMOR);
+
+                        //Console.WriteLine(monster.Racetype + " is dead");
+
+                        return true;
+                    }
+                    if (ourHero.HP <= 0)
+                    {
+                        ourHero.HP = 0;
+                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        Console.WriteLine("Hero" + " HP: " + ourHero.HP + " ENG: " + ourHero.ENG + " Armor: " + ourHero.ARMOR);
+
+                        Console.WriteLine("Hero" + " is dead");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("You lost the GAME");
+                        Thread.Sleep(1000);
+                        return false;
+                    }
+                    if (ourHero.ENG < 20)
+                    {
+                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        Console.WriteLine("Hero" + " HP: " + ourHero.HP + " ENG: " + ourHero.ENG + " Armor: " + ourHero.ARMOR);
+                        ourHero.EnergyRegen(monster);
+                        Console.WriteLine("Not enought energy to attack. Restoring energy.....");
+                        Console.WriteLine("Energy restored: " + ourHero.ENG);
+                    }
+                    else
+                        Console.WriteLine("Hero" + " HP: " + ourHero.HP + " ENG: " + ourHero.ENG + " Armor: " + ourHero.ARMOR);
+
+                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                }    
+                    
+
+            }
+                return false;
+        }
+        
+        
+        
+        /*public static bool Battle(Hero ourHero, Monster monster)
         {
             Console.WriteLine("Hero HP: " + ourHero.HP + " ENG: " + ourHero.ENG + " Armor " + ourHero.ARMOR);
             Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
@@ -77,6 +149,7 @@ namespace Battle_simulator
                     }
                     else
                         Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        monster.DMG = monster.DMG + 5;
                         //Console.WriteLine("Hero" + " HP: " + ourHero.HP + " ENG: " + ourHero.ENG + " Armor: " + ourHero.ARMOR);
                 }
             }
@@ -132,7 +205,7 @@ namespace Battle_simulator
                 }
             }
             return true;
-        }
+        }*/
     } 
 }
         
