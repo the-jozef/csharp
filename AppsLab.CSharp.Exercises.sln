@@ -131,6 +131,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle_2", "Battle_2\Battle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Random_number_cvicenie", "Random_number_cvicenie\Random_number_cvicenie.csproj", "{08FBF546-FD2F-4C9E-9249-1A501F913F6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farm_simulator", "Farm_simulator\Farm_simulator.csproj", "{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -873,6 +875,18 @@ Global
 		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|x64.Build.0 = Release|Any CPU
 		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|x86.ActiveCfg = Release|Any CPU
 		{08FBF546-FD2F-4C9E-9249-1A501F913F6D}.Release|x86.Build.0 = Release|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Debug|x64.Build.0 = Debug|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Debug|x86.Build.0 = Debug|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Release|x64.ActiveCfg = Release|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Release|x64.Build.0 = Release|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Release|x86.ActiveCfg = Release|Any CPU
+		{AB1EEA67-EEC5-4C5F-BA08-E3DE0D59E4F9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

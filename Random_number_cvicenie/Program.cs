@@ -6,7 +6,7 @@ namespace Random_number_cvicenie
     {
         static void Main(string[] args)
         {
-            /*
+            
               Random random = new Random();
              int number = random.Next(0,5);
              double numberr = random.Next();
@@ -14,7 +14,7 @@ namespace Random_number_cvicenie
               double cc = number * 5;
               Console.WriteLine(c);
               Console.WriteLine(cc);
-              */
+              
             Random r = new Random();
           
             
