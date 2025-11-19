@@ -23,7 +23,7 @@ namespace Farm_simulator
         }
         public override string ToString()
         {
-            return $"{PlantType} {TimeInGround}/{TimeForHarvest} {Price}$";
+            return $"{PlantType} {TimeInGround}/{TimeForHarvest} Days {Price}$";
         }
     }
 }
