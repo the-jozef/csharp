@@ -11,19 +11,20 @@ namespace Farm_simulator
         public string PlantType { get; set; }
         public int TimeForHarvest { get; set; }
         public int TimeInGround { get; set; }
-        public int Price { get; set;  }
+        public int PlantPrice { get; set;  }
+        public int SalePrice { get; set; }
 
 
-        public Plant(string plantID, int timetoHarvest, int price)
+        public Plant(string plantID, int timetoHarvest,int saleprice, int plantprice)
         {
             PlantType = plantID;
             TimeForHarvest = timetoHarvest;
-            //TimeInGround = timeinground;
-            Price = price;
+            SalePrice = saleprice;
+            PlantPrice = plantprice;
         }
         public override string ToString()
         {
-            return $"{PlantType} {TimeInGround}/{TimeForHarvest} Days {Price}$";
+            return $"{PlantType} {TimeInGround}/{TimeForHarvest} Days  Sale: {SalePrice}$   Price: {PlantPrice}$";
         }
     }
 }

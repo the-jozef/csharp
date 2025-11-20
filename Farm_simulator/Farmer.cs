@@ -9,7 +9,7 @@ namespace Farm_simulator
 {
     public class Farmer
     {
-        public Random RandomGenerator { get; set; } = new Random();          
+        public Random RandomGen { get; set; } = new Random();          
         public int Day { get; set; }
         public int Wallet { get; set; } = 10;
         public List<Plant> Field { get; set; } = new List<Plant>();
@@ -21,7 +21,10 @@ namespace Farm_simulator
             while (true)
             {
                Day++;                 
-                       
+                
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Field:");       
+               
                 foreach(var plant in Field)
                 {
                     plant.TimeInGround++;
@@ -29,7 +32,7 @@ namespace Farm_simulator
                 
                 foreach(var plant in Field)
                 {
-                    Console.WriteLine("Field:");
+                    
                     Console.WriteLine(plant);
                 }
                 List<Plant> HarvestPlants = new List<Plant> ();
@@ -49,7 +52,7 @@ namespace Farm_simulator
                     Storage.Add (plant);
                 }
                 
-                Console.ForegroundColor = ConsoleColor.Magenta;
+                
                 Console.WriteLine("Info:");
                 Console.WriteLine("Days: "+ Day + "  Money: " + Wallet + "$");         
                 
@@ -64,48 +67,87 @@ namespace Farm_simulator
                 {
                     case "1":
                         Console.WriteLine("Which plant do you want to grow?");
-                        Console.WriteLine("1 Corn for " + 5 +  "$");
-                        Console.WriteLine("2 Orange for "+ 10 + " $");
+                        Console.WriteLine("1 Corn for 5$");
+                        Console.WriteLine("2 Orange for 10$");
                         Console.WriteLine("3 Cucumber for 20$");
                         Console.WriteLine("4 Grapes for 26$");
                         Console.WriteLine("5 Zucchiny for 50$");
                         
                         string? answer = Console.ReadLine();
                         if (answer == "1")
-                        { 
-                            int Cornprice = 5;  
-
-                            Plant corn = new Plant("Corn", 5, 10); //price = predajna hodnota ,   price2(ine meno) = nakupna hodnota
-                            if (corn.Price <= Wallet)
+                        {                           
+                            Plant corn = new Plant ("Corn", 5, 12,10); 
+                            if (corn.PlantPrice <= Wallet)
                             {
                                 Field.Add(corn);
+                                Wallet = Wallet - corn.PlantPrice;
                             }
                             else
                             {
-                                Console.WriteLine("Mas nedostatok penazi");
+                                Console.WriteLine("You don't have that much money");
                                 Thread.Sleep(1000);
                             }
-                            //corn.Price = corn.Price + 1;
+                            corn.PlantPrice = corn.PlantPrice + RandomGen.Next(1,3);
                         }
                         else if (answer == "2")
                         {
-                            Plant orange = new Plant("Grapes", 8, 15);
-                            Field.Add(orange);
+                            Plant orange = new Plant ("Grapes", 9, 20, 15);
+                            if (orange.PlantPrice <= Wallet)
+                            {
+                                Field.Add(orange);
+                                Wallet = Wallet - orange.PlantPrice;
+                            }
+                            else
+                            {
+                                Console.WriteLine("You don't have that much money");
+                                Thread.Sleep(1000);
+                            }              
+                            orange.PlantPrice = orange.PlantPrice + RandomGen.Next(1, 4);
                         }
                         else if (answer == "3")
                         {
-                            Plant cucumber = new Plant("Cucumber", 10, 22);
-                            Field.Add(cucumber);
+                            Plant cucumber = new Plant ("Cucumber", 13, 25, 20);
+                            if (cucumber.PlantPrice <= Wallet)
+                            {
+                                Field.Add(cucumber);
+                                Wallet = Wallet - cucumber.PlantPrice;
+                            }
+                            else
+                            {
+                                Console.WriteLine("You don't have that much money");
+                                Thread.Sleep(1000);
+                            }                         
+                            cucumber.PlantPrice =  1 + cucumber.PlantPrice * RandomGen.Next(1, 2);
                         }
                         else if (answer == "4")
                         {
-                            Plant grapes = new Plant("Grapes", 15, 27);
-                            Field.Add(grapes);
+                            Plant grapes = new Plant("Grapes", 20, 30 ,27);
+                            if (grapes.PlantPrice <= Wallet)
+                            {
+                                Field.Add(grapes);
+                                Wallet = Wallet - grapes.PlantPrice;
+                            }
+                            else
+                            {
+                                Console.WriteLine("You don't have that much money");
+                                Thread.Sleep(1000);
+                            }                     
+                            grapes.PlantPrice = 1 + grapes.PlantPrice * RandomGen.Next(1, 3);
                         }
                         else if (answer == "5")
                         {
-                            Plant pzucchini = new Plant("Premium zuciciny", 100, 50);
-                            Field.Add(pzucchini);
+                            Plant pzucchini = new Plant ("Premium zuciciny", 100, 80 ,70);
+                            if (pzucchini.PlantPrice <= Wallet)
+                            {
+                                Field.Add(pzucchini);
+                                Wallet = Wallet - pzucchini.PlantPrice;
+                            }
+                            else
+                            {
+                                Console.WriteLine("You don't have that much money");
+                                Thread.Sleep(1000);
+                            }              
+                            pzucchini.PlantPrice = pzucchini.PlantPrice + RandomGen.Next(1, 6);
                         }
                         break;
                     case "2":
@@ -113,22 +155,21 @@ namespace Farm_simulator
                         {
                             Console.WriteLine(plant);
                             Thread.Sleep(1000);
-
                         }
                         Console.ReadLine();
                         break;
                     case "3":
                         foreach (var plant in Storage)
                         {
-                            Wallet = plant.Price * Storage.Count;
+                            Wallet = Wallet + (plant.SalePrice * RandomGen.Next(1, 4));
                            
                         }
                         Storage.Clear();
                         break;
-                    case "4":
-
-                        break;
-                    default:
+                    case "":
+                    
+                        
+                    default:                       
                         break;
                 }              
                 Console.Clear();
