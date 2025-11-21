@@ -21,7 +21,7 @@ namespace Battle_2
             }
 
             Hero hero = new Hero();
-            Monster monster = new Monster("Goblin", 8, 100);
+            Monster monster = new Monster("Goblin", 8, 1000);
             Monster2 monster2 = new Monster2("Dark wizard", 150, 20, 150);
 
             Console.Write("Set your hero name: ");
@@ -40,7 +40,7 @@ namespace Battle_2
                 if (answer == "yes")
                 {
                     Console.Clear();
-                    Console.WriteLine("Ready to fight!");
+                    Console.WriteLine("Ready to a fight!");
                     Console.WriteLine();
 
                     bool battle = Battle(monster, hero, monster2); //tu
@@ -86,6 +86,13 @@ namespace Battle_2
             bool running = true;
             while (running)
             {
+               if (value == 0)
+                {
+                    Console.WriteLine("No remaining points");
+                    Thread.Sleep(1500);
+                    return false;
+                }
+                
                 Console.Write("Which number: ");
                 string? a = Console.ReadLine();
                 int number = int.Parse(a);
@@ -204,7 +211,8 @@ namespace Battle_2
 
         public static bool Battle(Monster monster, Hero hero, Monster2 monster2)
         {
-            {
+            
+            {  
                 Console.WriteLine("Type a number which attack do you want to perform.");
                 Console.WriteLine("1--> Melle attack");
                 Console.WriteLine("2--> Restore energy");
@@ -212,6 +220,7 @@ namespace Battle_2
                 Console.WriteLine("4--> Restore mana");
                 Console.WriteLine("5--> Block");
                 Console.WriteLine("6--> Info");
+                Console.WriteLine($"7--> Info about {hero.Name}");
             }
             Thread.Sleep(800);
             Console.WriteLine();
@@ -220,13 +229,14 @@ namespace Battle_2
             while (running)
             {
                 string? attacktype = Console.ReadLine();
+                Console.WriteLine();
                 switch (attacktype)
                 {
                     case "1":
 
                         if (hero.ENG < 20)
                         {
-                            Console.WriteLine("You don't have enought energy. Do you want to restore it?");
+                            Console.Write("You don't have enought energy. Do you want to restore it?  ");
                             string? answer = Console.ReadLine();
 
                             if (answer == "yes")
@@ -286,17 +296,37 @@ namespace Battle_2
                         hero.EnergyRegen2(monster2);
                         Console.WriteLine("Energy restored: " + hero.ENG);
                         monster.MonsterAttack(hero);
+                        Console.WriteLine("New:");
+                        {
+                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                        }
+                        Thread.Sleep(800);
                         break;
                     case "3":
                         if (hero.Mana < 35)
-                            {
-                                Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                                hero.ManaRegen(monster);
-                                Console.WriteLine("Not enought mana to attack. Restoring mana.....");
-                                Console.WriteLine("Mana restored: " + hero.Mana);
-                            }
+                        {
+                            Console.Write("You don't have enought mana. Do you want to restore it?  ");
+                            string? answer = Console.ReadLine();
 
+                            if (answer == "yes")
+                            {
+                                Console.WriteLine("Restoring your mana...");
+                                Thread.Sleep(800);
+                                hero.ManaRegen(monster);
+                                Console.WriteLine("Mana restored: " + hero.Mana);                                
+                                monster.MonsterAttack(hero);
+                                break;
+                            }
+                            if (answer == "no")
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("You typed wrong answer. Try again.");
+                            }                                
+                        }
                         bool FireAttack = hero.FireAttack(monster);
                         if (FireAttack)
                         {
@@ -327,176 +357,64 @@ namespace Battle_2
                             else
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
                                 Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                                break;
                         }
-                            break;
-                    case "4":
+                        Console.WriteLine("Fire attack didn't work.");
+                        Console.WriteLine();
+                        monster.MonsterAttack(hero);
+                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
 
+                        break;
+                    case "4":                      
+                        
+                        Console.WriteLine("Restoring your mana.....");
+                        Thread.Sleep(800);
+                        hero.ManaRegen(monster);
+                        Console.WriteLine("Mana restored: " + hero.Mana);
+                        monster.MonsterAttack(hero);
+                        Console.WriteLine("New:");
+                        {
+                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                        }
+                        Thread.Sleep(800);
                         break;
                     case "5":
 
                         break;
                     case "6":
                         {
-                            Console.WriteLine("Type a number which attack do you want to perform.");
                             Console.WriteLine("1--> Melle attack");
                             Console.WriteLine("2--> Restore energy");
                             Console.WriteLine("3--> Fire attack (50% chance)");
                             Console.WriteLine("4--> Restore mana");
                             Console.WriteLine("5--> Block");
                             Console.WriteLine("6--> Info");
+                            Console.WriteLine($"7--> Info about {hero.Name}");
                         }
                         Thread.Sleep(800);
                         break;
-                }
-            }
-            return false;
-        }
-            
-
-        
-            /*
-                   
-                        bool Attack = hero.HeroAttack(monster); //Hero attack
-                        if (Attack)
+                    case "7":
                         {
-                            monster.MonsterAttack(hero);  //Monster attack
-
-                            if (monster.HP <= 0)
-                            {
-                                monster.HP = 0;
-                                Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-                                Console.WriteLine(monster.Racetype + " is dead");
-                                Thread.Sleep(1000);
-                                return true;
-                            }
-                            if (hero.HP <= 0)
-                            {
-                                hero.HP = 0;
-                                Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-                                Console.WriteLine(hero.Name + " is dead");
-                                Thread.Sleep(1000);
-                                Console.WriteLine("You lost the GAME");
-                                Thread.Sleep(1000);
-                                Environment.Exit(0);
-                            }
-                            else
-                                Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
+                            Console.WriteLine($"Stats about {hero.Name}");
+                            Console.WriteLine($"Melee damage: {hero.DMG}  Fire damage: {hero.FireDMG}  Block:"); //doplnit                                                   
+                            Console.WriteLine($"{hero.Name} HP: {hero.HP} ENG: {hero.ENG} Mana: {hero.Mana}");
+                            break;
                         }
-                        if (hero.ENG <= 20)
+                    default:
                         {
-                            Console.WriteLine("You don't have enought energy");
-                        }
-                        if (attacktype == "2")
-                        {
-                            //Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            //Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-                            Console.WriteLine("Restoring your energy.");
+                            Console.WriteLine("You typed wrong code. Try again.");
                             Thread.Sleep(800);
-                            hero.EnergyRegen2(monster2);
-                            Console.WriteLine("Energy restored: " + hero.ENG);
+                            break;
                         }
-                        
-
-                    }
-            }
-            return true;
-        }
-            
-        /*
-            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-            
-            {                                      
-                bool Attack = hero.HeroAttack(monster);
-                if (Attack)
-                {
-                    monster.MonsterAttack(hero);
-
-                    if (monster.HP <= 0)
-                    {
-                        monster.HP = 0;
-                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-                        Console.WriteLine(monster.Racetype + " is dead");
-                        Thread.Sleep(1000);
-                        return true;
-                    }
-                    if (hero.HP <= 0)
-                    {
-                        hero.HP = 0;
-                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-                        Console.WriteLine(hero.Name + " is dead");
-                        Thread.Sleep(1000);
-                        Console.WriteLine("You lost the GAME");
-                        Thread.Sleep(1000);
-                        return false;
-                    }
-                    if (hero.ENG < 20)
-                    {
-                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                        hero.EnergyRegen2(monster2);
-                        Console.WriteLine("Not enought energy to attack. Restoring energy.....");
-                        Console.WriteLine("Energy restored: " + hero.ENG);
-                    }
-                    else
-                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                    Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-                    bool FireAttack = hero.FireAttack(monster);
-                    if (FireAttack)
-                    {
-                        monster.MonsterAttack(hero);
-
-                        if (monster.HP <= 0)
-                        {
-                            monster.HP = 0;
-                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-                            Console.WriteLine(monster.Racetype + " is dead");
-                            Thread.Sleep(1000);
-                            return true;
-                        }
-                        if (hero.HP <= 0)
-                        {
-                            hero.HP = 0;
-                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-
-                            Console.WriteLine(hero.Name + " is dead");
-                            Thread.Sleep(1000);
-                            Console.WriteLine("You lost the GAME");
-                            Thread.Sleep(1000);
-                            return false;
-                        }
-                        if (hero.Mana < 35)
-                        {
-                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                            hero.ManaRegen(monster);
-                            Console.WriteLine("Not enought mana to attack. Restoring mana.....");
-                            Console.WriteLine("Mana restored: " + hero.Mana);
-                        }
-                        else
-                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                    }
                 }
+                Console.WriteLine();
+                Console.Write("Which type of attack: ");
+                Thread.Sleep(900);
             }
             return false;
-        }
-        */
+        }                            
         public static bool Death(Monster monster, Monster2 monster2, Hero hero)
         {
             bool running = true;
