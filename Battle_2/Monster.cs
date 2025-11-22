@@ -11,12 +11,14 @@ namespace Battle_2
         public string Racetype { get; set; } 
         public int DMG { get; set; }
         public int HP { get; set; }
+        //public int Mana { get; set; }
 
         public Monster(string racetype, int dMG, int hP)
         {
             Racetype = racetype;
             DMG = dMG;
             HP = hP;
+           
         }  
         public void MonsterAttack(Hero hero) 
         {

@@ -9,13 +9,20 @@ namespace Battle_2
     internal class Hero
     {
         public string Name { get; set; } = "";
+        public int Points { get; set; } = 5;
         public int HP { get; set; } = 150;
+        public int MaxHP { get; set; } = 150;
         public int DMG { get; set; } = 10;
         public int ENG { get; set; } = 100;
+        public int MaxENG { get; set; } = 100;
         public int FireDMG { get; set; } = 25;
         public int Mana { get; set; } = 100;
-       
-        //public int Gold { get; set; } 
+        public int MaxMana { get; set; } = 100;
+        
+        public override string ToString()
+        {
+            return $"{Name} HP: {HP} ENG: {ENG} Mana: {Mana}";
+        }
         public bool HeroAttack(Monster monster)
         {
             if (ENG - 20 >= 0)
@@ -26,10 +33,15 @@ namespace Battle_2
             }
             return false;
         }
-        public bool EnergyRegen(Monster mosnter)
+        public bool EnergyRegen(Monster mosnter)   //max=100  -10= 90+50 =140=100
         {
             ENG = ENG + 50;
-            return true;
+            if (ENG >= MaxENG)
+            {
+                ENG = MaxENG;
+
+            }
+            return true;             
         }
         public bool FireAttack(Monster monster)
         {
@@ -51,8 +63,31 @@ namespace Battle_2
         public bool ManaRegen(Monster monster)
         {
             Mana = Mana + 15;
+            if (Mana == MaxMana)
+            {
+                Mana = MaxMana;
+            }
             return true;
         }
+        //block dokoncit
+        public bool BlockAttack(Monster monster)
+        {
+            Random rnd = new Random();
+            int chance = rnd.Next(0, 101);
+            if (chance > 50)
+            {
+                ENG = ENG - 10;
+                return true;
+            }
+            else
+            {
+                HP = HP - monster.DMG;
+                return false;
+            }
+        }
+
+
+        //dokoncit
         public bool HeroAttack2(Monster2 monster2)
         {
             if (ENG - 20 >= 0)

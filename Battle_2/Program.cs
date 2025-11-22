@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
@@ -7,7 +9,7 @@ namespace Battle_2
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {            
             Console.Write("To start a game type start: ");
             Thread.Sleep(800);
             string? a = Console.ReadLine();
@@ -21,8 +23,8 @@ namespace Battle_2
             }
 
             Hero hero = new Hero();
-            Monster monster = new Monster("Goblin", 8, 1000);
-            Monster2 monster2 = new Monster2("Dark wizard", 150, 20, 150);
+            Monster monster = new Monster ("Goblin", 8, 1000);
+            Monster2 monster2 = new Monster2 ("Dark wizard", 150, 20, 150);
 
             Console.Write("Set your hero name: ");
             Thread.Sleep(800);
@@ -43,14 +45,16 @@ namespace Battle_2
                     Console.WriteLine("Ready to a fight!");
                     Console.WriteLine();
 
-                    bool battle = Battle(monster, hero, monster2); //tu
-
+                    bool battle = Battle(monster, hero, monster2);
                     Console.Clear();
+
                     bool deadmonster = Death(monster, monster2, hero);
+                    Console.Clear();
 
                     Console.Clear();
-                    Console.WriteLine();
                     Console.WriteLine("Ready to a second fight!");
+                    Console.WriteLine();
+                    
                     bool battle2 = Battle2(monster2, hero);
                     return;
                 }
@@ -69,149 +73,168 @@ namespace Battle_2
         }
         public static bool SpendingPoints(Hero hero)
         {
-            Console.WriteLine("You have 5 free points. Where do you want to spend them?");
+
+            Console.WriteLine($"You have {hero.Points} free points. Where do you want to spend them?");
             Thread.Sleep(1200);
-            Console.WriteLine("1 point is 10 value ");
+            Console.WriteLine("1 point is 5 value ");
             Thread.Sleep(1000);
-
-            Console.WriteLine("1--> Damage");
-            Console.WriteLine("2--> Healt");
-            Console.WriteLine("3--> Energy");
-            Console.WriteLine("4--> Mana");
-            Console.WriteLine("5--> Fire damage");
-            Console.WriteLine("0--> End spending");
-
-            int value = 5;
+            {
+                Console.WriteLine("1--> Damage");
+                Console.WriteLine("2--> Healt");
+                Console.WriteLine("3--> Energy");
+                Console.WriteLine("4--> Mana");
+                Console.WriteLine("5--> Fire damage");
+                Console.WriteLine("0--> End spending");
+            }
+            Thread.Sleep(800);
 
             bool running = true;
             while (running)
             {
-               if (value == 0)
+                if (hero.Points == 0)
                 {
-                    Console.WriteLine("No remaining points");
-                    Thread.Sleep(1500);
+                    Console.WriteLine();
+                    Console.WriteLine("No remaining points. New points can be recieved by killing enemies");
+                    Thread.Sleep(2500);
                     return false;
                 }
-                
+                Console.WriteLine();
                 Console.Write("Which number: ");
                 string? a = Console.ReadLine();
-                int number = int.Parse(a);
-                if (number == 0)       //end spending points
-                {
-                    Console.WriteLine("You ended spending points");
-                    Thread.Sleep(1000);
-                    return false;
-                }
+
                 Console.Write("How many points: ");
                 string? b = Console.ReadLine();
-                int points = int.Parse(b);
+                int value = int.Parse(b);
+                Console.WriteLine();
 
-                if (points > value)
+                switch (a)
                 {
-                    Console.WriteLine("You don't have enough points");
-                    Thread.Sleep(800);
-                }
-                if (number == 1)         //damage
-                {
-                    if (points <= value && points > 0)
-                    {
-                        hero.DMG = hero.DMG + (10 * points);
-                        value = value - points;
+                    case "1":                                                                        
+                        if (value <= hero.Points && hero.Points > 0)  
+                        {
+                            hero.DMG = hero.DMG + (5 * value);                         
+                            hero.Points = hero.Points - value;
 
-                        Console.WriteLine("Your new damage is " + hero.DMG);
-                        Thread.Sleep(800);
-                        Console.WriteLine("Now you have " + value + " points.");
-                        Thread.Sleep(800);
-                    }
-                    else if (points < 0)
-                    {
-                        Console.WriteLine("You can't type negative number");
-                    }
-                }
-                if (number == 2 && points > 0)             //healt
-                {
-                    if (points <= value)
-                    {
-                        hero.HP = hero.HP + (10 * points);
-                        value = value - points;
+                            Console.WriteLine("Your new damage is " + hero.DMG);
+                            Thread.Sleep(800);
+                            Console.WriteLine($"Now you have {hero.Points} points.");
+                            Thread.Sleep(800);
+                        }
+                        else if (value > hero.Points)
+                        {
+                            Console.WriteLine("You don't have enough points");
+                            Thread.Sleep(800);
+                        }
+                        else if (hero.Points < 0)
+                        {
+                            Console.WriteLine("You can't type negative number");
+                            Thread.Sleep(800);
+                        }
+                        break;
+                    case "2":
+                        if (value<= hero.Points && hero.Points > 0)
+                        {
+                            hero.HP = hero.HP + (5 * value);
+                            hero.MaxHP = hero.HP;
+                            hero.Points = hero.Points - value;
 
-                        Console.WriteLine("Your new healt is " + hero.HP);
-                        Thread.Sleep(800);
-                        Console.WriteLine("Now you only have " + value + " points.");
-                        Thread.Sleep(800);
-                    }
-                    else if (points < 0)
-                    {
-                        Console.WriteLine("You can't type negative number");
-                    }
-                }
-                if (number == 3 && points > 0)            //energy
-                {
-                    if (points <= value)
-                    {
-                        hero.ENG = hero.ENG + (10 * points);
-                        value = value - points;
+                            Console.WriteLine("Your new healt is " + hero.HP);
+                            Thread.Sleep(800);
+                            Console.WriteLine($"Now you only have {hero.Points} points.");
+                            Thread.Sleep(800);
+                        }
+                        else if (value > hero.Points)
+                        {
+                            Console.WriteLine("You don't have enough points");
+                            Thread.Sleep(800);
+                        }
+                        else if (hero.Points < 0)
+                        {
+                            Console.WriteLine("You can't type negative number");
+                            Thread.Sleep(800);
+                        }
+                        break;
+                    case "3":
+                        if (value<= hero.Points && hero.Points > 0)
+                        {
+                            hero.ENG = hero.ENG + (5 * value);
+                            hero.MaxENG = hero.ENG;
+                            hero.Points = hero.Points - value;
 
-                        Console.WriteLine("Your new maximum energy is " + hero.ENG);
-                        Thread.Sleep(800);
-                        Console.WriteLine("Now you only have " + value + " points.");
-                        Thread.Sleep(800);
-                    }
-                    else if (points < 0)
-                    {
-                        Console.WriteLine("You can't type negative number");
-                    }
-                }
-                if (number == 4 && points > 0)             //mana
-                {
-                    if (points <= value)
-                    {
-                        hero.Mana = hero.Mana + (10 * points);
-                        value = value - points;
+                            Console.WriteLine("Your new maximum energy is " + hero.ENG);
+                            Thread.Sleep(800);
+                            Console.WriteLine($"Now you only have {hero.Points} points.");
+                            Thread.Sleep(800);
+                        }                        
+                        else if (value > hero.Points)
+                        {
+                            Console.WriteLine("You don't have enough points");
+                            Thread.Sleep(800);
+                        }
+                        else if (hero.Points < 0)
+                        {
+                            Console.WriteLine("You can't type negative number");
+                            Thread.Sleep(800);
+                        }
+                        break;
+                    case "4":
+                        if (value <= hero.Points && hero.Points > 0)
+                        { 
+                            hero.Mana = hero.Mana + (5 * value);
+                            hero.MaxMana = hero.Mana;
+                            hero.Points = hero.Points - value;
 
-                        Console.WriteLine("Your new maximum mana is " + hero.Mana);
-                        Thread.Sleep(800);
-                        Console.WriteLine("Now you only have " + value + " points.");
-                        Thread.Sleep(800);
-                    }
-                    else if (points < 0)
-                    {
-                        Console.WriteLine("You can't type negative number");
-                    }
-                }
-                if (number == 5 && points > 0)             //fire damage
-                {
-                    if (points <= value)
-                    {
-                        hero.HP = hero.HP + (10 * points);
-                        value = value - points;
+                            Console.WriteLine("Your new maximum mana is " + hero.Mana);
+                            Thread.Sleep(800);
+                            Console.WriteLine("Now you only have " + value + " points.");
+                            Thread.Sleep(800);                                                                       
+                        }                        
+                        else if (value > hero.Points)
+                        {
+                            Console.WriteLine("You don't have enough points");
+                            Thread.Sleep(800);
+                        }
+                        else if (hero.Points < 0)
+                        {
+                            Console.WriteLine("You can't type negative number");
+                            Thread.Sleep(800);
+                        }
+                        break;
+                    case "5":
+                        if (value <= hero.Points && hero.Points > 0)
+                        {
+                            hero.FireDMG = hero.FireDMG + (5 * value);
+                            hero.Points = hero.Points - value;
 
-                        Console.WriteLine("Your new fire damage is " + hero.FireDMG);
-                        Thread.Sleep(800);
-                        Console.WriteLine("Now you only have " + value + " points.");
-                        Thread.Sleep(800);
-                    }
-                    else if (points < 0)
-                    {
-                        Console.WriteLine("You can't type negative number");
-                    }
+                            Console.WriteLine("Your new fire damage is " + hero.FireDMG);
+                            Thread.Sleep(800);
+                            Console.WriteLine("Now you only have " + value + " points.");
+                            Thread.Sleep(800);
+                        }                                      
+                        else if (value > hero.Points)
+                        {
+                            Console.WriteLine("You don't have enough points");
+                            Thread.Sleep(800);
+                        }
+                        else if (hero.Points < 0)
+                        {
+                            Console.WriteLine("You can't type negative number");
+                        }
+                        break;
+                    case "0":
+                            Console.WriteLine("You ended spending points");
+                            Thread.Sleep(1000);
+                        return false;
+                    default:
+                            Console.WriteLine("You typed wrong code,try again");
+                            Thread.Sleep(1000);
+                            continue;
                 }
-                //return false;
-                }
-                if (value == 0)
-                {
-                    Console.WriteLine("You spended all of the points. New points can be recieved by killing enemies");
-                    Thread.Sleep(1000);
-                    return false;
-                }
-                Console.WriteLine("Type again where and how much do you want to spend.");
-                Thread.Sleep(1000); 
-                return true;             
-        }
-
+            }
+            return false;
+        }                
         public static bool Battle(Monster monster, Hero hero, Monster2 monster2)
         {
-            
             {  
                 Console.WriteLine("Type a number which attack do you want to perform.");
                 Console.WriteLine("1--> Melle attack");
@@ -224,16 +247,39 @@ namespace Battle_2
             }
             Thread.Sleep(800);
             Console.WriteLine();
+
+            int count = 0;
+
             Console.Write("Which type of attack do you want to perform: ");
             bool running = true;
             while (running)
             {
+                if(count == 4)
+                {
+                    Console.Clear();
+                    Console.Clear();
+                    Console.WriteLine("Ready to a fight!");
+                    Console.WriteLine();
+                    {
+                        Console.WriteLine("Type a number which attack do you want to perform.");
+                        Console.WriteLine("1--> Melle attack");
+                        Console.WriteLine("2--> Restore energy");
+                        Console.WriteLine("3--> Fire attack (50% chance)");
+                        Console.WriteLine("4--> Restore mana");
+                        Console.WriteLine("5--> Block");
+                        Console.WriteLine("6--> Info");
+                        Console.WriteLine($"7--> Info about {hero.Name}");
+                    }
+                    Thread.Sleep(800);
+                    Console.WriteLine();
+                    Console.Write("Which type of attack: ");
+                    Thread.Sleep(900);
+                }
                 string? attacktype = Console.ReadLine();
                 Console.WriteLine();
                 switch (attacktype)
                 {
                     case "1":
-
                         if (hero.ENG < 20)
                         {
                             Console.Write("You don't have enought energy. Do you want to restore it?  ");
@@ -243,9 +289,16 @@ namespace Battle_2
                             {
                                 Console.WriteLine("Restoring your energy...");
                                 Thread.Sleep(800);
-                                hero.EnergyRegen2(monster2);
+                                
+                                hero.EnergyRegen(monster);
+
+                                Console.WriteLine();
+                                Console.WriteLine("New:");
                                 Console.WriteLine("Energy restored: " + hero.ENG);
+                                
                                 monster.MonsterAttack(hero);
+                                Console.WriteLine(hero);
+                                Thread.Sleep(800);
                                 break;
                             }
                             if (answer == "no")
@@ -257,16 +310,16 @@ namespace Battle_2
                                 Console.WriteLine("You typed wrong answer. Try again.");
                             }
                         }
-                        bool Attack = hero.HeroAttack(monster); //Hero attack
+                        bool Attack = hero.HeroAttack(monster); 
                         if (Attack)
                         {
-                            monster.MonsterAttack(hero);  //Monster attack
+                            monster.MonsterAttack(hero);  
 
                             if (monster.HP <= 0)
                             {
                                 monster.HP = 0;
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                                Console.WriteLine(hero);
 
                                 Console.WriteLine(monster.Racetype + " is dead");
                                 Thread.Sleep(1000);
@@ -276,7 +329,7 @@ namespace Battle_2
                             {
                                 hero.HP = 0;
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                                Console.WriteLine(hero);
 
                                 Console.WriteLine(hero.Name + " is dead");
                                 Thread.Sleep(1000);
@@ -285,22 +338,23 @@ namespace Battle_2
                                 Environment.Exit(0);
                             }
                             else
-
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                                Console.WriteLine(hero);
                         }                       
                         break;
                     case "2":
                         Console.WriteLine("Restoring your energy....");
                         Thread.Sleep(800);
-                        hero.EnergyRegen2(monster2);
-                        Console.WriteLine("Energy restored: " + hero.ENG);
-                        monster.MonsterAttack(hero);
+                        
+                        hero.EnergyRegen(monster);
+
+                        Console.WriteLine();
                         Console.WriteLine("New:");
-                        {
-                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                        }
+                        Console.WriteLine("Energy restored: " + hero.ENG);
+
+                        monster.MonsterAttack(hero);            
+                        
+                        Console.WriteLine(hero);                        
                         Thread.Sleep(800);
                         break;
                     case "3":
@@ -313,9 +367,16 @@ namespace Battle_2
                             {
                                 Console.WriteLine("Restoring your mana...");
                                 Thread.Sleep(800);
+
                                 hero.ManaRegen(monster);
-                                Console.WriteLine("Mana restored: " + hero.Mana);                                
+
+                                Console.WriteLine();
+                                Console.WriteLine("New:");
+                                Console.WriteLine("Mana restored: " + hero.Mana);       
+                                
                                 monster.MonsterAttack(hero);
+                                Console.WriteLine(hero);
+                                Thread.Sleep(800);
                                 break;
                             }
                             if (answer == "no")
@@ -336,7 +397,7 @@ namespace Battle_2
                             {
                                 monster.HP = 0;
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                                Console.WriteLine(hero);
 
                                 Console.WriteLine(monster.Racetype + " is dead");
                                 Thread.Sleep(1000);
@@ -346,7 +407,7 @@ namespace Battle_2
                             {
                                 hero.HP = 0;
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                                Console.WriteLine(hero);
 
                                 Console.WriteLine(hero.Name + " is dead");
                                 Thread.Sleep(1000);
@@ -356,28 +417,29 @@ namespace Battle_2
                             }
                             else
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+                                Console.WriteLine(hero);
                                 break;
                         }
                         Console.WriteLine("Fire attack didn't work.");
                         Console.WriteLine();
-                        monster.MonsterAttack(hero);
-                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                        Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
 
+                        monster.MonsterAttack(hero);
+
+                        Console.WriteLine(hero);
                         break;
-                    case "4":                      
-                        
+                    case "4":                                              
                         Console.WriteLine("Restoring your mana.....");
                         Thread.Sleep(800);
+
                         hero.ManaRegen(monster);
-                        Console.WriteLine("Mana restored: " + hero.Mana);
-                        monster.MonsterAttack(hero);
+
+                        Console.WriteLine();
                         Console.WriteLine("New:");
-                        {
-                            Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
-                        }
+                        Console.WriteLine("Mana restored: " + hero.Mana);
+
+                        monster.MonsterAttack(hero);
+                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        Console.WriteLine(hero);                      
                         Thread.Sleep(800);
                         break;
                     case "5":
@@ -399,7 +461,7 @@ namespace Battle_2
                         {
                             Console.WriteLine($"Stats about {hero.Name}");
                             Console.WriteLine($"Melee damage: {hero.DMG}  Fire damage: {hero.FireDMG}  Block:"); //doplnit                                                   
-                            Console.WriteLine($"{hero.Name} HP: {hero.HP} ENG: {hero.ENG} Mana: {hero.Mana}");
+                            Console.WriteLine(hero);
                             break;
                         }
                     default:
@@ -412,9 +474,13 @@ namespace Battle_2
                 Console.WriteLine();
                 Console.Write("Which type of attack: ");
                 Thread.Sleep(900);
+                count++;
             }
             return false;
         }                            
+        
+        //dokoncit
+        
         public static bool Death(Monster monster, Monster2 monster2, Hero hero)
         {
             bool running = true;
@@ -449,7 +515,7 @@ namespace Battle_2
         }
         public static bool Battle2(Monster2 monster2, Hero hero)
         {
-            Console.WriteLine(hero.Name + " HP: " + hero.HP + " ENG " + hero.ENG + " Mana " + hero.Mana);
+            Console.WriteLine(hero);
 
             bool running = true;
             while (running)
