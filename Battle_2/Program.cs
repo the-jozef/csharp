@@ -23,7 +23,7 @@ namespace Battle_2
             }
 
             Hero hero = new Hero();
-            Monster monster = new Monster ("Goblin", 8, 1000);
+            Monster monster = new Monster ("Goblin", 8, 100);
             Monster2 monster2 = new Monster2 ("Dark wizard", 150, 20, 150);
 
             Console.Write("Set your hero name: ");
@@ -47,6 +47,7 @@ namespace Battle_2
 
                     bool battle = Battle(monster, hero, monster2);
                     Console.Clear();
+                    bool spendingpoints2 = SpendingPoints(hero);
 
                     bool deadmonster = Death(monster, monster2, hero);
                     Console.Clear();
@@ -79,6 +80,7 @@ namespace Battle_2
             Console.WriteLine("1 point is 5 value ");
             Thread.Sleep(1000);
             {
+                Console.WriteLine();
                 Console.WriteLine("1--> Damage");
                 Console.WriteLine("2--> Healt");
                 Console.WriteLine("3--> Energy");
@@ -94,14 +96,19 @@ namespace Battle_2
                 if (hero.Points == 0)
                 {
                     Console.WriteLine();
-                    Console.WriteLine("No remaining points. New points can be recieved by killing enemies");
+                    Console.WriteLine("No remaining points. New points can be recieved by killing enemies.");
                     Thread.Sleep(2500);
                     return false;
                 }
                 Console.WriteLine();
                 Console.Write("Which number: ");
                 string? a = Console.ReadLine();
-
+                if (a == "0")
+                {
+                    Console.WriteLine("You ended spending points");
+                    Thread.Sleep(1500);
+                    return false;
+                }
                 Console.Write("How many points: ");
                 string? b = Console.ReadLine();
                 int value = int.Parse(b);
@@ -221,10 +228,6 @@ namespace Battle_2
                             Console.WriteLine("You can't type negative number");
                         }
                         break;
-                    case "0":
-                            Console.WriteLine("You ended spending points");
-                            Thread.Sleep(1000);
-                        return false;
                     default:
                             Console.WriteLine("You typed wrong code,try again");
                             Thread.Sleep(1000);
@@ -243,7 +246,7 @@ namespace Battle_2
                 Console.WriteLine("4--> Restore mana");
                 Console.WriteLine("5--> Block");
                 Console.WriteLine("6--> Info");
-                Console.WriteLine($"7--> Info about {hero.Name}");
+                Console.WriteLine($"7--> Info about {hero.Name} stats");
             }
             Thread.Sleep(800);
             Console.WriteLine();
@@ -254,8 +257,10 @@ namespace Battle_2
             bool running = true;
             while (running)
             {
+                
                 if(count == 4)
                 {
+                    count = 0;
                     Console.Clear();
                     Console.Clear();
                     Console.WriteLine("Ready to a fight!");
@@ -268,7 +273,7 @@ namespace Battle_2
                         Console.WriteLine("4--> Restore mana");
                         Console.WriteLine("5--> Block");
                         Console.WriteLine("6--> Info");
-                        Console.WriteLine($"7--> Info about {hero.Name}");
+                        Console.WriteLine($"7--> Info about {hero.Name} stats");
                     }
                     Thread.Sleep(800);
                     Console.WriteLine();
@@ -297,6 +302,11 @@ namespace Battle_2
                                 Console.WriteLine("Energy restored: " + hero.ENG);
                                 
                                 monster.MonsterAttack(hero);
+                                if (hero.HP <= 0)
+                                {
+                                    hero.HP = 0; 
+                                    return false;
+                                }
                                 Console.WriteLine(hero);
                                 Thread.Sleep(800);
                                 break;
@@ -309,35 +319,24 @@ namespace Battle_2
                             {
                                 Console.WriteLine("You typed wrong answer. Try again.");
                             }
-                        }
+                        }                      
                         bool Attack = hero.HeroAttack(monster); 
                         if (Attack)
-                        {
+                        {                            
                             monster.MonsterAttack(hero);  
 
                             if (monster.HP <= 0)
                             {
-                                monster.HP = 0;
-                                Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero);
-
-                                Console.WriteLine(monster.Racetype + " is dead");
-                                Thread.Sleep(1000);
-                                return true;
+                                monster.HP = 0;                               
+                                break;
                             }
                             if (hero.HP <= 0)
                             {
-                                hero.HP = 0;
-                                Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero);
-
-                                Console.WriteLine(hero.Name + " is dead");
-                                Thread.Sleep(1000);
-                                Console.WriteLine("You lost the GAME");
-                                Thread.Sleep(1000);
-                                Environment.Exit(0);
+                                hero.HP = 0; 
+                                return false;
                             }
                             else
+                                Console.WriteLine("New: ");
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
                                 Console.WriteLine(hero);
                         }                       
@@ -352,8 +351,12 @@ namespace Battle_2
                         Console.WriteLine("New:");
                         Console.WriteLine("Energy restored: " + hero.ENG);
 
-                        monster.MonsterAttack(hero);            
-                        
+                        monster.MonsterAttack(hero);
+                        if (hero.HP <= 0)
+                        {
+                            hero.HP = 0;
+                            return false;
+                        }
                         Console.WriteLine(hero);                        
                         Thread.Sleep(800);
                         break;
@@ -375,6 +378,11 @@ namespace Battle_2
                                 Console.WriteLine("Mana restored: " + hero.Mana);       
                                 
                                 monster.MonsterAttack(hero);
+                                if (hero.HP <= 0)
+                                {
+                                    hero.HP = 0;
+                                    return false;
+                                }
                                 Console.WriteLine(hero);
                                 Thread.Sleep(800);
                                 break;
@@ -395,27 +403,18 @@ namespace Battle_2
 
                             if (monster.HP <= 0)
                             {
-                                monster.HP = 0;
-                                Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero);
-
-                                Console.WriteLine(monster.Racetype + " is dead");
-                                Thread.Sleep(1000);
-                                return true;
+                                monster.HP = 0;                               
+                                return false;
                             }
                             if (hero.HP <= 0)
                             {
-                                hero.HP = 0;
-                                Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
-                                Console.WriteLine(hero);
-
-                                Console.WriteLine(hero.Name + " is dead");
-                                Thread.Sleep(1000);
-                                Console.WriteLine("You lost the GAME");
-                                Thread.Sleep(1000);
+                                hero.HP = 0;                               
                                 return false;
                             }
                             else
+                                Console.WriteLine("Fire attack worked");
+                                Console.WriteLine();
+                                Console.WriteLine("New: ");
                                 Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
                                 Console.WriteLine(hero);
                                 break;
@@ -424,7 +423,11 @@ namespace Battle_2
                         Console.WriteLine();
 
                         monster.MonsterAttack(hero);
-
+                        if (hero.HP <= 0)
+                        {
+                            hero.HP = 0;
+                            return false;
+                        }
                         Console.WriteLine(hero);
                         break;
                     case "4":                                              
@@ -438,12 +441,20 @@ namespace Battle_2
                         Console.WriteLine("Mana restored: " + hero.Mana);
 
                         monster.MonsterAttack(hero);
-                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        if (hero.HP <= 0)
+                        {
+                            hero.HP = 0;
+                            return false;
+                        }
                         Console.WriteLine(hero);                      
                         Thread.Sleep(800);
                         break;
                     case "5":
-
+                        bool Block = hero.BlockAttack(monster);
+                        Console.WriteLine();
+                        Console.WriteLine("New: ");
+                        Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                        Console.WriteLine(hero);
                         break;
                     case "6":
                         {
@@ -453,15 +464,21 @@ namespace Battle_2
                             Console.WriteLine("4--> Restore mana");
                             Console.WriteLine("5--> Block");
                             Console.WriteLine("6--> Info");
-                            Console.WriteLine($"7--> Info about {hero.Name}");
+                            Console.WriteLine($"7--> Info about {hero.Name} stats");
                         }
                         Thread.Sleep(800);
                         break;
                     case "7":
                         {
-                            Console.WriteLine($"Stats about {hero.Name}");
-                            Console.WriteLine($"Melee damage: {hero.DMG}  Fire damage: {hero.FireDMG}  Block:"); //doplnit                                                   
+                            Console.WriteLine($"Stats about {hero.Name}: ");
+                            Console.WriteLine();
                             Console.WriteLine(hero);
+                            Console.WriteLine();
+                            Console.WriteLine("DMG");
+                            Console.WriteLine($"Melee damage: {hero.DMG}  Fire damage: {hero.FireDMG}");
+                            Console.WriteLine();
+                            Console.WriteLine("Stats: ");
+                            Console.WriteLine($"ENG: {hero.ENG} Mana: {hero.Mana}");                                                                                                                                 
                             break;
                         }
                     default:
@@ -471,9 +488,32 @@ namespace Battle_2
                             break;
                         }
                 }
+                if (monster.HP <= 0)
+                {
+                    monster.HP = 0;
+                    Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                    Console.WriteLine(hero);
+                    Console.WriteLine();
+                    Console.WriteLine(monster.Racetype + " is dead");
+                    hero.Points = hero.Points + 4;
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                if (hero.HP <= 0)
+                {
+                    hero.HP = 0;
+                    Console.WriteLine(monster.Racetype + " HP: " + monster.HP);
+                    Console.WriteLine(hero);
+
+                    Console.WriteLine(hero.Name + " is dead");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("You lost the GAME");
+                    Thread.Sleep(1000);
+                    return false;
+                }
                 Console.WriteLine();
                 Console.Write("Which type of attack: ");
-                Thread.Sleep(900);
+                Thread.Sleep(3000);
                 count++;
             }
             return false;

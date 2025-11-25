@@ -9,7 +9,7 @@ namespace Battle_2
     internal class Hero
     {
         public string Name { get; set; } = "";
-        public int Points { get; set; } = 5;
+        public int Points { get; set; } = 3;
         public int HP { get; set; } = 150;
         public int MaxHP { get; set; } = 150;
         public int DMG { get; set; } = 10;
@@ -39,7 +39,6 @@ namespace Battle_2
             if (ENG >= MaxENG)
             {
                 ENG = MaxENG;
-
             }
             return true;             
         }
@@ -51,7 +50,6 @@ namespace Battle_2
             if (chance > 50)
             {
                 if (Mana - 35 >= 0)
-
                 {
                     Mana = Mana - 35;
                     monster.HP = monster.HP - FireDMG;
@@ -69,22 +67,89 @@ namespace Battle_2
             }
             return true;
         }
-        //block dokoncit
         public bool BlockAttack(Monster monster)
         {
             Random rnd = new Random();
-            int chance = rnd.Next(0, 101);
-            if (chance > 50)
+            int chance = rnd.Next(0, 101);   
+            if (chance > 80)
             {
-                ENG = ENG - 10;
-                return true;
+                int blockedDMG = monster.DMG - monster.DMG;               
+                HP = HP - blockedDMG;
+
+                float heroDMG = DMG * 0.08f;
+                int finalDMG = (int)Math.Round(heroDMG); //klasicke matematicke zaokrouhlovanie
+                monster.HP = monster.HP - finalDMG;
+
+                Console.WriteLine($"{Name} blocked 100% of attack");
+                Thread.Sleep(1000);
             }
-            else
+            else if(chance > 60 && chance < 80)
+            {
+                float blockedDMG = monster.DMG * 0.75f;
+                int finalBlock = (int)Math.Round(blockedDMG);
+                HP = HP - finalBlock;
+
+                float heroDMG = DMG * 0.08f;
+                int finalDMG = (int)Math.Round(heroDMG); 
+                monster.HP = monster.HP - finalDMG;
+
+                Console.WriteLine($"{Name} blocked 75% of attack");
+                Thread.Sleep(1000);
+            }
+            else if(chance > 40 && chance < 60)
+            {
+                float blockedDMG = monster.DMG * 0.65f;
+                int finalBlock = (int)Math.Round(blockedDMG);
+                HP = HP - finalBlock;
+
+                float heroDMG = DMG * 0.08f;
+                int finalDMG = (int)Math.Round(heroDMG);
+                monster.HP = monster.HP - finalDMG;
+
+                Console.WriteLine($"{Name} blocked 65% of attack");
+                Thread.Sleep(1000);
+            }
+            else if(chance > 20 && chance < 40)
+            {
+                float blockedDMG = monster.DMG * 0.35f;
+                int finalBlock = (int)Math.Round(blockedDMG);
+                HP = HP - finalBlock;
+
+                float heroDMG = DMG * 0.08f;
+                int finalDMG = (int)Math.Round(heroDMG); 
+                monster.HP = monster.HP - finalDMG;
+
+                Console.WriteLine($"{Name} blocked 35% of attack");
+                Thread.Sleep(1000);
+            }
+            else if(chance > 0 && chance < 20)
+            {
+                float blockedDMG = monster.DMG * 0.15f;
+                int finalBlock = (int)Math.Round(blockedDMG);
+                HP = HP - finalBlock;
+
+                float heroDMG = DMG * 0.08f;
+                int finalDMG = (int)Math.Round(heroDMG); 
+                monster.HP = monster.HP - finalDMG;
+
+                Console.WriteLine($"{Name} blocked 15% of attack");
+                Thread.Sleep(1000);
+            }                               
+            else if (chance == 0)
             {
                 HP = HP - monster.DMG;
-                return false;
+
+                float heroDMG = DMG * 0.08f;
+                int finalDMG = (int)Math.Round(heroDMG);
+                monster.HP = monster.HP - finalDMG;
+
+                Console.WriteLine($"{Name} didn't block anything");
+                Thread.Sleep(1000);
             }
+            return false;
         }
+
+
 
 
         //dokoncit
