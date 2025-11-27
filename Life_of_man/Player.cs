@@ -6,7 +6,8 @@ namespace Life_of_man
 {
     public class Player
     {
-        public string Name { get; set; } = "Player";  // Default name
+        public string Name { get; set; } = "John";  // Default name
+        public string Surname { get; set; } = "Wick"; //Default surname
         public int Health { get; set; } =100;    
         public int Food { get; set; } = 100;        
         public int Thirst { get; set; } = 100;
@@ -28,10 +29,7 @@ namespace Life_of_man
         {
             return $"Name: {Name}, Health: {Health}, Food: {Food}, Thirst: {Thirst}, Money: {Money}, Energy: {Energy}";
         }
-        public void NamePlayer(string name)
-        {
-            Name = name;
-        }
+        
 
 
 
