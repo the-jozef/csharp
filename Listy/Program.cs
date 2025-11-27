@@ -85,22 +85,7 @@ namespace Listy
 
                 Console.WriteLine("Chces sucet cisiel?");
                 string nn = Console.ReadLine();
-                if ( nn == "ano")
-                {
-                    for
-                    
-                 
-                }
-                if 
-                
-                
-                
-                
-                
-                
-                
-                
-                
+              
                 Console.WriteLine("Chces vypis cisiel?");
                 string ccc = Console.ReadLine();
 
@@ -108,28 +93,6 @@ namespace Listy
                 {
                     list.ForEach(Console.WriteLine);
                 }
-            
-                  
-                
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
 
         }

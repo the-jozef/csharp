@@ -20,7 +20,7 @@ namespace Farm_simulator
         {                      
             while (true)
             {
-               Day++;                 
+               Day++;
                 
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Field:");       

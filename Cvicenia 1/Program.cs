@@ -30,7 +30,6 @@ namespace Cvicenia_1
                //Console.WriteLine(name);
             }
          }
-
         public static void numbers(string[] text)
         {
             int value = 1000000000;
@@ -48,13 +47,13 @@ namespace Cvicenia_1
                 }
             }
         }
-                public static List<string> PeopleUnder05M(string[] text)
-                 { 
+        public static List<string> PeopleUnder05M(string[] text)
+        { 
                 
-                 List<string> peopleWithUnder05M = new List<string>();
+            List<string> peopleWithUnder05M = new List<string>();
 
-                int value = 500000;
-                string nameandnumber = "";
+            int value = 500000;
+            string nameandnumber = "";
             foreach (string line in text.Skip(1))
             {
                 string[] splits = line.Split(";");
@@ -65,14 +64,9 @@ namespace Cvicenia_1
                     money = value;
                     nameandnumber = splits[0] + " " + splits[4] ;
                     peopleWithUnder05M.Add(nameandnumber);
-                }
-            
-            }
-            
-                return peopleWithUnder05M;
-            
-            
-            
+                }           
+            }           
+        return peopleWithUnder05M;                       
         }  
     }
 }

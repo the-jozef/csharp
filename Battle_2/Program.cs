@@ -49,6 +49,7 @@ namespace Battle_2
                     Console.Clear();
                     bool spendingpoints2 = SpendingPoints(hero);
 
+                    Console.Clear();
                     bool deadmonster = Death(monster, monster2, hero);
                     Console.Clear();
 
@@ -74,7 +75,6 @@ namespace Battle_2
         }
         public static bool SpendingPoints(Hero hero)
         {
-
             Console.WriteLine($"You have {hero.Points} free points. Where do you want to spend them?");
             Thread.Sleep(1200);
             Console.WriteLine("1 point is 5 value ");
@@ -193,7 +193,7 @@ namespace Battle_2
 
                             Console.WriteLine("Your new maximum mana is " + hero.Mana);
                             Thread.Sleep(800);
-                            Console.WriteLine("Now you only have " + value + " points.");
+                            Console.WriteLine($"Now you only have {hero.Points} points.");
                             Thread.Sleep(800);                                                                       
                         }                        
                         else if (value > hero.Points)
@@ -215,7 +215,7 @@ namespace Battle_2
 
                             Console.WriteLine("Your new fire damage is " + hero.FireDMG);
                             Thread.Sleep(800);
-                            Console.WriteLine("Now you only have " + value + " points.");
+                            Console.WriteLine($"Now you only have {hero.Points} points.");
                             Thread.Sleep(800);
                         }                                      
                         else if (value > hero.Points)
@@ -256,8 +256,7 @@ namespace Battle_2
             Console.Write("Which type of attack do you want to perform: ");
             bool running = true;
             while (running)
-            {
-                
+            {                
                 if(count == 4)
                 {
                     count = 0;
@@ -513,7 +512,7 @@ namespace Battle_2
                 }
                 Console.WriteLine();
                 Console.Write("Which type of attack: ");
-                Thread.Sleep(3000);
+                Thread.Sleep(1500);
                 count++;
             }
             return false;
@@ -532,6 +531,7 @@ namespace Battle_2
                 }
                 else if (monster.HP == 0)
                 {
+                    Console.WriteLine();
                     Console.Write(monster2.Racetype + " appeared.Do you want to attack him? ");
                     string? answer = Console.ReadLine();
                     if (answer == "yes")

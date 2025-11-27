@@ -24,17 +24,17 @@ namespace Skusanie_3
 
                 }
                 else if (randomNumber < a)
-                    {
+                {
                     Console.WriteLine("Cislo je mensie");
                 }
                 else if (randomNumber == a)
-                        {
-                            Console.WriteLine("Uhadol si cislo,Gratulujem");
+                {
+                    Console.WriteLine("Uhadol si cislo,Gratulujem");
                     break;
 
-                        }
+                }
 
-                    }
+            }
             
         }
         
