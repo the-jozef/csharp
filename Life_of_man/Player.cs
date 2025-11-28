@@ -15,16 +15,6 @@ namespace Life_of_man
         public int Energy { get; set; } = 100; 
  
         // Additional player properties and methods can be added here
-        public Player(string name, int health, int food, int thirst, int money, int energy)
-        {
-            Name = name;
-            Health = health;
-            Food = food;
-            Thirst = thirst;
-            Money = money;
-            Energy = energy;
-        }
-
         public override string ToString()
         {
             return $"Name: {Name}, Health: {Health}, Food: {Food}, Thirst: {Thirst}, Money: {Money}, Energy: {Energy}";
