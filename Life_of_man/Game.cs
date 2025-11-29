@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
+using System.Numerics;
 using System.Text;
+using System.Timers;
 using System.Xml.Linq;
 
 namespace Life_of_man
 {
     public class Game
     {
-        public Player Player { get; set; } = new Player ();
+        public Player Player { get; set; } = new Player();
         public void Start()
         {
-
+            Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine(" ___    __  _____               _____                         \r\n|   |  |__|/ ____\\____    _____/ ____\\   _____ _____    ___  \r\n|   |  |  ||  __\\/ __ \\  /  _ \\   __\\   /     \\\\__  \\  /   \\ \r\n|   |__|  ||  | \\  ___/ (  <_> )  |    |  Y Y  \\/ __ \\|  |  \\\r\n|_____/\\__||__|  \\___\\   \\____/|__|    |__|_|__(_____/|__|__/");
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -20,35 +23,28 @@ namespace Life_of_man
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("This game can't save a data. After restart you will continue from beginning.");
             Console.Write("        Also this game is in development state and may contain bugs.");
-            Thread.Sleep(15000);
+            //Thread.Sleep(15000);   //zapnut neskor doplnit info
             Console.ResetColor();
             Console.Clear();
+
             Console.Write("To start a game press any key: ");
             Thread.Sleep(1000);
             Console.ReadKey();
             Console.Clear();
-            //Console.WriteLine("Do you want to change a text color?");
-            //dokoncit farbu textu
-            Console.Write("Set up your character:   Name:");            
-            Player.Name = Console.ReadLine()!;
-            Console.Write("                         Surname: ");
-            Player.Surname = Console.ReadLine()!;
 
-            //dokoncit nastavenie postavy
-            DateTime GameTime = new DateTime(2025, 11, 28, 10, 0,0);  //year,month,day,hour,minute,second
+            Console.Write("Do you want to change a text color? ");
+            Colour.SetColour();
+            Console.Clear();
+
+            Console.Write("Set up your character:   Name and Surname: ");
+            Player.FullName = Console.ReadLine()!;            
+            Console.Clear();
+
             
-            double speed = 2.0;
+            Console.WriteLine($"{Player.FullName}  Bank account: {Player.Money}$");
+            Time.StartUITimer1();
+            Console.ReadLine();
 
-            while (true)
-            {
-                // posun času
-                GameTime = GameTime.AddSeconds(5 * speed);              
-
-                Thread.Sleep(1000); 
-                Console.WriteLine(GameTime.ToString("dd:MM:yyyy:mm"));
-             
-            }
-           
 
 
 

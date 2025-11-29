@@ -5,9 +5,8 @@ using System.Text;
 namespace Life_of_man
 {
     public class Player
-    {
-        public string Name { get; set; } = "John";  // Default name
-        public string Surname { get; set; } = "Wick"; //Default surname
+    {       
+        public string FullName { get; set; } = "John Wick";  // Default fullname
         public int Health { get; set; } =100;    
         public int Food { get; set; } = 100;        
         public int Thirst { get; set; } = 100;
@@ -17,7 +16,7 @@ namespace Life_of_man
         // Additional player properties and methods can be added here
         public override string ToString()
         {
-            return $"Name: {Name}, Health: {Health}, Food: {Food}, Thirst: {Thirst}, Money: {Money}, Energy: {Energy}";
+            return $"Name: {FullName}, Health: {Health}, Food: {Food}, Thirst: {Thirst}, Money: {Money}, Energy: {Energy}";
         }
         
 
