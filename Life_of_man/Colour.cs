@@ -1,73 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Life_of_man
 {
-    internal class Colour
+    public class Colour
     {
+        public static ConsoleColor SelectedColor;       
         public static bool SetColour()
-        {
+        {          
             bool running = true;
             while (running)
-            {
+            {              
+                Console.Write("Do you want to change a text colour? ");
                 string answer = Console.ReadLine()!;
+                
                 if (answer == "yes")
-                {
-                    Console.WriteLine("Avaiable colours: blue, darkblue, cyan, darkcyan, gray, darkgray, green, darkgreen, magenta, darkmagenta, red, darkred, yellow, darkyellow, white  ");
+                {   
+                    ColorNumber();                          
                     Console.Write("Which colour do you want: ");
                     string answer1 = Console.ReadLine()!;
+
                     switch (answer1)
                     {
-                        case "blue":
-                            Console.ForegroundColor = ConsoleColor.Blue;
+                        case "0":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.White;
                             return running;                        
-                        case "darkblue":
-                            Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        case "1":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.Blue;
                             return running;
-                        case "cyan":
-                            Console.ForegroundColor = ConsoleColor.Cyan;
+                        case "2":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.DarkBlue;
                             return running;
-                        case "darkcyan":
-                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        case "3":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.Red;
                             return running;
-                        case "gray":
-                            Console.ForegroundColor = ConsoleColor.Gray;
+                        case "4":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.DarkRed;
                             return running;
-                        case "darkgray":
-                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                        case "5":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.Green;
                             return running;
-                        case "green":
-                            Console.ForegroundColor = ConsoleColor.Green;
+                        case "6":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.DarkGreen;
                             return running;
-                        case "darkgreen":
-                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        case "7":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.Yellow;
                             return running;
-                        case "magenta":
-                            Console.ForegroundColor = ConsoleColor.Magenta;
+                        case "8":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.DarkYellow;
                             return running;
-                        case "darkmagenta":
-                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        case "9":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.Magenta;
                             return running;
-                        case "red":
-                            Console.ForegroundColor = ConsoleColor.Red;
+                        case "10":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             return running;
-                        case "darkred":
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                        case "11":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.Cyan;
                             return running;
-                        case "yellow":
-                            Console.ForegroundColor = ConsoleColor.Yellow;
+                        case "12":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.DarkCyan;
                             return running;
-                        case "darkyellow":
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        case "13":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.Gray;
                             return running;                                                                                             
-                        case "white":
-                            Console.ForegroundColor = ConsoleColor.White;
+                        case "14":
+                            SelectedColor = Console.ForegroundColor = ConsoleColor.DarkGray;
                             return running;                       
                         default:
-                            Console.WriteLine("Typed wrong color name");
+                            Console.WriteLine("Typed wrong color name...");
                             Thread.Sleep(2000);
-                            return running;
+                            break;
                     }
                 }
                 else if (answer == "no")
@@ -76,10 +81,105 @@ namespace Life_of_man
                 }
                 else
                 {
-                    Console.WriteLine("You typed wrong code....");
+                    Console.WriteLine("You typed wrong code....");                   
                 }
-            }                                       
+            }
             return running;
+        }       
+        public static void ColorNumber()
+        {            
+            WriteColor("White = ", ConsoleColor.White);
+            PrintNumber(0, ConsoleColor.White);
+
+            WriteColor("Blue", ConsoleColor.Blue);
+            Console.Write(" = ");
+            PrintNumber(1, ConsoleColor.Blue);
+
+            WriteColor("DarkBlue", ConsoleColor.DarkBlue);
+            Console.Write(" = ");
+            PrintNumber(2, ConsoleColor.DarkBlue);
+
+            WriteColor("Red", ConsoleColor.Red);
+            Console.Write(" = ");
+            PrintNumber(3, ConsoleColor.Red);
+
+            WriteColor("DarkRed", ConsoleColor.DarkRed);
+            Console.Write(" = ");
+            PrintNumber(4, ConsoleColor.DarkRed);
+
+            WriteColor("Green", ConsoleColor.Green);
+            Console.Write(" = ");
+            PrintNumber(5, ConsoleColor.Green);
+
+            WriteColor("DarkGreen", ConsoleColor.DarkGreen);
+            Console.Write(" = ");
+            PrintNumber(6, ConsoleColor.DarkGreen);
+
+            WriteColor("Yellow", ConsoleColor.Yellow);
+            Console.Write(" = ");
+            PrintNumber(7, ConsoleColor.Yellow);
+
+            WriteColor("DarkYellow", ConsoleColor.DarkYellow);
+            Console.Write(" = ");
+            PrintNumber(8, ConsoleColor.DarkYellow);
+
+            WriteColor("Magenta", ConsoleColor.Magenta);
+            Console.Write(" = ");
+            PrintNumber(9, ConsoleColor.Magenta);
+
+            WriteColor("DarkMagenta", ConsoleColor.DarkMagenta);
+            Console.Write(" = ");
+            PrintNumber(10, ConsoleColor.DarkMagenta);
+
+            WriteColor("Cyan", ConsoleColor.Cyan);
+            Console.Write(" = ");
+            PrintNumber(11, ConsoleColor.Cyan);
+
+            WriteColor("DarkCyan", ConsoleColor.DarkCyan);
+            Console.Write(" = ");
+            PrintNumber(12, ConsoleColor.DarkCyan);
+
+            WriteColor("Gray", ConsoleColor.Gray);
+            Console.Write(" = ");
+            PrintNumber(13, ConsoleColor.Gray);
+
+            WriteColor("DarkGray", ConsoleColor.DarkGray);
+            Console.Write(" = ");
+            PrintNumber(14, ConsoleColor.DarkGray);
         }
+        public static void PrintNumber(int num, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(num+"\n");
+            Console.ResetColor();
+        }
+        public static void WriteColor(string text, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(text);
+            Console.ResetColor();           
+        }
+        public static void PlayerStats(Player player)
+        {
+            Console.SetCursorPosition(0, 0);
+
+            WriteColor(player.FullName , ConsoleColor.White);
+
+            WriteColor("Bank account: ", ConsoleColor.Cyan);
+            WriteColor(player.Money + "$  ", ConsoleColor.White);
+
+            WriteColor("Health: ", ConsoleColor.Red);
+            WriteColor(player.Health + "/100  ", ConsoleColor.White);
+
+            WriteColor("Energy: ", ConsoleColor.Green);
+            WriteColor(player.Energy + "/100  ", ConsoleColor.White);
+
+            WriteColor("Food: ", ConsoleColor.DarkYellow);
+            WriteColor(player.Food + "/100  ", ConsoleColor.White);
+
+            WriteColor("Thirst: ", ConsoleColor.Blue);
+            WriteColor(player.Thirst + "/100", ConsoleColor.White);
+        }       
     }
 }
+

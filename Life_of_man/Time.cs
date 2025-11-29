@@ -8,8 +8,8 @@ namespace Life_of_man
     {
         public static DateTime TimeDate { get; set; } = new DateTime(2025, 11, 29, 10, 0, 0);
         public static bool StartUITimer1()
-        {          
-            // DateTime time = new DateTime (2025, 11, 29, 10, 0, 0); 
+        {
+            
             System.Timers.Timer timer;
             UIManager1.DrawTimeTopRight1(TimeDate); // prvé zobrazenie
 
@@ -20,7 +20,7 @@ namespace Life_of_man
                 UIManager1.DrawTimeTopRight1(TimeDate);
             };
             timer.AutoReset = true;
-            timer.Start();
+            timer.Start();           
             return true;
         }
     }
@@ -28,6 +28,7 @@ namespace Life_of_man
     {
         public static void DrawTimeTopRight1(DateTime TimeDate)
         {
+            Console.ForegroundColor = ConsoleColor.White;
             // text, ktorý chceme zobraziť
             string text = TimeDate.ToString("HH:mm:ss");
 
@@ -37,10 +38,7 @@ namespace Life_of_man
             Console.SetCursorPosition(x, 0);
 
             Console.Write($"Time: {text}");
-
-            // malé "premazanie" ak by sa predtým text skrátil
-            Console.Write(new string(' ', 2));
-
+            Console.Write(new string(' ', 1));
 
         }
         

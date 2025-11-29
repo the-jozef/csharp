@@ -23,7 +23,7 @@ namespace Life_of_man
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("This game can't save a data. After restart you will continue from beginning.");
             Console.Write("        Also this game is in development state and may contain bugs.");
-            //Thread.Sleep(15000);   //zapnut neskor doplnit info
+            //Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
             Console.ResetColor();
             Console.Clear();
 
@@ -32,18 +32,35 @@ namespace Life_of_man
             Console.ReadKey();
             Console.Clear();
 
-            Console.Write("Do you want to change a text color? ");
-            Colour.SetColour();
+            Colour.SetColour(); 
             Console.Clear();
 
             Console.Write("Set up your character:   Name and Surname: ");
             Player.FullName = Console.ReadLine()!;            
             Console.Clear();
 
+            Console.SetCursorPosition(0, 0);
+            Colour.PlayerStats(Player);           
             
-            Console.WriteLine($"{Player.FullName}  Bank account: {Player.Money}$");
             Time.StartUITimer1();
-            Console.ReadLine();
+
+            Console.ForegroundColor = Colour.SelectedColor;
+            //zaciatok hry
+            bool running = true;    
+            while(running)
+            {
+
+
+
+
+            }
+
+
+
+
+
+
+
 
 
 

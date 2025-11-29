@@ -16,11 +16,7 @@ namespace Life_of_man
         // Additional player properties and methods can be added here
         public override string ToString()
         {
-            return $"Name: {FullName}, Health: {Health}, Food: {Food}, Thirst: {Thirst}, Money: {Money}, Energy: {Energy}";
-        }
-        
-
-
-
+            return $"{FullName} Bank account: {Money}$   Health: {Health}/100  Energy: {Energy}/100    Food: {Food}/100 Thirst: {Thirst}/100";
+        }      
     }
 }
