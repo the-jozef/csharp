@@ -37,10 +37,9 @@ namespace Life_of_man
             if (x < 0) x = 0; // pre prípad, že text je dlhší ako šírka konzoly
             Console.SetCursorPosition(x, 0);
 
-            Console.Write($"Time: {text}");
+            Console.Write($"Time: {text}");            
             Console.Write(new string(' ', 1));
-
-        }
-        
+            
+        }        
     }
 }

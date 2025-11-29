@@ -14,9 +14,9 @@ namespace Life_of_man
         public int Energy { get; set; } = 100; 
  
         // Additional player properties and methods can be added here
-        public override string ToString()
+        /*public override string ToString()
         {
             return $"{FullName} Bank account: {Money}$   Health: {Health}/100  Energy: {Energy}/100    Food: {Food}/100 Thirst: {Thirst}/100";
-        }      
+        }*/   
     }
 }

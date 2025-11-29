@@ -44,31 +44,49 @@ namespace Life_of_man
             
             Time.StartUITimer1();
 
-            Console.ForegroundColor = Colour.SelectedColor;
+            Console.ForegroundColor = Colour.SelectedColor; //zfunkcnit uplne farbu
             //zaciatok hry
+            //zfunkcnit aby to pisalo normalne
             bool running = true;    
             while(running)
             {
+                Console.WriteLine("Menu");
+                string answer = Console.ReadLine()!;
+                
+                switch (answer)   
+                {                 
+                    case "1":   //job
+                        Console.WriteLine();
+                        break;
+                    case "2":  //sleep
+                        Console.WriteLine();
+                        break;
+                    case "3":  //shop
+                        Shop.Shopping();
 
 
 
 
+                        break;
+                    case "4":  //inventory pre buducnost 
+                        Console.WriteLine();
+                        break;
+                    case "5"://fridge
+                        Console.WriteLine();
+                        break;
+                    case "6":  //skip time
+                        Console.WriteLine();
+                        break;
+                    case "7":  //alarm clock
+                        Console.WriteLine();
+                        break;
+                    case "8"://end game make sure button
+                        Console.WriteLine();
+                        break;
+                            
+                }
+               // running = false;
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }  

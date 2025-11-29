@@ -14,15 +14,15 @@ namespace Life_of_man
             while (running)
             {              
                 Console.Write("Do you want to change a text colour? ");
-                string answer = Console.ReadLine()!;
+                string answer1 = Console.ReadLine()!;
                 
-                if (answer == "yes")
+                if (answer1 == "yes")
                 {   
                     ColorNumber();                          
                     Console.Write("Which colour do you want: ");
-                    string answer1 = Console.ReadLine()!;
+                    string answer2 = Console.ReadLine()!;
 
-                    switch (answer1)
+                    switch (answer2)
                     {
                         case "0":
                             SelectedColor = Console.ForegroundColor = ConsoleColor.White;
@@ -75,7 +75,7 @@ namespace Life_of_man
                             break;
                     }
                 }
-                else if (answer == "no")
+                else if (answer1 == "no")
                 {
                     return running;
                 }
