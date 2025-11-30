@@ -162,7 +162,9 @@ namespace Life_of_man
         public static void PlayerStats(Player player)
         {
             Console.SetCursorPosition(0, 0);
-
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, 0);
+            
             WriteColor(player.FullName , ConsoleColor.White);
 
             WriteColor("Bank account: ", ConsoleColor.Cyan);
@@ -179,6 +181,7 @@ namespace Life_of_man
 
             WriteColor("Thirst: ", ConsoleColor.Blue);
             WriteColor(player.Thirst + "/100", ConsoleColor.White);
+            Console.ResetColor();
         }       
     }
 }
