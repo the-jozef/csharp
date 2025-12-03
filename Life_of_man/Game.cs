@@ -33,7 +33,7 @@ namespace Life_of_man
             Console.ReadKey();
             Console.Clear();
 
-            //Colour.SetColour(); //zapnut neskor
+            Colour.SetColour(); //zapnut neskor
             Console.Clear();
 
             Console.Write("Set up your character:   Name and Surname: ");
