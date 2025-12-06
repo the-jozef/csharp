@@ -11,8 +11,17 @@ namespace Life_of_man
         public int Food { get; set; } = 100;        
         public int Thirst { get; set; } = 100;
         public int Money { get; set; } = 150;
-        public int Energy { get; set; } = 100; 
- 
+        public int Energy { get; set; } = 100;
+        
+
         // Additional player properties and methods can be added here         
+
+
+
+
+
+
+
+
     }
 }

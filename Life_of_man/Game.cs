@@ -24,7 +24,7 @@ namespace Life_of_man
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("This game can't save a data. After restart you will continue from beginning.");
             Console.Write("        Also this game is in development state and may contain bugs.");
-            //Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
+            Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
             Console.ResetColor();
             Console.Clear();
 
@@ -74,7 +74,7 @@ namespace Life_of_man
                     case "3":  //shop/in process
                         Counting = Counting + 3;
                         ClearLine(2);
-                        Shop.Shopping();
+                        Shop.Shopping(Player);
                         Counting = Counting - 3;
                         break;
                     case "4":  //inventory pre buducnost 

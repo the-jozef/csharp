@@ -6,5 +6,6 @@ namespace Life_of_man
 {
     public class Fridge
     {
+        
     }
 }
