@@ -14,7 +14,7 @@ namespace Life_of_man
         public Player Player { get; set; } = new Player();
         public int Counting { get; set; } = 0;
         public void Start()
-        {///*
+        {
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine(" ___    __  _____               _____                         \r\n|   |  |__|/ ____\\____    _____/ ____\\   _____ _____    ___  \r\n|   |  |  ||  __\\/ __ \\  /  _ \\   __\\   /     \\\\__  \\  /   \\ \r\n|   |__|  ||  | \\  ___/ (  <_> )  |    |  Y Y  \\/ __ \\|  |  \\\r\n|_____/\\__||__|  \\___\\   \\____/|__|    |__|_|__(_____/|__|__/");
@@ -33,7 +33,7 @@ namespace Life_of_man
             Console.ReadKey();
             Console.Clear();
 
-            Colour.SetColour(); //zapnut neskor
+            //Colour.SetColour(); //zapnut neskor
             Console.Clear();
 
             Console.Write("Set up your character:   Name and Surname: ");
@@ -46,7 +46,7 @@ namespace Life_of_man
             //Console.ForegroundColor = Colour.SelectedColor; //zfunkcnit uplne farbu
             //zaciatok hry
             Thread.Sleep(1000);
-            //*/
+
             bool running = true;    
             while(running)
             {             
@@ -71,7 +71,7 @@ namespace Life_of_man
                         Console.WriteLine();
                         Counting = Counting - 2;
                         break;
-                    case "3":  //shop
+                    case "3":  //shop/in process
                         Counting = Counting + 3;
                         ClearLine(2);
                         Shop.Shopping();

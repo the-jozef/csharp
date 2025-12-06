@@ -22,9 +22,6 @@ namespace Life_of_man
     {
         public static void StartUI(Player player, DateTime TimeDate, Game game)
         {          
-            //Colour.PlayerStats(player);
-            //Time.DrawTimeTopRight(Time.TimeDate);
-
             System.Timers.Timer timer = new System.Timers.Timer(1000);
             timer.Elapsed += (s, e) =>
             {
@@ -33,8 +30,12 @@ namespace Life_of_man
                 lock (Console.Out)
                 {
                     Colour.PlayerStats(player);
+                    
                     Time.DrawTimeTopRight(Time.TimeDate);
-                    if(game.Counting == 0)
+                    
+                    Console.SetCursorPosition(0, 2);
+
+                    if (game.Counting == 0)
                     {
                         Console.SetCursorPosition("Menu: ".Length, 2);
                         //Game.ClearLine(2);
@@ -71,10 +72,10 @@ namespace Life_of_man
                     { }
                     else if (game.Counting == 8)
                     { 
-                    }                   
+                    }
                 }               
             };
-            //timer.AutoReset = true;
+            timer.AutoReset = true;
             timer.Start();
         }
     }
