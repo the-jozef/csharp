@@ -35,43 +35,44 @@ namespace Life_of_man
                     
                     Console.SetCursorPosition(0, 2);
 
-                    if (game.Counting == 0)
+                    if (game.Counting == 0) //oke
                     {
-                        Console.SetCursorPosition("Menu: ".Length, 2);
-                        //Game.ClearLine(2);
+                        if (game.Counting == 100)
+                        {
+                            Console.SetCursorPosition(0, 2);
+                        }
+                        else if (game.Counting == 0)
+                        { 
+                            Console.SetCursorPosition("Menu: ".Length, 11); 
+                        }
                     }
                     else if(game.Counting == 1)
                     {
                         Game.ClearLine(2);
                         Console.SetCursorPosition(0, 2);
                         Console.Write("Menu: ");
-                        Colour.WriteColor("Type 'help' to see available commands.", Colour.SelectedColor);
                     }
                     else if (game.Counting == 2)
                     {
                         Game.ClearLine(2);
                         Console.SetCursorPosition(0, 2);
                         Console.Write("Menu: ");
-                        Colour.WriteColor("Type 'help' to see available commands.", Colour.SelectedColor);
-
-
                     }
-                     else if (game.Counting == 3)
+                    else if (game.Counting == 3) //oke
                     {
-                        //Game.ClearLine(2);
-                        Console.SetCursorPosition(0, 2);
-                        Console.SetCursorPosition("Welcome to the shop! What would you like to buy? ".Length,2);                        
+                        Console.SetCursorPosition("Welcome to the shop! Use arrows to navigate, Enter to add ; Backspace to remove and Esc to end.".Length, 2);
                     }
-                     else if (game.Counting == 4)
+                    else if (game.Counting == 4)
                     { }
                     else if (game.Counting == 5)
                     { }
-                     else if (game.Counting == 6)
+                    else if (game.Counting == 6)
                     { }
                     else if (game.Counting == 7)
                     { }
-                    else if (game.Counting == 8)
-                    { 
+                    else if (game.Counting == 8) //oke
+                    {
+                        Console.SetCursorPosition("Are you sure you want to end a game?".Length + 2,11);
                     }
                 }               
             };

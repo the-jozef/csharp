@@ -24,7 +24,7 @@ namespace Life_of_man
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("This game can't save a data. After restart you will continue from beginning.");
             Console.Write("        Also this game is in development state and may contain bugs.");
-            Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
+            //Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
             Console.ResetColor();
             Console.Clear();
 
@@ -36,7 +36,7 @@ namespace Life_of_man
             //Colour.SetColour(); //zapnut neskor
             Console.Clear();
 
-            Console.Write("Set up your character:   Name and Surname: ");
+            Console.Write("Set up your Name and Surname: ");
             Player.FullName = Console.ReadLine()!;            
             Console.Clear();
 
@@ -46,16 +46,19 @@ namespace Life_of_man
             //Console.ForegroundColor = Colour.SelectedColor; //zfunkcnit uplne farbu
             //zaciatok hry
             Thread.Sleep(1000);
-
+            
             bool running = true;    
             while(running)
-            {             
-                ClearLine(2);
-                Console.SetCursorPosition(0, 2);                
-                
+            {   
+                Counting = 100;
                 Console.SetCursorPosition(0, 2);
+                Console.WriteLine($" 1 = job \r\n 2 = sleep \r\n 3 = shop \r\n 4= inventory \r\n 5= fridge \r\n 6 = skip time \r\n 7 = alarm clock \r\n 8 = end game");
+                Counting = 0;
+
+                //ClearLine(2);                           
+                Console.SetCursorPosition(0, 11);
                 Console.Write("Menu: ");
-                
+
                 string answer = Console.ReadLine()!;
 
                 switch (answer)   
@@ -66,12 +69,12 @@ namespace Life_of_man
                         Console.WriteLine();
                         Counting = Counting - 1;
                         break;
-                    case "2":  //sleep
+                    case "2":  //sleep in progress
                         Counting = Counting + 2;
                         Console.WriteLine();
                         Counting = Counting - 2;
                         break;
-                    case "3":  //shop/in process
+                    case "3":  //shop is done
                         Counting = Counting + 3;
                         ClearLine(2);
                         Shop.Shopping(Player);
@@ -79,7 +82,7 @@ namespace Life_of_man
                         break;
                     case "4":  //inventory pre buducnost 
                         Counting = Counting + 4;
-                        Console.WriteLine();
+                        Player.ShowInventory1(new Shop());
                         Counting = Counting - 4;
                         break;
                     case "5"://fridge
@@ -92,19 +95,33 @@ namespace Life_of_man
                         Console.WriteLine();
                         Counting = Counting - 6;
                         break;
-                    case "7":  //alarm clock
+                    case "7":  //alarm clock in progress
                         Counting = Counting + 7;
                         Console.WriteLine();
                         Counting = Counting - 7;
                         break;
-                    case "8"://end game make sure button
+                    case "8"://end game is done
                         Counting = Counting + 8;
-                        Console.WriteLine();
+                        ClearLine(11);
+                        Console.SetCursorPosition(0, 11);
+                        Console.WriteLine("Are you sure you want to end a game?");
+                        string answer2 = Console.ReadLine()!;
+                        if (answer2 == "yes")
+                        {
+                            Console.WriteLine("Ending console.......");
+                            Thread.Sleep(2000);
+                            return;
+                        }
+                        else if(answer2 == "no")
+                        {
+                            Console.WriteLine("You are continuing in game....");
+                            Thread.Sleep(2500);
+                            Console.Clear();
+                        }
                         Counting = Counting - 8;
-                        break;
-                            
+                        break;                           
                 }
-               // running = false;
+               //running = false;
             }
         }
         public static void ClearLine(int line)

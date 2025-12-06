@@ -167,7 +167,7 @@ namespace Life_of_man
             
             WriteColor(player.FullName , ConsoleColor.White);
 
-            WriteColor("Bank account: ", ConsoleColor.Cyan);
+            WriteColor(" Bank account: ", ConsoleColor.Cyan);
             WriteColor(player.Money + "$  ", ConsoleColor.White);
 
             WriteColor("Health: ", ConsoleColor.Red);
