@@ -71,7 +71,7 @@ namespace Life_of_man
                         break;
                     case "2":  //sleep in progress
                         Counting = Counting + 2;
-                        Console.WriteLine();
+                        Player.Sleeping(new Time());
                         Counting = Counting - 2;
                         break;
                     case "3":  //shop is done
@@ -80,12 +80,12 @@ namespace Life_of_man
                         Shop.Shopping(Player);
                         Counting = Counting - 3;
                         break;
-                    case "4":  //inventory pre buducnost 
+                    case "4":  //inventory 
                         Counting = Counting + 4;
                         Player.ShowInventory1(new Shop());
                         Counting = Counting - 4;
                         break;
-                    case "5"://fridge
+                    case "5"://fridge for future
                         Counting = Counting + 5;
                         Console.WriteLine();
                         Counting = Counting - 5;
@@ -97,7 +97,7 @@ namespace Life_of_man
                         break;
                     case "7":  //alarm clock in progress
                         Counting = Counting + 7;
-                        Console.WriteLine();
+                        Player.Alarmclock(new Time());
                         Counting = Counting - 7;
                         break;
                     case "8"://end game is done
