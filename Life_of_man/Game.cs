@@ -41,7 +41,7 @@ namespace Life_of_man
             Console.Clear();
 
             Console.SetCursorPosition(0, 0);          
-            UIManager.StartUI(Player,Time.TimeDate,this);
+            Time.UIManager.StartUI(Player,Time.TimeDate,this);
 
             //Console.ForegroundColor = Colour.SelectedColor; //zfunkcnit uplne farbu
             //zaciatok hry

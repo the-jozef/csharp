@@ -25,7 +25,7 @@ namespace Life_of_man
         }
         public static bool Sleeping(Time time)
         {
-            if (Time.TimeDate.Hour < 21)
+            if (Time.TimeDate.Hour < 20)
             {
                 if (AlarmHour != -1)
                 {
@@ -34,20 +34,18 @@ namespace Life_of_man
                     Console.WriteLine("Are you sure that you want to sleep, It is too early?");
                     while (true)
                     {
-                        Console.Write("Confirm sleep? (yes/no): ");
+                        Console.Write("Confirm sleep? (yes/no):");
                         string answer = Console.ReadLine()!;
 
                         if (answer.ToLower() == "yes")
-                        {
-                            Console.WriteLine($"You are going to sleep......");
-
+                        {                            
                             int currentHour = Time.TimeDate.Hour;
                             int hoursToAlarm = (AlarmHour - currentHour + 24) % 24;
 
                             if (hoursToAlarm == 0)
                                 hoursToAlarm = 24; // ak je rovnaká hodina, zobudí sa nasledujúci deň
 
-                            Time.TimeDate = Time.TimeDate.AddHours(hoursToAlarm); // posuň herný čas
+                            Time.AddTime(TimeSpan.FromHours(hoursToAlarm)); // posuň herný čas
 
                             AlarmHour = -1;
                             Console.Clear();
@@ -58,41 +56,47 @@ namespace Life_of_man
                             Console.WriteLine("You are continuing in play");
                             Thread.Sleep(2000);
                             return false;
-
                         }
                         else
                         {
+                            Game.ClearLine(3);
+                            Console.SetCursorPosition(0, 3);
                             Console.WriteLine("Invalid code...");
-                            Thread.Sleep(2000);
-                            break;
+                            Thread.Sleep(800);
+                            Game.ClearLine(3);
                         }
                     }
                 }
-                else if (AlarmHour == -1)
+                else if (AlarmHour == -1) //alarm clock is not set    x<20 19
                 {
                     Console.Clear();
                     Console.SetCursorPosition(0, 2);
-                    Console.WriteLine("Are you sure that you want to sleep, It is too early?");
+                    Console.WriteLine("Are you sure that you want to sleep, It is too early?");                  
                     while (true)
-                    {
-                        Console.Write("Confirm sleep? (yes/no): ");
+                    {   
+                        Console.Write("Confirm sleep? (yes/no): ");                    
                         string answer = Console.ReadLine()!;
 
                         if (answer.ToLower() == "yes")
                         {
-                            AlarmHour = RandomGen.Next(8, 12);
+                            if (Time.TimeDate.Hour < 18)    //17-20-23
+                            {
+                                int Sleephour = RandomGen.Next(3, 6);
 
-                            Console.WriteLine($"You are going to sleep......");
+                                Time.AddTime(TimeSpan.FromHours(Sleephour));
+                                AlarmHour = -1;
+                                Console.Clear();
+                                return true;
+                            }
+                            else
+                            { 
+                                int Sleephour = RandomGen.Next(6, 9);                    //18-0-3  
 
-                            int currentHour = Time.TimeDate.Hour;
-                            int hoursToAlarm = (AlarmHour - currentHour + 24) % 24;
-
-                            if (hoursToAlarm == 0)
-                                hoursToAlarm = 24;
-
-                            Time.TimeDate = Time.TimeDate.AddHours(hoursToAlarm); // posuň čas
-                            AlarmHour = -1;
-                            return true;
+                                Time.AddTime(TimeSpan.FromHours(Sleephour));
+                                AlarmHour = -1;
+                                Console.Clear();
+                                return true;
+                            }
 
                         }
                         else if (answer.ToLower() == "no")
@@ -103,16 +107,18 @@ namespace Life_of_man
                         }
                         else
                         {
+                            Game.ClearLine(3);
+                            Console.SetCursorPosition(0, 3);
                             Console.WriteLine("Invalid code...");
-                            Thread.Sleep(2000);
-                            break;
+                            Thread.Sleep(800);   
+                            Game.ClearLine(3);                           
                         }
                     }
                 }
             }
-            else if (Time.TimeDate.Hour >= 21)
+            else if (Time.TimeDate.Hour >= 20)
             {
-                if (AlarmHour != -1)
+                if (AlarmHour != -1) //alarm clock is set
                 {
                     Console.Clear();
                     Console.SetCursorPosition(0, 2);
@@ -124,15 +130,13 @@ namespace Life_of_man
 
                         if (answer.ToLower() == "yes")
                         {
-                            Console.WriteLine($"You are going to sleep......");
-
                             int currentHour = Time.TimeDate.Hour;
                             int hoursToAlarm = (AlarmHour - currentHour + 24) % 24;
 
                             if (hoursToAlarm == 0)
                                 hoursToAlarm = 24; // ak je rovnaká hodina, zobudí sa nasledujúci deň
 
-                            Time.TimeDate = Time.TimeDate.AddHours(hoursToAlarm); // posuň herný čas
+                            Time.AddTime(TimeSpan.FromHours(hoursToAlarm)); // posuň herný čas
 
                             AlarmHour = -1;
                             Console.Clear();
@@ -143,17 +147,18 @@ namespace Life_of_man
                             Console.WriteLine("You are continuing in play");
                             Thread.Sleep(2000);
                             return false;
-
                         }
                         else
                         {
+                            Game.ClearLine(3);
+                            Console.SetCursorPosition(0, 3);
                             Console.WriteLine("Invalid code...");
-                            Thread.Sleep(2000);
-                            break;
+                            Thread.Sleep(800);
+                            Game.ClearLine(3);
                         }
                     }
                 }
-                else if (AlarmHour == -1)
+                else if (AlarmHour == -1) //alarm clock is not set
                 {
                     Console.Clear();
                     Console.SetCursorPosition(0, 2);
@@ -165,18 +170,11 @@ namespace Life_of_man
 
                         if (answer.ToLower() == "yes")
                         {
-                            AlarmHour = RandomGen.Next(8, 12);
+                            int Sleephour = RandomGen.Next(3, 6);
 
-                            Console.WriteLine($"You are going to sleep......");
-
-                            int currentHour = Time.TimeDate.Hour;
-                            int hoursToAlarm = (AlarmHour - currentHour + 24) % 24;
-
-                            if (hoursToAlarm == 0)
-                                hoursToAlarm = 24;
-
-                            Time.TimeDate = Time.TimeDate.AddHours(hoursToAlarm); // posuň čas
+                            Time.AddTime(TimeSpan.FromHours(Sleephour)); // posuň čas
                             AlarmHour = -1;
+                            Console.Clear();
                             return true;
 
                         }
@@ -188,9 +186,11 @@ namespace Life_of_man
                         }
                         else
                         {
+                            Game.ClearLine(3);
+                            Console.SetCursorPosition(0, 3);
                             Console.WriteLine("Invalid code...");
-                            Thread.Sleep(2000);
-                            break;
+                            Thread.Sleep(800);   
+                            Game.ClearLine(3);
                         }
                     }
                 }
@@ -217,20 +217,19 @@ namespace Life_of_man
                     AlarmHour = wakeUpHour;
                     Console.Clear();
                     Console.WriteLine($"Alarm set for {AlarmHour}:00.");
+                    Thread.Sleep(10000);
                     return true;
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a number between 0 and 23.");
-                    return false;
+                    Game.ClearLine(3);
+                    Console.SetCursorPosition(0, 3);
+                    Console.WriteLine("Invalid code...");
+                    Thread.Sleep(800);
+                    Game.ClearLine(3);                                     
                 }
             }
             
         }
-
-
-
-
-
     }
 }

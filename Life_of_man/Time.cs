@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Life_of_man
 {
     public class Time
     {
-        public static DateTime TimeDate { get; set; } = new DateTime(2025, 11, 29, 10, 0, 0);        
+        public static DateTime TimeDate { get; set; } = new DateTime(2025, 11, 29, 10, 0, 0);
+        public static int DayCount { get; set; } = 1;
         public static void DrawTimeTopRight(DateTime TimeDate)
         {
             int x = Console.WindowWidth - 15;
@@ -14,69 +16,94 @@ namespace Life_of_man
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write($"Time: {TimeDate:HH:mm:ss} ");
+            
+            string day = TimeDate.ToString("dddd", new CultureInfo("en-US")); // den v týždni v angličtine
+            string formattedDay = char.ToUpper(day[0]) + day.Substring(1).ToLower();
+            
+            Console.SetCursorPosition(x + 1, 1);
+            Console.WriteLine($"Day:{DayCount} {formattedDay}");
             Console.ResetColor();
         }
-    }
-    public static class UIManager
-    {
-        public static void StartUI(Player player, DateTime TimeDate, Game game)
-        {          
-            System.Timers.Timer timer = new System.Timers.Timer(1000);
-            timer.Elapsed += (s, e) =>
+
+        public static void AddTime(TimeSpan span)
+        {
+            DateTime oldTime = TimeDate;
+            TimeDate = TimeDate.Add(span);
+
+          
+            if (TimeDate.Day != oldTime.Day || TimeDate.Month != oldTime.Month || TimeDate.Year != oldTime.Year)
             {
-                Time.TimeDate = Time.TimeDate.AddSeconds(10);
-
-                lock (Console.Out)
+                DayCount++;                       
+                Player.AlarmHour = -1;            
+            }
+        }
+        public static class UIManager
+        {
+            public static void StartUI(Player player, DateTime TimeDate, Game game)
+            {
+                System.Timers.Timer timer = new System.Timers.Timer(1000);
+                timer.Elapsed += (s, e) =>
                 {
-                    Colour.PlayerStats(player);
-                    
-                    Time.DrawTimeTopRight(Time.TimeDate);
-                    
-                    Console.SetCursorPosition(0, 2);
+                    int OldDay = Time.TimeDate.Day;
 
-                    if (game.Counting == 0) //oke
+                    Time.AddTime(TimeSpan.FromSeconds(10));
+                    if (Time.TimeDate.Day != OldDay)
                     {
-                        if (game.Counting == 100)
-                        {
-                            Console.SetCursorPosition(0, 2);
-                        }
-                        else if (game.Counting == 0)
-                        { 
-                            Console.SetCursorPosition("Menu: ".Length, 11); 
-                        }
+                        Time.DayCount++;
+                        Player.AlarmHour = -1; // reset budíka 
                     }
-                    else if(game.Counting == 1)
+                    lock (Console.Out)
                     {
-                        Game.ClearLine(2);
+                        Colour.PlayerStats(player);
+
+                        Time.DrawTimeTopRight(Time.TimeDate);
+
                         Console.SetCursorPosition(0, 2);
-                        Console.Write("Menu: ");
+
+                        if (game.Counting == 0) //oke
+                        {
+                            if (game.Counting == 100)
+                            {
+                                Console.SetCursorPosition(0, 2);
+                            }
+                            else if (game.Counting == 0)
+                            {
+                                Console.SetCursorPosition("Menu: ".Length, 11);
+                            }
+                        }
+                        else if (game.Counting == 1)
+                        {
+                            Game.ClearLine(2);
+                            Console.SetCursorPosition(0, 2);
+                            Console.Write("Menu: ");
+                        }
+                        else if (game.Counting == 2)
+                        {
+                            Console.SetCursorPosition("Confirm sleep? (yes/no):".Length + 2, 3);
+                        }
+                        else if (game.Counting == 3) //oke
+                        {
+                            Console.SetCursorPosition("Welcome to the shop! Use arrows to navigate, Enter to add ; Backspace to remove and Esc to end.".Length, 2);
+                        }
+                        else if (game.Counting == 4)
+                        { }
+                        else if (game.Counting == 5)
+                        { }
+                        else if (game.Counting == 6)
+                        { }
+                        else if (game.Counting == 7)
+                        {
+                            Console.SetCursorPosition("Set up the hour you want to wake up (0-23): ".Length, 2);
+                        }
+                        else if (game.Counting == 8) //oke
+                        {
+                            Console.SetCursorPosition("Are you sure you want to end a game?".Length + 2, 11);
+                        }
                     }
-                    else if (game.Counting == 2)
-                    {                       
-                        Console.SetCursorPosition("Are you sure that you want to sleep?".Length, 3);                       
-                    }
-                    else if (game.Counting == 3) //oke
-                    {
-                        Console.SetCursorPosition("Welcome to the shop! Use arrows to navigate, Enter to add ; Backspace to remove and Esc to end.".Length, 2);
-                    }
-                    else if (game.Counting == 4)
-                    { }
-                    else if (game.Counting == 5)
-                    { }
-                    else if (game.Counting == 6)
-                    { }
-                    else if (game.Counting == 7)
-                    {
-                        Console.SetCursorPosition("Set up the hour you want to wake up (0-23): ".Length, 2);
-                    }
-                    else if (game.Counting == 8) //oke
-                    {
-                        Console.SetCursorPosition("Are you sure you want to end a game?".Length + 2,11);
-                    }
-                }               
-            };
-            timer.AutoReset = true;
-            timer.Start();
+                };
+                timer.AutoReset = true;
+                timer.Start();
+            }
         }
     }
 }
