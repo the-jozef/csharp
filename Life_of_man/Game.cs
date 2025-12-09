@@ -102,8 +102,7 @@ namespace Life_of_man
                         break;
                     case "8"://end game is done
                         Counting = Counting + 8;
-                        ClearLine(11);
-                        
+                        ClearLine(11);                       
                         bool running2 = true;
                         while (running2)
                         {
