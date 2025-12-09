@@ -61,26 +61,26 @@ namespace Life_of_man
 
                 string answer = Console.ReadLine()!;
 
-                switch (answer)   
-                {                 
+                switch (answer)
+                {
                     case "1":   //job
                         Counting = Counting + 1;
-                        Player.Food= Player.Food - 10; 
+                        Player.Food = Player.Food - 10;
                         Console.WriteLine();
                         Counting = Counting - 1;
                         break;
-                    case "2":  //sleep in progress
+                    case "2":  //sleep + add cw for sleeping new day
                         Counting = Counting + 2;
                         Player.Sleeping(new Time());
                         Counting = Counting - 2;
                         break;
-                    case "3":  //shop is done
+                    case "3":  //shop fix bugs + inventory fix + add food rationing + add numbers in cart
                         Counting = Counting + 3;
                         ClearLine(2);
                         Shop.Shopping(Player);
                         Counting = Counting - 3;
                         break;
-                    case "4":  //inventory 
+                    case "4":  //inventory in process
                         Counting = Counting + 4;
                         Player.ShowInventory1(new Shop());
                         Counting = Counting - 4;
@@ -90,12 +90,12 @@ namespace Life_of_man
                         Console.WriteLine();
                         Counting = Counting - 5;
                         break;
-                    case "6":  //skip time
+                    case "6":  //skip time is similiar as sleep but sleep has random waking time and skip will be typed by player
                         Counting = Counting + 6;
                         Console.WriteLine();
                         Counting = Counting - 6;
                         break;
-                    case "7":  //alarm clock in progress
+                    case "7":  //alarm clock is done
                         Counting = Counting + 7;
                         Player.Alarmclock(new Time());
                         Counting = Counting - 7;
@@ -103,25 +103,43 @@ namespace Life_of_man
                     case "8"://end game is done
                         Counting = Counting + 8;
                         ClearLine(11);
-                        Console.SetCursorPosition(0, 11);
-                        Console.WriteLine("Are you sure you want to end a game?");
-                        string answer2 = Console.ReadLine()!;
-                        if (answer2 == "yes")
+                        
+                        bool running2 = true;
+                        while (running2)
                         {
-                            Console.WriteLine("Ending console.......");
-                            Thread.Sleep(2000);
-                            return;
-                        }
-                        else if(answer2 == "no")
-                        {
-                            Console.WriteLine("You are continuing in game....");
-                            Thread.Sleep(2500);
-                            Console.Clear();
-                        }
-                        Counting = Counting - 8;
-                        break;                           
+                            Console.SetCursorPosition(0, 11);
+                            Console.WriteLine("Are you sure you want to end a game? (yes/no):");
+                            string answer2 = Console.ReadLine()!;
+
+                            if (answer2 == "yes")
+                            {
+                                Console.WriteLine("Ending console.......");
+                                Thread.Sleep(2000);
+                                Console.Clear();
+                                Console.WriteLine("Console closed...");
+                                Environment.Exit(0);
+
+                            }
+                            else if (answer2 == "no")
+                            {
+                                ClearLine(11);
+                                Console.WriteLine("You are continuing in game....");
+                                Thread.Sleep(2500);
+                                Console.Clear();
+                                Counting = Counting - 8;
+                                running2 = false;
+                                break;
+                            }
+                            else
+                            {
+                                ClearLine(11);
+                                Console.WriteLine("Invalid code");
+                                Thread.Sleep(900);
+                                ClearLine(11);
+                            }                          
+                        }  
+                        break;                                             
                 }
-               //running = false;
             }
         }
         public static void ClearLine(int line)

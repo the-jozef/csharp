@@ -73,11 +73,9 @@ namespace Life_of_man
                         }
                         else if (game.Counting == 1)
                         {
-                            Game.ClearLine(2);
-                            Console.SetCursorPosition(0, 2);
-                            Console.Write("Menu: ");
+                            
                         }
-                        else if (game.Counting == 2)
+                        else if (game.Counting == 2) //oke?
                         {
                             Console.SetCursorPosition("Confirm sleep? (yes/no):".Length + 2, 3);
                         }
@@ -91,13 +89,13 @@ namespace Life_of_man
                         { }
                         else if (game.Counting == 6)
                         { }
-                        else if (game.Counting == 7)
+                        else if (game.Counting == 7) //oke?
                         {
-                            Console.SetCursorPosition("Set up the hour you want to wake up (0-23): ".Length, 2);
+                            Console.SetCursorPosition("Set up the hour you want to wake up (0-12):".Length + 1, 3);
                         }
                         else if (game.Counting == 8) //oke
                         {
-                            Console.SetCursorPosition("Are you sure you want to end a game?".Length + 2, 11);
+                            Console.SetCursorPosition("Are you sure you want to end a game? (yes/no):".Length + 2, 11);
                         }
                     }
                 };

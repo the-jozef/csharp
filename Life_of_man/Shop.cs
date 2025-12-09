@@ -51,7 +51,7 @@ namespace Life_of_man
             {
                 Console.Clear();
                 Console.SetCursorPosition(0, 2);
-                Console.WriteLine("Welcome to the shop! Use arrows to navigate, Enter to add ; Backspace to remove and Esc to end.");
+                Console.WriteLine("Welcome to the shop! Use arrows to navigate; Enter to add ; Backspace to remove and Esc to end.");
 
                 Console.SetCursorPosition(leftX, startY);
                 Console.WriteLine("Items:");
@@ -110,7 +110,7 @@ namespace Life_of_man
 
                 if (!focusCart)
                 {
-                    // Pohyb v hlavnom zozname
+                    // POHYB V ITEMS
                     if (key.Key == ConsoleKey.DownArrow && selectedIndexItems < items.Count - 1)
                     {
                         selectedIndexItems++;
@@ -161,7 +161,79 @@ namespace Life_of_man
                             cart.Add(new Shop { ItemName = selected.ItemName, Price = selected.Price, Quantity = 1 });
                         }
                     }
-                    else // focusCart == true
+                }
+                else  // TU JE DRUHÝ BLOK — CART
+                {
+                    // POHYB V CART
+                    if (key.Key == ConsoleKey.DownArrow && selectedIndexCart < cart.Count - 1)
+                    {
+                        selectedIndexCart++;
+                        if (selectedIndexCart >= startIndexCart + pageSize)
+                        {
+                            startIndexCart++;
+                        }
+                    }
+                    else if (key.Key == ConsoleKey.UpArrow && selectedIndexCart > 0)
+                    {
+                        selectedIndexCart--;
+                        if (selectedIndexCart < startIndexCart)
+                        {
+                            startIndexCart--;
+                        }
+                    }
+                    else if (key.Key == ConsoleKey.LeftArrow)
+                    {
+                        focusCart = false;
+                    }
+                    else if (key.Key == ConsoleKey.Backspace)
+                    {
+                        if (cart.Count > 0)
+                        {
+                            var item = cart[selectedIndexCart];
+                            if (item.Quantity > 1) item.Quantity--;
+                            else cart.RemoveAt(selectedIndexCart);
+
+                            if (selectedIndexCart >= cart.Count) selectedIndexCart = cart.Count - 1;
+                            if (selectedIndexCart < 0) selectedIndexCart = 0;
+                            if (startIndexCart > selectedIndexCart) startIndexCart = selectedIndexCart;
+                        }
+                    }
+                    else if (key.Key == ConsoleKey.Enter)
+                    {
+                        int total = cart.Sum(x => x.Price * x.Quantity);
+                        if (player.Money >= total)
+                        {
+                            player.Money -= total;
+
+                            foreach (var item in cart)
+                            {
+                                var invItem = Inventory.FirstOrDefault(x => x.ItemName == item.ItemName);
+                                if (invItem != null)
+                                {
+                                    invItem.Quantity += item.Quantity;
+                                }
+                                else
+                                {
+                                    Inventory.Add(new Shop { ItemName = item.ItemName, Price = item.Price, Quantity = item.Quantity });
+                                }
+                            }
+
+                            cart.Clear();
+                            selectedIndexCart = 0;
+                            startIndexCart = 0;
+
+                            Console.SetCursorPosition(rightX, startY + pageSize + 1);
+                            Console.WriteLine("Items purchased!");
+                            Thread.Sleep(2500);
+                        }
+                        else
+                        {
+                            Console.SetCursorPosition(rightX, startY + pageSize + 1);
+                            Console.WriteLine("Not enough money!");
+                            Thread.Sleep(2500);
+                        }
+                    }
+                    else
                     {
                         if (key.Key == ConsoleKey.DownArrow && selectedIndexCart < cart.Count - 1)
                         {
@@ -185,136 +257,65 @@ namespace Life_of_man
                         }
                         else if (key.Key == ConsoleKey.Backspace)
                         {
-                            if (cart.Count > 0)
+                            if (cart.Count > 0 && selectedIndexCart >= 0 && selectedIndexCart < cart.Count)
                             {
                                 var item = cart[selectedIndexCart];
-                                if (item.Quantity > 1) item.Quantity--;
-                                else cart.RemoveAt(selectedIndexCart);
 
-                                if (selectedIndexCart >= cart.Count) selectedIndexCart = cart.Count - 1;
-                                if (selectedIndexCart < 0) selectedIndexCart = 0;
-                                if (startIndexCart > selectedIndexCart) startIndexCart = selectedIndexCart;
-                            }
-                        }
-                        else if (key.Key == ConsoleKey.Enter)
-                        {
-                            int total = cart.Sum(x => x.Price * x.Quantity);
-                            if (player.Money >= total)
-                            {
-                                player.Money -= total;
-
-                                foreach (var item in cart)
+                                // ak je viac kusov, len zníž množstvo
+                                if (item.Quantity > 1)
                                 {
-                                    var invItem = Inventory.FirstOrDefault(x => x.ItemName == item.ItemName);
-                                    if (invItem != null)
+                                    item.Quantity--;
+                                }
+                                else
+                                {
+                                    // inak úplne odstrán položku
+                                    cart.RemoveAt(selectedIndexCart);
+
+                                    // uprav selectedIndexCart (bezpečne)
+                                    if (selectedIndexCart >= cart.Count)
                                     {
-                                        invItem.Quantity += item.Quantity;
-                                    }
-                                    else
-                                    {
-                                        Inventory.Add(new Shop { ItemName = item.ItemName, Price = item.Price, Quantity = item.Quantity });
+                                        selectedIndexCart = cart.Count - 1;
                                     }
                                 }
-
-                                cart.Clear();
-                                selectedIndexCart = 0;
-                                startIndexCart = 0;
-
-                                Console.SetCursorPosition(rightX, startY + pageSize + 1);
-                                Console.WriteLine("Items purchased!");
-                                Thread.Sleep(2500);
-                            }
-                            else
-                            {
-                                Console.SetCursorPosition(rightX, startY + pageSize + 1);
-                                Console.WriteLine("Not enough money!");
-                                Thread.Sleep(2500);
-                            }
-                        }
-                        else
-                        {
-                            if (key.Key == ConsoleKey.DownArrow && selectedIndexCart < cart.Count - 1)
-                            {
-                                selectedIndexCart++;
-                                if (selectedIndexCart >= startIndexCart + pageSize)
+                                // ak sa košík vyprázdnil, nechceme zostať vo focusCart
+                                if (cart.Count == 0)
                                 {
-                                    startIndexCart++;
+                                    focusCart = false;
+                                    selectedIndexCart = 0;
+                                    startIndexCart = 0;
                                 }
-                            }
-                            else if (key.Key == ConsoleKey.UpArrow && selectedIndexCart > 0)
-                            {
-                                selectedIndexCart--;
-                                if (selectedIndexCart < startIndexCart)
+                                else
                                 {
-                                    startIndexCart--;
-                                }
-                            }
-                            else if (key.Key == ConsoleKey.LeftArrow)
-                            {
-                                focusCart = false;
-                            }
-                            else if (key.Key == ConsoleKey.Backspace)
-                            {
-                                if (cart.Count > 0 && selectedIndexCart >= 0 && selectedIndexCart < cart.Count)
-                                {
-                                    var item = cart[selectedIndexCart];
-
-                                    // ak je viac kusov, len zníž množstvo
-                                    if (item.Quantity > 1)
+                                    // oprav prípadné negatívne indexy
+                                    if (selectedIndexCart < 0)
                                     {
-                                        item.Quantity--;
-                                    }
-                                    else
-                                    {
-                                        // inak úplne odstrán položku
-                                        cart.RemoveAt(selectedIndexCart);
-
-                                        // uprav selectedIndexCart (bezpečne)
-                                        if (selectedIndexCart >= cart.Count)
-                                        {
-                                            selectedIndexCart = cart.Count - 1;
-                                        }
-                                    }
-                                    // ak sa košík vyprázdnil, nechceme zostať vo focusCart
-                                    if (cart.Count == 0)
-                                    {
-                                        focusCart = false;
                                         selectedIndexCart = 0;
-                                        startIndexCart = 0;
                                     }
-                                    else
+                                    // ak selected vyšiel nad start, uprav start tak, aby bol selected viditeľný
+                                    if (startIndexCart > selectedIndexCart)
                                     {
-                                        // oprav prípadné negatívne indexy
-                                        if (selectedIndexCart < 0)
-                                        {
-                                            selectedIndexCart = 0;
-                                        }
-                                        // ak selected vyšiel nad start, uprav start tak, aby bol selected viditeľný
-                                        if (startIndexCart > selectedIndexCart)
-                                        {
-                                            startIndexCart = selectedIndexCart;
-                                        }
-                                        if (selectedIndexCart >= startIndexCart + pageSize)
-                                        {
-                                            startIndexCart = selectedIndexCart - pageSize + 1;
-                                        }
+                                        startIndexCart = selectedIndexCart;
+                                    }
+                                    if (selectedIndexCart >= startIndexCart + pageSize)
+                                    {
+                                        startIndexCart = selectedIndexCart - pageSize + 1;
                                     }
                                 }
                             }
-                            if (key.Key == ConsoleKey.Escape)
-                            {
-                                Game.ClearLine(2);
-                                Console.WriteLine("Thank you for visiting the shop!");
-                                Thread.Sleep(4500);
-                                running = false;
-                            }
                         }
-                    }                   
-                }              
+                        if (key.Key == ConsoleKey.Escape)
+                        {
+                            Game.ClearLine(2);
+                            Console.WriteLine("Thank you for visiting the shop!");
+                            Thread.Sleep(4500);
+                            running = false;
+                        }
+                    }
+                }
             }
             Console.Clear();
             return false;
-        }     
+        }             
         public static List<Shop> items()
         {
             var item = new List<Shop>();

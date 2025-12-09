@@ -21,6 +21,15 @@ namespace Life_of_man
         // Additional player properties and methods can be added here         
         public static bool ShowInventory1(Shop shop)
         {
+
+
+
+
+
+
+
+
+
             return false;
         }
         public static bool Sleeping(Time time)
@@ -199,37 +208,53 @@ namespace Life_of_man
         }
         public static bool Alarmclock(Time time)
         {
-            ConsoleKeyInfo key;
             Console.Clear();
-            Console.SetCursorPosition(0, 2);            
-            Console.WriteLine("Set the hour you want to wake up (0-23): ");
-            while (true)
+            Console.SetCursorPosition(0, 2);
+            Console.WriteLine("Do you want to end setting alarm clock?"); 
+            
+            ConsoleKeyInfo key;
+            
+            Console.SetCursorPosition(0, 3);
+            Console.WriteLine("If no press enter if yes press escape.");
+            key = Console.ReadKey(true);
+           
+            if (key.Key == ConsoleKey.Escape)
             {
-                key = Console.ReadKey(true);
-                string hourAnswer = Console.ReadLine()!;
-                if (key.Key == ConsoleKey.Escape)
+                Console.Clear();
+                return false;
+            }
+            else if (key.Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                Console.SetCursorPosition(0, 2);
+                Console.WriteLine("Enter a number to set alarm clock");
+                while (true)
                 {
-                    Console.Clear();
-                    return false;
-                }
-                if (int.TryParse(hourAnswer, out int wakeUpHour) && wakeUpHour >= 0 && wakeUpHour <= 23)
-                {
-                    AlarmHour = wakeUpHour;
-                    Console.Clear();
-                    Console.WriteLine($"Alarm set for {AlarmHour}:00.");
-                    Thread.Sleep(10000);
-                    return true;
-                }
-                else
-                {
-                    Game.ClearLine(3);
                     Console.SetCursorPosition(0, 3);
-                    Console.WriteLine("Invalid code...");
-                    Thread.Sleep(800);
-                    Game.ClearLine(3);                                     
+                    Console.WriteLine("Set the hour you want to wake up (0-12):");
+                    string hourAnswer = Console.ReadLine()!;
+
+                    if (int.TryParse(hourAnswer, out int wakeUpHour) && wakeUpHour >= 0 && wakeUpHour <= 12)
+                    {
+                        AlarmHour = wakeUpHour;
+                        Game.ClearLine(3);
+                        Console.WriteLine($"Alarm clock setted for {AlarmHour}:00.");
+                        Thread.Sleep(3000);
+                        Console.Clear();    
+                        return true;
+                    }
+                    else
+                    {
+                        Game.ClearLine(3);
+                        Game.ClearLine(4);
+                        Console.SetCursorPosition(0, 3);
+                        Console.WriteLine("Invalid code...");
+                        Thread.Sleep(900);
+                        Game.ClearLine(3);
+                    }
                 }
             }
-            
+            return false;
         }
     }
 }
