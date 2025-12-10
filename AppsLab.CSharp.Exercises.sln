@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{56555FB0-B513-49EF-9002-A5AF135EA090}"
 EndProject
@@ -152,6 +152,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life_of_man", "Life_of_man\Life_of_man.csproj", "{35AD7276-0CDC-4D53-AD7A-6491C6394839}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cvicenie_subor2", "Cvicenie_subor2\Cvicenie_subor2.csproj", "{77BF40CF-9C28-478F-AE89-A4C2C84E806F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookie_Clicker_simulator_", "Cookie_Clicker_simulator_\Cookie_Clicker_simulator_.csproj", "{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -967,6 +969,18 @@ Global
 		{77BF40CF-9C28-478F-AE89-A4C2C84E806F}.Release|x64.Build.0 = Release|Any CPU
 		{77BF40CF-9C28-478F-AE89-A4C2C84E806F}.Release|x86.ActiveCfg = Release|Any CPU
 		{77BF40CF-9C28-478F-AE89-A4C2C84E806F}.Release|x86.Build.0 = Release|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Debug|x64.Build.0 = Debug|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Debug|x86.Build.0 = Debug|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Release|x64.ActiveCfg = Release|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Release|x64.Build.0 = Release|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Release|x86.ActiveCfg = Release|Any CPU
+		{4F8D0A21-3C0C-41CE-9E52-D1CFA54CE77F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
