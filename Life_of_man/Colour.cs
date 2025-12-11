@@ -171,13 +171,13 @@ namespace Life_of_man
             WriteColor(player.Money + "$  ", ConsoleColor.White);
 
             WriteColor("Health: ", ConsoleColor.Red);
-            WriteColor(player.Health + "/100  ", ConsoleColor.White);
+            WriteColor(Player.Health + "/100  ", ConsoleColor.White);
 
             WriteColor("Energy: ", ConsoleColor.Green);
             WriteColor(player.Energy + "/100  ", ConsoleColor.White);
 
             WriteColor("Food: ", ConsoleColor.DarkYellow);
-            WriteColor(player.Food + "/100  ", ConsoleColor.White);
+            WriteColor(Player.Food + "/100  ", ConsoleColor.White);
 
             WriteColor("Thirst: ", ConsoleColor.Blue);
             WriteColor(player.Thirst + "/100", ConsoleColor.White);

@@ -14,7 +14,7 @@ namespace Life_of_man
         public Player Player { get; set; } = new Player();
         public int Counting { get; set; } = 0;
         public void Start()
-        {
+        {   /*
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine(" ___    __  _____               _____                         \r\n|   |  |__|/ ____\\____    _____/ ____\\   _____ _____    ___  \r\n|   |  |  ||  __\\/ __ \\  /  _ \\   __\\   /     \\\\__  \\  /   \\ \r\n|   |__|  ||  | \\  ___/ (  <_> )  |    |  Y Y  \\/ __ \\|  |  \\\r\n|_____/\\__||__|  \\___\\   \\____/|__|    |__|_|__(_____/|__|__/");
@@ -24,7 +24,7 @@ namespace Life_of_man
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("This game can't save a data. After restart you will continue from beginning.");
             Console.Write("        Also this game is in development state and may contain bugs.");
-            //Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
+            Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
             Console.ResetColor();
             Console.Clear();
 
@@ -33,13 +33,13 @@ namespace Life_of_man
             Console.ReadKey();
             Console.Clear();
 
-            //Colour.SetColour(); //zapnut neskor
+            Colour.SetColour(); //zapnut neskor
             Console.Clear();
 
             Console.Write("Set up your Name and Surname: ");
             Player.FullName = Console.ReadLine()!;            
             Console.Clear();
-
+            */
             Console.SetCursorPosition(0, 0);          
             Time.UIManager.StartUI(Player,Time.TimeDate,this);
 
@@ -74,15 +74,15 @@ namespace Life_of_man
                         Player.Sleeping(new Time());
                         Counting = Counting - 2;
                         break;
-                    case "3":  //shop fix bugs + inventory fix + add food rationing + add numbers in cart
+                    case "3":  //shop fix bugs + inventory fix + add food rationing + add numbers in cart + hunger thirst
                         Counting = Counting + 3;
                         ClearLine(2);
                         Shop.Shopping(Player);
                         Counting = Counting - 3;
                         break;
-                    case "4":  //inventory in process
+                    case "4":  //inventory + fix bugs 
                         Counting = Counting + 4;
-                        Player.ShowInventory1(new Shop());
+                        Player.ShowInventory(new Shop());
                         Counting = Counting - 4;
                         break;
                     case "5"://fridge for future
@@ -92,7 +92,7 @@ namespace Life_of_man
                         break;
                     case "6":  //skip time is similiar as sleep but sleep has random waking time and skip will be typed by player
                         Counting = Counting + 6;
-                        Console.WriteLine();
+                        Console.WriteLine(); 
                         Counting = Counting - 6;
                         break;
                     case "7":  //alarm clock is done
@@ -123,10 +123,10 @@ namespace Life_of_man
                             {
                                 ClearLine(11);
                                 Console.WriteLine("You are continuing in game....");
-                                Thread.Sleep(2500);
-                                Console.Clear();
+                                Thread.Sleep(2500);                             
                                 Counting = Counting - 8;
                                 running2 = false;
+                                Console.Clear();
                                 break;
                             }
                             else

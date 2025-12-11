@@ -9,17 +9,19 @@ namespace Life_of_man
     public class Shop
     {
         public int Quantity { get; set; } = 1;
-        public int number { get; set; }
         public string? ItemName { get; set; }
         public int Price { get; set; }
-        public static List<Shop> Inventory { get; set; } = new List<Shop>();
+        public int Hungry { get; set; }
+        public int Thirst { get; set; }
         public override string ToString()
         {
             return $"{Quantity}x {ItemName} - Price: {Price}$";
         }
+   
         public static bool Shopping(Player player)
         {
             Console.Clear();
+            /*
             Console.SetCursorPosition(0, 2);
             Console.WriteLine("You'r driving to a shop....");
             Thread.Sleep(2500);
@@ -29,24 +31,24 @@ namespace Life_of_man
             Console.SetCursorPosition(0, 2);
             Console.WriteLine("It took you 30 minutes....");
             Thread.Sleep(2000);
-
+            */
             int startIndexItems = 0;
             int startIndexCart = 0;
             int pageSize = 20;
             int selectedIndexItems = 0;
             int selectedIndexCart = 0;
             bool focusCart = false;
-            bool running = true;
-
+            
             var items = Shop.items();
             var cart = new List<Shop>();
-
+          
             ConsoleKeyInfo key;
 
             int leftX = 0;
             int rightX = Console.WindowWidth - 25;
             int startY = 4;
 
+            bool running = true;
             while (running)
             {
                 Console.Clear();
@@ -70,8 +72,8 @@ namespace Life_of_man
                         Console.ResetColor();
                     }
 
-                    Console.WriteLine($"{startIndexItems + i + 1}. {items[startIndexItems + i].ItemName} - {items[startIndexItems + i].Price}$");
-                }
+                    Console.WriteLine($"{startIndexItems + i + 1}. {items[startIndexItems + i].ItemName} - {items[startIndexItems + i].Price}$  H:{items[startIndexItems + i].Hungry} T:{items[startIndexItems + i].Thirst}");
+                }          
 
                 Console.ResetColor();
 
@@ -101,7 +103,7 @@ namespace Life_of_man
                     }
 
                     var citem = cart[startIndexCart + i];
-                    Console.WriteLine($"{citem.Quantity}x {citem.ItemName} - {citem.Price * citem.Quantity}$");
+                    Console.WriteLine($"{citem.Quantity}x {citem.ItemName} - {citem.Price * citem.Quantity}$  H:{citem.Hungry} T:{citem.Thirst}");
                 }
 
                 Console.ResetColor();
@@ -154,11 +156,18 @@ namespace Life_of_man
 
                         if (existing != null)
                         {
-                            existing.Quantity++;
+                            existing.Quantity++; // len zväčšíme počet, hodnoty Hungry/Thirst sa nemenia
                         }
                         else
                         {
-                            cart.Add(new Shop { ItemName = selected.ItemName, Price = selected.Price, Quantity = 1 });
+                            cart.Add(new Shop
+                            {
+                                ItemName = selected.ItemName,
+                                Price = selected.Price,
+                                Quantity = 1,
+                                Hungry = selected.Hungry,
+                                Thirst = selected.Thirst
+                            });
                         }
                     }
                 }
@@ -207,14 +216,21 @@ namespace Life_of_man
 
                             foreach (var item in cart)
                             {
-                                var invItem = Inventory.FirstOrDefault(x => x.ItemName == item.ItemName);
+                                var invItem = Player.Inventory.FirstOrDefault(x => x.ItemName == item.ItemName);
                                 if (invItem != null)
                                 {
                                     invItem.Quantity += item.Quantity;
                                 }
                                 else
                                 {
-                                    Inventory.Add(new Shop { ItemName = item.ItemName, Price = item.Price, Quantity = item.Quantity });
+                                    Player.Inventory.Add(new Player
+                                    {
+                                        ItemName = item.ItemName,
+                                        Quantity = item.Quantity,
+                                        Price = item.Price,
+                                        Hungry = item.Hungry,
+                                        Thirst = item.Thirst
+                                    });
                                 }
                             }
 
@@ -307,7 +323,8 @@ namespace Life_of_man
                         {
                             Game.ClearLine(2);
                             Console.WriteLine("Thank you for visiting the shop!");
-                            Thread.Sleep(4500);
+                            Thread.Sleep(4500);         
+                            Time.TimeDate = Time.TimeDate.AddMinutes(30);
                             running = false;
                         }
                     }
@@ -320,50 +337,50 @@ namespace Life_of_man
         {
             var item = new List<Shop>();
             {
-                item.Add(new Shop { ItemName = "Bread", Price = 5 });
-                item.Add(new Shop { ItemName = "Water", Price = 2 });
-                item.Add(new Shop { ItemName = "Apple", Price = 3 });
-                item.Add(new Shop { ItemName = "Sandwich", Price = 7 });
-                item.Add(new Shop { ItemName = "Milk", Price = 3 });
-                item.Add(new Shop { ItemName = "Banana", Price = 2 });
-                item.Add(new Shop { ItemName = "Orange", Price = 3 });
-                item.Add(new Shop { ItemName = "Chicken", Price = 10 });
-                item.Add(new Shop { ItemName = "Beef", Price = 12 });
-                item.Add(new Shop { ItemName = "Pasta", Price = 5 });
-                item.Add(new Shop { ItemName = "Tomato", Price = 2 });
-                item.Add(new Shop { ItemName = "Cucumber", Price = 2 });
-                item.Add(new Shop { ItemName = "Lettuce", Price = 3 });
-                item.Add(new Shop { ItemName = "Yogurt", Price = 3 });
-                item.Add(new Shop { ItemName = "Coffee", Price = 6 });
-                item.Add(new Shop { ItemName = "Tea", Price = 4 });
-                item.Add(new Shop { ItemName = "Soda", Price = 3 });
-                item.Add(new Shop { ItemName = "Beer", Price = 5 });
-                item.Add(new Shop { ItemName = "Wine", Price = 12 });
-                item.Add(new Shop { ItemName = "Chocolate", Price = 4 });
-                item.Add(new Shop { ItemName = "Cookies", Price = 3 });
-                item.Add(new Shop { ItemName = "Ice Cream", Price = 5 });
-                item.Add(new Shop { ItemName = "Cereal", Price = 6 });
-                item.Add(new Shop { ItemName = "Nuts", Price = 7 });
-                item.Add(new Shop { ItemName = "Honey", Price = 8 });
-                item.Add(new Shop { ItemName = "Jam", Price = 5 });
-                item.Add(new Shop { ItemName = "Carrot", Price = 2 });
-                item.Add(new Shop { ItemName = "Potato", Price = 2 });
-                item.Add(new Shop { ItemName = "Onion", Price = 2 });
-                item.Add(new Shop { ItemName = "Garlic", Price = 3 });
-                item.Add(new Shop { ItemName = "Strawberry", Price = 5 });
-                item.Add(new Shop { ItemName = "Blueberry", Price = 6 });
-                item.Add(new Shop { ItemName = "Lemon", Price = 3 });
-                item.Add(new Shop { ItemName = "Coconut Water", Price = 5 });
-                item.Add(new Shop { ItemName = "Smoothie", Price = 6 });
-                item.Add(new Shop { ItemName = "Burger", Price = 8 });
-                item.Add(new Shop { ItemName = "Fries", Price = 4 });
-                item.Add(new Shop { ItemName = "Pizza", Price = 9 });
-                item.Add(new Shop { ItemName = "Pancakes", Price = 5 });
-                item.Add(new Shop { ItemName = "Bagel", Price = 4 });
-                item.Add(new Shop { ItemName = "Donut", Price = 3 });
-                item.Add(new Shop { ItemName = "Watermelon", Price = 7 });
-                item.Add(new Shop { ItemName = "Grapes", Price = 6 });
-                item.Add(new Shop { ItemName = "Apple Juice", Price = 4 });
+                item.Add(new Shop { ItemName = "Bread", Price = 5, Hungry = 5, Thirst = 0});
+                item.Add(new Shop { ItemName = "Water", Price = 2, Hungry = 0, Thirst = 10 });
+                item.Add(new Shop { ItemName = "Apple", Price = 3, Hungry = 3, Thirst = 1 });
+                item.Add(new Shop { ItemName = "Sandwich", Price = 7, Hungry = 8, Thirst = 1 });
+                item.Add(new Shop { ItemName = "Milk", Price = 3, Hungry = 2, Thirst = 4 });
+                item.Add(new Shop { ItemName = "Banana", Price = 2, Hungry = 4, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Orange", Price = 3, Hungry = 3, Thirst = 2 });
+                item.Add(new Shop { ItemName = "Chicken", Price = 10, Hungry = 12, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Beef", Price = 12, Hungry = 14, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Pasta", Price = 5, Hungry = 10, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Tomato", Price = 2, Hungry = 2, Thirst = 1 });
+                item.Add(new Shop { ItemName = "Cucumber", Price = 2, Hungry = 1, Thirst = 2 });
+                item.Add(new Shop { ItemName = "Lettuce", Price = 3, Hungry = 1, Thirst = 1 });
+                item.Add(new Shop { ItemName = "Yogurt", Price = 3, Hungry = 4, Thirst = 2 });
+                item.Add(new Shop { ItemName = "Coffee", Price = 6, Hungry = 0, Thirst = -3 });   
+                item.Add(new Shop { ItemName = "Tea", Price = 4, Hungry = 0, Thirst = 5 });
+                item.Add(new Shop { ItemName = "Soda", Price = 3, Hungry = 0, Thirst = 4 });
+                item.Add(new Shop { ItemName = "Beer", Price = 5, Hungry = 0, Thirst = -5 });    
+                item.Add(new Shop { ItemName = "Wine", Price = 12, Hungry = 0, Thirst = -6 });
+                item.Add(new Shop { ItemName = "Chocolate", Price = 4, Hungry = 3, Thirst = -1 });
+                item.Add(new Shop { ItemName = "Cookies", Price = 3, Hungry = 2, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Ice Cream", Price = 5, Hungry = 2, Thirst = 3 });
+                item.Add(new Shop { ItemName = "Cereal", Price = 6, Hungry = 6, Thirst = 1 });
+                item.Add(new Shop { ItemName = "Nuts", Price = 7, Hungry = 5, Thirst = -1 });
+                item.Add(new Shop { ItemName = "Honey", Price = 8, Hungry = 3, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Jam", Price = 5, Hungry = 2, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Carrot", Price = 2, Hungry = 2, Thirst = 1 });
+                item.Add(new Shop { ItemName = "Potato", Price = 2, Hungry = 3, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Onion", Price = 2, Hungry = 1, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Garlic", Price = 3, Hungry = 1, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Strawberry", Price = 5, Hungry = 2, Thirst = 2 });
+                item.Add(new Shop { ItemName = "Blueberry", Price = 6, Hungry = 2, Thirst = 2 });
+                item.Add(new Shop { ItemName = "Lemon", Price = 3, Hungry = 0, Thirst = -1 });
+                item.Add(new Shop { ItemName = "Coconut Water", Price = 5, Hungry = 1, Thirst = 10 });
+                item.Add(new Shop { ItemName = "Smoothie", Price = 6, Hungry = 4, Thirst = 6 });
+                item.Add(new Shop { ItemName = "Burger", Price = 8, Hungry = 12, Thirst = -1 });
+                item.Add(new Shop { ItemName = "Fries", Price = 4, Hungry = 5, Thirst = -1 });
+                item.Add(new Shop { ItemName = "Pizza", Price = 9, Hungry = 10, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Pancakes", Price = 5, Hungry = 6, Thirst = 1 });
+                item.Add(new Shop { ItemName = "Bagel", Price = 4, Hungry = 4, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Donut", Price = 3, Hungry = 3, Thirst = 0 });
+                item.Add(new Shop { ItemName = "Watermelon", Price = 7, Hungry = 3, Thirst = 8 });
+                item.Add(new Shop { ItemName = "Grapes", Price = 6, Hungry = 2, Thirst = 3 });
+                item.Add(new Shop { ItemName = "Apple Juice", Price = 4, Hungry = 0, Thirst = 6 });
                 return item;
             }
         }               

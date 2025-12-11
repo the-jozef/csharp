@@ -6,30 +6,112 @@ using System.Text;
 
 namespace Life_of_man
 {
-    public class Player
+    public class Player : Shop
     {
         public string FullName { get; set; } = "John Wick";  // Default fullname
-        public int Health { get; set; } = 100;
-        public int Food { get; set; } = 100;
-        public int Thirst { get; set; } = 100;
-        public int Money { get; set; } = 150;
+        public static int Health { get; set; } = 100;
+        public static int Food { get; set; } = 100;
+        public static int Thirsty { get; set; } = 100;
+        public  int Money { get; set; } = 150;
         public int Energy { get; set; } = 100;
         public static Random RandomGen { get; set; } = new Random();
         public static int AlarmHour { get; set; } = -1;
+        public static List<Player> Inventory { get; set; } = new List<Player>();
         
         
         // Additional player properties and methods can be added here         
-        public static bool ShowInventory1(Shop shop)
+        public static bool ShowInventory(Shop shop)
         {
+            Console.Clear();                      
+            //Inventory.Add(new Player{ ItemName = "Orange", Quantity = 1, Price = 7});
+            int leftX = 0;
+            int startY = 2;           
+            int startIndexItems = 0;
+            int pageSize = 20;
+            int selectedIndexItems = 0;
 
+            ConsoleKeyInfo key;
 
+            bool running = true;
+            while (running)
+            {
+                Console.SetCursorPosition(leftX, startY);
+                Console.WriteLine("Inventory:");
+                Console.WriteLine();
 
+                if (Inventory.Count == 0)
+                {
+                    Console.SetCursorPosition(leftX, startY);
+                    Console.WriteLine("Inventory is empty.");
+                    Thread.Sleep(2500);
+                    Console.Clear();
+                    return false;
+                }
+                for (int i = 0; i < pageSize && startIndexItems + i < Inventory.Count; i++)
+                {
+                    Console.SetCursorPosition(leftX + 11, startY + i + 2);
 
+                    if (startIndexItems + i == selectedIndexItems)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                    }
+                    else
+                    {
+                        Console.ResetColor();
+                    }
 
+                    Console.WriteLine($"{Inventory[startIndexItems + i].Quantity}x {Inventory[startIndexItems + i].ItemName} H:{Inventory[startIndexItems + i].Hungry} T:{Inventory[startIndexItems + i].Thirst}");
+                }
+                Console.ResetColor();
+               
+                key = Console.ReadKey(true);
+                            
+                if (key.Key == ConsoleKey.UpArrow && selectedIndexItems > 0)
+                {
+                    selectedIndexItems--;
+                    if (selectedIndexItems < startIndexItems)
+                    {
+                        startIndexItems--;
+                    }
+                }
+                else if (key.Key == ConsoleKey.DownArrow && selectedIndexItems < Inventory.Count - 1)
+                {
+                    selectedIndexItems++;
+                    if (selectedIndexItems >= startIndexItems + pageSize)
+                    {
+                        startIndexItems++;
+                    }
+                }
+                else if (key.Key == ConsoleKey.Enter)
+                {
+                    var selected = Inventory[selectedIndexItems];
 
+                    // Pridaj hodnoty len raz
+                    Player.Food += selected.Hungry;
+                    Player.Thirsty += selected.Thirst;
 
+                    // Zníž Quantity
+                    selected.Quantity--;
 
-
+                    // Ak Quantity = 0, odstráň item z Inventory
+                    if (selected.Quantity <= 0)
+                    {
+                        Inventory.RemoveAt(selectedIndexItems);
+                        if (selectedIndexItems > 0)
+                            selectedIndexItems--;
+                    }
+                }
+                else if(key.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Console.SetCursorPosition(leftX, startY);
+                    Console.WriteLine("You are leaving inventory....");
+                    Thread.Sleep(2000);                    
+                    running = false;
+                }
+            }
+            Console.Clear();
             return false;
         }
         public static bool Sleeping(Time time)
