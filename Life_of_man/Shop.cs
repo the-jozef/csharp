@@ -85,12 +85,12 @@ namespace Life_of_man
 
                     return sum;
                 }
-                Console.SetCursorPosition(rightX, startY);
+                Console.SetCursorPosition(rightX - 15, startY);
                 Console.Write($"Cart:  (Value: {GetCartValue()}$)");
 
                 for (int i = 0; i < pageSize && startIndexCart + i < cart.Count; i++)
                 {
-                    Console.SetCursorPosition(rightX + 2, startY + i + 2);
+                    Console.SetCursorPosition(rightX - 14, startY + i + 2);
 
                     if (focusCart && startIndexCart + i == selectedIndexCart)
                     {
@@ -103,7 +103,7 @@ namespace Life_of_man
                     }
 
                     var citem = cart[startIndexCart + i];
-                    Console.WriteLine($"{citem.Quantity}x {citem.ItemName} - {citem.Price * citem.Quantity}$  H:{citem.Hungry} T:{citem.Thirst}");
+                    Console.WriteLine($"{startIndexItems + i + 1}. {citem.Quantity}x {citem.ItemName} - {citem.Price * citem.Quantity}$  H:{citem.Hungry} T:{citem.Thirst}");
                 }
 
                 Console.ResetColor();
@@ -170,8 +170,18 @@ namespace Life_of_man
                             });
                         }
                     }
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        Game.ClearLine(2);
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("Thank you for visiting the shop!");
+                        Thread.Sleep(3000);
+                        Time.TimeDate = Time.TimeDate.AddMinutes(30);
+                        Console.ResetColor();
+                        running = false;
+                    }
                 }
-                else  // TU JE DRUHÝ BLOK — CART
+                else 
                 {
                     // POHYB V CART
                     if (key.Key == ConsoleKey.DownArrow && selectedIndexCart < cart.Count - 1)
@@ -322,9 +332,11 @@ namespace Life_of_man
                         if (key.Key == ConsoleKey.Escape)
                         {
                             Game.ClearLine(2);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Thank you for visiting the shop!");
-                            Thread.Sleep(4500);         
+                            Thread.Sleep(2000);         
                             Time.TimeDate = Time.TimeDate.AddMinutes(30);
+                            Console.ResetColor();
                             running = false;
                         }
                     }

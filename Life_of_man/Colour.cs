@@ -180,7 +180,7 @@ namespace Life_of_man
             WriteColor(Player.Food + "/100  ", ConsoleColor.White);
 
             WriteColor("Thirst: ", ConsoleColor.Blue);
-            WriteColor(player.Thirst + "/100", ConsoleColor.White);
+            WriteColor(Player.Thirsty + "/100", ConsoleColor.White);
             Console.ResetColor();
         }       
     }
