@@ -8,7 +8,7 @@ namespace Life_of_man
     {
         public static void EndGame(Game game)
         {
-            int center = Console.WindowWidth / 2;
+           
 
             bool running2 = true;
             while (running2)

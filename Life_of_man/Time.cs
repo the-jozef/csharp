@@ -7,7 +7,7 @@ namespace Life_of_man
 {
     public class Time
     {
-        public static DateTime TimeDate { get; set; } = new DateTime(2025, 11, 29, 10, 0, 0);
+        public static DateTime TimeDate { get; set; } = new DateTime(2025, 1, 29, 5, 0, 0);
         public static int DayCount { get; set; } = 1;
         public static void DrawTimeTopRight(DateTime TimeDate)
         {
@@ -20,7 +20,7 @@ namespace Life_of_man
             string day = TimeDate.ToString("dddd", new CultureInfo("en")); // den v týždni v angličtine
             string formattedDay = char.ToUpper(day[0]) + day.Substring(1).ToLower();
             
-            Console.SetCursorPosition(x + 1, 1);
+            Console.SetCursorPosition(x , 1);
             Console.WriteLine($"Day:{DayCount} {formattedDay}");
             Console.ResetColor();
         }
@@ -88,7 +88,9 @@ namespace Life_of_man
                         else if (game.Counting == 5)
                         { }
                         else if (game.Counting == 6)
-                        { }
+                        {
+                            Console.SetCursorPosition("Loading".Length, 2);
+                        }
                         else if (game.Counting == 7) //oke?
                         {
                             Console.SetCursorPosition("Set up the hour you want to wake up (0-12):".Length + 1, 3);
@@ -102,6 +104,89 @@ namespace Life_of_man
                 timer.AutoReset = true;
                 timer.Start();
             }
+        }
+        public static bool skipTime()
+        {
+            Console.CursorVisible = false;
+            string[] menu =
+            {
+            "1 hour",
+            "2 hours",
+            "5 hours",
+            "8 hours",
+            "10 hours"
+            };
+
+            int[] hours = { 1, 2, 5, 8, 10 };
+            
+            int selectedIndex = 0;
+            ConsoleKey key;
+            do
+            {
+                Console.Clear();
+                Console.SetCursorPosition(0, 2);
+                Console.WriteLine("Skip time:");
+                for (int i = 0; i < menu.Length; i++)
+                {
+                    Console.SetCursorPosition(11, 3 + i);
+
+                    if (0 + i == selectedIndex)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                    }
+                    else
+                    {
+                        Console.ResetColor();
+                    }
+                    Console.WriteLine(menu[i]);
+                    Console.ResetColor();
+                }
+
+                key = Console.ReadKey(true).Key;
+
+                if (key == ConsoleKey.DownArrow && selectedIndex < menu.Length - 1)
+                { selectedIndex++; }
+
+                if (key == ConsoleKey.UpArrow && selectedIndex > 0)
+                { selectedIndex--; }
+
+            }
+            while (key != ConsoleKey.Enter);
+
+            int skipHours = hours[selectedIndex];
+
+            Console.Clear();
+            Console.SetCursorPosition(0, 2);
+            Console.Write("Loading");
+
+            int cycles = 9; // napríklad 6 krokov
+            for (int i = 0; i < cycles; i++)
+            {
+                int dots = (i % 3) + 1; // 1,2,3,1,2,3...
+
+                // kurzor hneď za "Loading"
+                Console.SetCursorPosition("Loading".Length, Console.CursorTop);
+
+                // napíš bodky
+                Console.Write(new string('.', dots));
+
+                // vymaž zvyšok po 3 bodkách
+                Console.Write(new string(' ', 3 - dots));
+
+                Thread.Sleep(750);  // čakaj pol sekundy
+
+                // po 3 bodkách ich vymaž pred ďalším cyklom
+                if (dots == 3)
+                {
+                    Console.SetCursorPosition("Loading".Length, Console.CursorTop);
+                    Console.Write("   "); // vymaž všetky 3 bodky
+                }
+            }
+            Time.TimeDate = Time.TimeDate.AddHours(skipHours);
+
+            Console.Clear();
+            return true;
         }
     }
 }

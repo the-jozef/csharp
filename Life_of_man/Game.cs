@@ -14,37 +14,38 @@ namespace Life_of_man
         public Player Player { get; set; } = new Player();
         public int Counting { get; set; } = 0;
         public void Start()
-        {   /*
+        {
             Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine(" ___    __  _____               _____                         \r\n|   |  |__|/ ____\\____    _____/ ____\\   _____ _____    ___  \r\n|   |  |  ||  __\\/ __ \\  /  _ \\   __\\   /     \\\\__  \\  /   \\ \r\n|   |__|  ||  | \\  ___/ (  <_> )  |    |  Y Y  \\/ __ \\|  |  \\\r\n|_____/\\__||__|  \\___\\   \\____/|__|    |__|_|__(_____/|__|__/");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine();
-            Console.Write("Warning:");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("This game can't save a data. After restart you will continue from beginning.");
-            Console.Write("        Also this game is in development state and may contain bugs.");
-            Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
-            Console.ResetColor();
-            Console.Clear();
-            //pridat informations
-            Console.Write("To start a game press any key: ");
-            Thread.Sleep(1000);
-            Console.ReadKey();
-            Console.Clear();
+            
+            Intros.GameIntro();
 
-            Colour.SetColour(); //zapnut neskor
-            Console.Clear();
+            Intros.Warning();
 
-            Console.Write("Set up your Name and Surname: ");
-            Player.FullName = Console.ReadLine()!;            
-            Console.Clear();
-            */
+            /*
+                       Console.ResetColor();
+                       Console.Clear();
 
-            Console.SetCursorPosition(0, 0);
-            Time.UIManager.StartUI(Player, Time.TimeDate, this);
+                       //pridat informations
+
+                       Console.Write("To start a game press any key: ");
+                       Thread.Sleep(1000);
+
+                       Console.ReadKey();
+                       Console.Clear();
+
+                       Colour.SetColour(); //zapnut neskor
+                       Console.Clear();
+
+                       Console.Write("Set up your Name and Surname: ");
+                       Player.FullName = Console.ReadLine()!;            
+                       Console.Clear();*/
 
             //Console.ForegroundColor = Colour.SelectedColor; //zfunkcnit uplne farbu
+
+
+            Time.UIManager.StartUI(Player, Time.TimeDate, this);
+
+            
             //zaciatok hry
             Thread.Sleep(1000);
 
@@ -55,8 +56,7 @@ namespace Life_of_man
                 Console.SetCursorPosition(0, 2);
                 Console.WriteLine($" 1 = job \r\n 2 = sleep \r\n 3 = shop \r\n 4= inventory \r\n 5= fridge \r\n 6 = skip time \r\n 7 = alarm clock \r\n 8 = end game");
                 Counting = 0;
-
-                //ClearLine(2);                           
+                        
                 Console.SetCursorPosition(0, 11);
                 Console.Write("Menu: ");
 
@@ -64,10 +64,9 @@ namespace Life_of_man
 
                 switch (answer)
                 {
-                    case "1":   //job in progress 
+                    case "1":   //job (fix if bugs) is done
                         Counting = Counting + 1;
                         Job.Work(this,Player);
-
                         Counting = Counting - 1;
                         break;
                     case "2":  //sleep (add cw for sleeping new day + alarm clock) is done
@@ -86,14 +85,14 @@ namespace Life_of_man
                         Player.ShowInventory(new Shop());
                         Counting = Counting - 4;
                         break;
-                    case "5"://fridge for future
+                    case "5"://fridge for future no
                         Counting = Counting + 5;
                         Console.WriteLine();
                         Counting = Counting - 5;
                         break;
-                    case "6":  //skip time is similiar as sleep but sleep has random waking time and skip will be typed by player 
+                    case "6":  //skip time (if bugs)is done
                         Counting = Counting + 6;
-                        Console.WriteLine();
+                        Time.skipTime();
                         Counting = Counting - 6;
                         break;
                     case "7":  //alarm clock (minutes alarm clock + time PM AM) is done

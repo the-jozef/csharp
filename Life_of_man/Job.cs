@@ -7,13 +7,13 @@ namespace Life_of_man
 {
     public class Job
     {
-        public static int Working { get; set; } = 0;
+        public static bool Working { get; set; } = false; //at work
         public static int Salary { get; set; } = 0;
-        public static int Overslept { get; set; } = 0;
+        public static int Overslept { get; set; } = 0;   
         public static int ArrivedLate { get; set; } = 0;
-        public static int Fired { get; set; } = 0;
+        public static bool Fired { get; set; } = false;    //no job
         public static bool Work(Game game,Player player)
-        {
+        {            
             if (Overslept == 5 || ArrivedLate == 10)
             {
                 if(Overslept == 5)
@@ -27,7 +27,7 @@ namespace Life_of_man
                     Console.WriteLine("You have been fired for arriving late too many times.");
                 }
                 Thread.Sleep(3000);
-                Fired = 1;
+                Fired = true;
                 Console.Clear();
                 return true;
             }
@@ -40,47 +40,48 @@ namespace Life_of_man
             Time.TimeDate = Time.TimeDate.AddMinutes(Player.RandomGen.Next(35,51));
             Game.ClearLine(2);
             
-            if (Overslept < 5 && Fired == 0)
+            if (Overslept < 5 && Fired == false)
             {
-                if (Time.TimeDate.Hour < 7 && Time.TimeDate.Minute < 30)
+                if (Time.TimeDate.TimeOfDay <= new TimeSpan(6, 30, 0) && Time.TimeDate.TimeOfDay >= new TimeSpan(5, 30, 0))
                 {
                     Console.SetCursorPosition(0, 2);
                     Console.WriteLine("You'r working...");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2500);
 
                     Time.TimeDate = Time.TimeDate.AddHours(8);
-                    Working = 1;
+                    Working = true;
                     CalculateSalary(player);
 
                     Player.Food = Player.Food - Player.RandomGen.Next(15, 25);
                     Player.Thirsty = Player.Thirsty - Player.RandomGen.Next(25, 35);
                 }
-                if (Time.TimeDate.Hour <= 7)
+                if (Time.TimeDate.TimeOfDay > new TimeSpan(6, 30, 0) && Time.TimeDate.TimeOfDay < new TimeSpan(7, 0, 0))
                 {
                     Console.SetCursorPosition(0, 2);
                     Console.WriteLine("You arrived late.");
                     ArrivedLate++;
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2500);
 
                     Console.WriteLine("You'r salary will be lower.");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
+                    
                     Console.WriteLine("You'r working...");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2500);
 
                     CalculateSalary(player);
 
                     Time.TimeDate = Time.TimeDate.AddHours(8);
-                    Working = 1;
+                    Working = true;
 
                     Player.Food = Player.Food - Player.RandomGen.Next(15, 25);
                     Player.Thirsty = Player.Thirsty - Player.RandomGen.Next(25, 35);
                 }
-                if (Time.TimeDate.Hour >= 7 && Time.TimeDate.Minute >= 1)
+                if (Time.TimeDate.TimeOfDay > new TimeSpan(7, 1, 0))
                 {
                     Console.SetCursorPosition(0, 2);
                     Console.WriteLine("You overslept and can't work.");
                     Overslept++;
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2500);
                 }
                 Game.ClearLine(2);
                 Console.WriteLine("You'r driving home..");
@@ -111,11 +112,9 @@ namespace Life_of_man
                 player.Money += Salary;
             }
             else if (oldPenalty == ArrivedLate)
-            {
-                int totalSalary = baseSalary ;
-                player.Money += totalSalary;
+            {                        
+                player.Money += baseSalary;
             }
-
             Console.SetCursorPosition(0, 2);
             Console.WriteLine($"You earned {Salary}$.");
             Thread.Sleep(3000);

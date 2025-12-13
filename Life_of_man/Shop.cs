@@ -16,6 +16,7 @@ namespace Life_of_man
         public static bool Shopping(Player player)
         {
             Console.Clear();
+            Console.CursorVisible = false;
             /*
             Console.SetCursorPosition(0, 2);
             Console.WriteLine("You'r driving to a shop....");
