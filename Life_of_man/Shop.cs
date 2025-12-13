@@ -12,12 +12,7 @@ namespace Life_of_man
         public string? ItemName { get; set; }
         public int Price { get; set; }
         public int Hungry { get; set; }
-        public int Thirst { get; set; }
-        public override string ToString()
-        {
-            return $"{Quantity}x {ItemName} - Price: {Price}$";
-        }
-   
+        public int Thirst { get; set; }         
         public static bool Shopping(Player player)
         {
             Console.Clear();

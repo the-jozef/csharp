@@ -49,5 +49,10 @@ namespace Life_of_man
                 }
             }
         }
+        public static void Informations()
+        {
+            Console.Clear();
+            Console.WriteLine("You live as 20 years old man who needs to work in programming work in Siemens. You need to wake up every morning to work....");
+        }
     }
 }

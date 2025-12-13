@@ -148,7 +148,7 @@ namespace Life_of_man
             Console.Clear();
             return false;
         }
-        public static bool Sleeping(Time time)
+        public static bool Sleeping(Time time) //Working = 1; if .....
         {
             if (Time.TimeDate.Hour < 20)
             {

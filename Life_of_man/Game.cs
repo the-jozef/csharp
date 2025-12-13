@@ -27,7 +27,7 @@ namespace Life_of_man
             Thread.Sleep(15000);   //zapnut neskor + doplnit info o hre
             Console.ResetColor();
             Console.Clear();
-
+            //pridat informations
             Console.Write("To start a game press any key: ");
             Thread.Sleep(1000);
             Console.ReadKey();
@@ -64,10 +64,10 @@ namespace Life_of_man
 
                 switch (answer)
                 {
-                    case "1":   //job
+                    case "1":   //job in progress 
                         Counting = Counting + 1;
-                        
-                        
+                        Job.Work(this,Player);
+
                         Counting = Counting - 1;
                         break;
                     case "2":  //sleep (add cw for sleeping new day + alarm clock) is done
@@ -75,7 +75,7 @@ namespace Life_of_man
                         Player.Sleeping(new Time());
                         Counting = Counting - 2;
                         break;
-                    case "3":  //shop (if bugs ) is done
+                    case "3":  //shop (if bugs + time fix ) is done
                         Counting = Counting + 3;
                         ClearLine(2);
                         Shop.Shopping(Player);
@@ -106,6 +106,7 @@ namespace Life_of_man
                         Others.EndGame(this);
                         Counting = Counting - 8;
                         break;
+                        //stats about player
                 }
             }
         }

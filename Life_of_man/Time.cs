@@ -17,7 +17,7 @@ namespace Life_of_man
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write($"Time: {TimeDate:HH:mm:ss} ");
             
-            string day = TimeDate.ToString("dddd", new CultureInfo("en-US")); // den v týždni v angličtine
+            string day = TimeDate.ToString("dddd", new CultureInfo("en")); // den v týždni v angličtine
             string formattedDay = char.ToUpper(day[0]) + day.Substring(1).ToLower();
             
             Console.SetCursorPosition(x + 1, 1);
