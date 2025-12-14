@@ -9,6 +9,7 @@ namespace Life_of_man
     {
         public static void GameIntro()
         {
+            Console.CursorVisible = false;
             Console.Clear();
 
             int centerX = Console.WindowWidth / 2;
@@ -54,23 +55,41 @@ namespace Life_of_man
                         }
                     }
                     Console.Write(c);
-                    Thread.Sleep(30);
+                    Thread.Sleep(10);
                 }
                 Console.WriteLine();
             } 
+            Thread.Sleep(2000);
+            Console.Clear();
         }
         public static void Warning()
-        {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(); Console.SetCursorPosition(0, 3);
-
-            Console.Write("Warning:");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("This game can't save a data. After restart you will continue from beginning.");
-            Console.Write("        Also this game is in development state and may contain bugs.");
-            Thread.Sleep(5000);
-
-            Console.ResetColor();
+        {          
+           Console.ForegroundColor = ConsoleColor.DarkRed;
+                             
+            foreach (char c in $"WARNING:")
+            {               
+                Console.SetCursorPosition(0, 3);
+                foreach (char ch in $"WARNING: This game can't save a data. After restart you will continue from beginning. \r\n         Also this game is in development state and may contain bugs.")
+                {                   
+                    if (Console.KeyAvailable)
+                    {
+                        var key = Console.ReadKey(true);
+                        if (key.Key == ConsoleKey.Enter)
+                        {
+                            Thread.Sleep(100);
+                            Console.Clear();
+                            Console.ResetColor();
+                            return; 
+                        }
+                    }
+                    Console.Write(ch);
+                    Thread.Sleep(30);                  
+                }
+                Thread.Sleep(2000);
+                
+            }          
+                Console.ResetColor();
+                Console.Clear();             
         }
     }
 }

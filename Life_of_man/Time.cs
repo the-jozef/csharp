@@ -41,6 +41,8 @@ namespace Life_of_man
         {
             public static void StartUI(Player player, DateTime TimeDate, Game game)
             {
+                Console.CursorVisible = false;
+
                 System.Timers.Timer timer = new System.Timers.Timer(1000);
                 timer.Elapsed += (s, e) =>
                 {
@@ -59,51 +61,52 @@ namespace Life_of_man
                         Time.DrawTimeTopRight(Time.TimeDate);
 
                         Console.SetCursorPosition(0, 2);
-
-                        if (game.Counting == 0) //oke
+                        /*
+                        if (Menu.Counting == 0) //oke
                         {
-                            if (game.Counting == 100)
+                            if (Menu.Counting == 100)
                             {
                                 Console.SetCursorPosition(0, 2);
                             }
-                            else if (game.Counting == 0)
+                            else if (Menu.Counting == 0)
                             {
                                 Console.SetCursorPosition("Menu: ".Length, 11);
                             }
                         }
-                        else if (game.Counting == 1)
+                        else if (Menu.Counting == 1)
                         {
                             
                         }
-                        else if (game.Counting == 2) //oke?
+                        else if (Menu.Counting == 2) //oke?
                         {
                             Console.SetCursorPosition("Confirm sleep? (yes/no):".Length + 2, 3);
                         }
-                        else if (game.Counting == 3) //oke
+                        else if (Menu.Counting == 3) //oke
                         {
                             Console.SetCursorPosition("Welcome to the shop! Use arrows to navigate, Enter to add ; Backspace to remove and Esc to end.".Length, 2);
                         }
-                        else if (game.Counting == 4)
+                        else if (Menu.Counting == 4)
                         { }
-                        else if (game.Counting == 5)
+                        else if (Menu.Counting == 5)
                         { }
-                        else if (game.Counting == 6)
+                        else if (Menu.Counting == 6)
                         {
                             Console.SetCursorPosition("Loading".Length, 2);
                         }
-                        else if (game.Counting == 7) //oke?
+                        else if (Menu.Counting == 7) //oke?
                         {
                             Console.SetCursorPosition("Set up the hour you want to wake up (0-12):".Length + 1, 3);
                         }
-                        else if (game.Counting == 8) //oke
+                        else if (Menu.Counting == 8) //oke
                         {
                             Console.SetCursorPosition("Are you sure you want to end a game? (yes/no):".Length + 2, 11);
-                        }
+                        }*/
+                        
                     }
                 };
-                timer.AutoReset = true;
-                timer.Start();
-            }
+                timer.AutoReset = true;                
+                timer.Start();            
+            }     
         }
         public static bool skipTime()
         {

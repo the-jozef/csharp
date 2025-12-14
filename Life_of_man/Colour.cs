@@ -13,7 +13,9 @@ namespace Life_of_man
             bool running = true;
             while (running)
             {              
-                Console.Write("Do you want to change a text colour? ");
+                Console.Clear();
+                
+                Console.Write("Do you want to change a text colour? (yes/no) ");
                 string answer1 = Console.ReadLine()!;
                 
                 if (answer1 == "yes")
@@ -84,6 +86,7 @@ namespace Life_of_man
                     Console.WriteLine("You typed wrong code....");                   
                 }
             }
+            Console.Clear();
             return running;
         }       
         public static void ColorNumber()
@@ -161,6 +164,8 @@ namespace Life_of_man
         }
         public static void PlayerStats(Player player)
         {
+            Console.CursorVisible = false;
+
             Console.SetCursorPosition(0, 0);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, 0);
@@ -182,6 +187,8 @@ namespace Life_of_man
             WriteColor("Thirst: ", ConsoleColor.Blue);
             WriteColor(Player.Thirsty + "/100", ConsoleColor.White);
             Console.ResetColor();
+
+            Console.CursorVisible = true;
         }       
     }
 }

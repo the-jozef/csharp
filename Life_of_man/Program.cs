@@ -5,7 +5,9 @@
         static void Main(string[] args)
         {
             Game game = new Game();
-            game.Start();
+            Menu menu = new Menu();
+            Shop shop = new Shop();
+            game.Start(menu,shop);
         }
     }
 }

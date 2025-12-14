@@ -7,9 +7,7 @@ namespace Life_of_man
     public class Others
     {
         public static void EndGame(Game game)
-        {
-           
-
+        {          
             bool running2 = true;
             while (running2)
             {
@@ -54,5 +52,31 @@ namespace Life_of_man
             Console.Clear();
             Console.WriteLine("You live as 20 years old man who needs to work in programming work in Siemens. You need to wake up every morning to work....");
         }
-    }
+        public static void Namesetting(Player player)
+        {
+            Console.Clear();
+            
+            Console.SetCursorPosition(0, 2);
+            Colour.WriteColor("Enter your", ConsoleColor.White);
+            Colour.WriteColor(" Name ", ConsoleColor.Red);
+            Colour.WriteColor("and", ConsoleColor.White);
+            Colour.WriteColor(" Surname: ", ConsoleColor.Red);
+
+            Console.ResetColor();
+            Console.CursorVisible = true;
+            
+            player.FullName = Console.ReadLine()!;
+        
+            Game.ClearLine(2);
+            Console.Write($"Welcome{player.FullName} to ");
+            Colour.WriteColor("Life of man game ", ConsoleColor.Magenta);
+            Console.Write("!");
+            Thread.Sleep(2000);
+
+            Console.ResetColor();
+            Console.Clear();
+        }
+            
+
+    } 
 }

@@ -13,7 +13,7 @@ namespace Life_of_man
         public int Price { get; set; }
         public int Hungry { get; set; }
         public int Thirst { get; set; }         
-        public static bool Shopping(Player player)
+        public static bool Shopping(Player player,Game game)
         {
             Console.Clear();
             Console.CursorVisible = false;
