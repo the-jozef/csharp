@@ -1,0 +1,14 @@
+﻿<Window x:Class="_1_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Name="Button_ChangeLabel" Content="Stlac maaaa" HorizontalAlignment="Center" VerticalAlignment="Center" Height="72" Width="174" RenderTransformOrigin="0.494,0.542" Background="#FF3BCE9C" BorderBrush="#FF4454D4" Click="Button_Click" />
+        <Label  Name="Label" Content="Smehyl ma male nohy" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="86" Width="494" Background="#FFB5CEC6" FontSize="48"/>
+
+    </Grid>
+</Window>
