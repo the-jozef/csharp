@@ -5,10 +5,127 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Guess game"
+        Height="450"
+        Width="800">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1"
+                             StartPoint="0.5,0">
+            <GradientStop Color="#FF8C8C8C"
+                          Offset="0.143" />
+            <GradientStop Color="#FFCA6868"
+                          Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        <Button Name="Button_ChangeLabel" Content="Stlac maaaa" HorizontalAlignment="Center" VerticalAlignment="Center" Height="72" Width="174" RenderTransformOrigin="0.494,0.542" Background="#FF3BCE9C" BorderBrush="#FF4454D4" Click="Button_Click" />
-        <Label  Name="Label" Content="Smehyl ma male nohy" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="86" Width="494" Background="#FFB5CEC6" FontSize="48"/>
+        <TextBlock Name="Zadanie"
+                   HorizontalAlignment="Left"
+                   Foreground="BlueViolet"
+                   Margin="12,12,0,0"
+                   TextWrapping="Wrap"
+                   Text="Hot/ Cold (1-100)"
+                   VerticalAlignment="Top"
+                   FontSize="36"
+                   RenderTransformOrigin="0.5,0.5">
+
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-0.607" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+
+        </TextBlock>
+
+        <TextBlock Name="Tetx"
+                   HorizontalAlignment="Left"
+                   Margin="27,68,0,0"
+                   TextWrapping="Wrap"
+                   Text="Uhadni cislo od 1-100"
+                   VerticalAlignment="Top"
+                   Width="281"
+                   FontSize="25"
+                   Height="126"
+                   Foreground="Black" />
+
+        <TextBox Name="Cisla"
+                 HorizontalAlignment="Left"
+                 Margin="27,120,0,0"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="281"
+                 FontSize="90"
+                 Height="126"
+                 TextChanged="Cisla_TextChanged" />
+
+        <Button Name="Button_click"
+                Content="Skus ma"
+                HorizontalAlignment="Left"
+                Margin="27,298,0,0"
+                VerticalAlignment="Top"
+                FontSize="50"
+                Background="LightSeaGreen"
+                Foreground="Azure"
+                Click="Button_Click_1" />
+
+        <TextBlock Name="Pokusy"
+                   HorizontalAlignment="Left"
+                   Margin="541,21,0,0"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Top"
+                   Width="60"
+                   FontSize="30" />
+
+        <TextBlock Name="Info"
+                   HorizontalAlignment="Left"
+                   Margin="421,164,0,0"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Top"
+                   Width="150"
+                   FontSize="50"
+                   Foreground="Black" />
+
+        <Button Name="Reset"
+                Content="Reset"
+                HorizontalAlignment="Left"
+                Margin="703,10,0,0"
+                VerticalAlignment="Top"
+                Background="Crimson"
+                FontSize="35"
+                Click="Reset_Click" />
+
+        <TextBlock Name="Cheat"
+                   HorizontalAlignment="Left"
+                   Margin="268,99,0,0"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Top"
+                   Width="40" />
+
+        <TextBlock Name="nist"
+                   HorizontalAlignment="Left"
+                   Margin="362,342,0,0"
+                   TextWrapping="Wrap"
+                   Text="Naposledy dane cislo:"
+                   VerticalAlignment="Top"
+                   FontSize="25" />
+        
+        <TextBlock Name="Dane_cislo"
+                   HorizontalAlignment="Left"
+                   Margin="626,325,0,0"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Top"
+                   Width="100"
+                   FontSize="50" />
+
+
+
 
     </Grid>
 </Window>
