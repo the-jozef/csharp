@@ -62,7 +62,7 @@
                  TextChanged="Cisla_TextChanged" />
 
         <Button Name="Button_click"
-                Content="Skus ma"
+                Content="Skus"
                 HorizontalAlignment="Left"
                 Margin="27,298,0,0"
                 VerticalAlignment="Top"

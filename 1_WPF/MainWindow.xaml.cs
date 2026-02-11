@@ -110,5 +110,11 @@ namespace _1_WPF
             Cheat.Text = Cislo.ToString();      
             return;
         }
+        private void Time()
+        {
+            DateTime date = DateTime.Now;
+
+            DateTime date1 = DateTime.Now;
+        }
     }
 }
