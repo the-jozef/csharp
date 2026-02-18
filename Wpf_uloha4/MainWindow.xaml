@@ -1,0 +1,79 @@
+﻿<Window x:Class="Wpf_uloha4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="800"
+        Width="800">
+    <Grid>
+        <ComboBox Name="ComboBox_helmet"
+                  HorizontalAlignment="Left"
+                  Margin="280,83,0,0"
+                  VerticalAlignment="Top"
+                  Width="120"
+                  SelectionChanged="ComboBox_helmet_SelectionChanged" />
+        <Label Name="ActualArmor"
+               Content="..........."
+               HorizontalAlignment="Left"
+               Margin="35,42,0,0"
+               VerticalAlignment="Top"
+               FontSize="35" />
+        <Image Name="Image_HelmetPlaceHolder"
+               HorizontalAlignment="Left"
+               Height="90"
+               Margin="439,57,0,0"
+               VerticalAlignment="Top"
+               Width="100" />
+        <ComboBox Name="ComboBox_BodyPicker"
+                  HorizontalAlignment="Left"
+                  Margin="280,226,0,0"
+                  VerticalAlignment="Top"
+                  Width="120"
+                  SelectionChanged="ComboBox_BodyPicker_SelectionChanged" />
+        <ComboBox Name="ComboBox_PantPicker"
+                  HorizontalAlignment="Left"
+                  Margin="280,398,0,0"
+                  VerticalAlignment="Top"
+                  Width="120"
+                  SelectionChanged="ComboBox_PantPicker_SelectionChanged" />
+        <Image Name="Image_BodyPlaceHolder"
+               HorizontalAlignment="Left"
+               Height="166"
+               Margin="439,193,0,0"
+               VerticalAlignment="Top"
+               Width="183" />
+        <Image Name="Image_PantsPlaceHolder"
+               HorizontalAlignment="Left"
+               Height="168"
+               Margin="439,367,0,0"
+               VerticalAlignment="Top"
+               Width="168" />
+        <ComboBox Name="ComboBox_LegPicker"
+                  HorizontalAlignment="Left"
+                  Margin="280,612,0,0"
+                  VerticalAlignment="Top"
+                  Width="120"
+                  SelectionChanged="ComboBox_LegPicker_SelectionChanged" />
+        <Image Name="Image_LegPlaceHolder"
+               HorizontalAlignment="Left"
+               Height="158"
+               Margin="439,565,0,0"
+               VerticalAlignment="Top"
+               Width="150" />
+        <Label Name="test"
+            Content=".."
+               HorizontalAlignment="Left"
+               Margin="82,312,0,0"
+               VerticalAlignment="Top"
+               Height="55"
+               Width="73" 
+               FontSize="40"/>
+
+
+
+
+
+    </Grid>
+</Window>
