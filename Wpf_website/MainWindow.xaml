@@ -14,11 +14,57 @@
         Background="Transparent"
         AllowsTransparency="True"
         mc:Ignorable="d">
-    <Border CornerRadius="20"
-            Padding="15"
-            BorderThickness="1"
-            BorderBrush="Aquamarine">
-        
+    <Border CornerRadius="15"
+            BorderThickness="0.5"
+            BorderBrush="MediumPurple">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="105" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border CornerRadius="14.7,0,0,14.7"
+                    Grid.Column="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,0.6">
+                        <GradientStop Color="#FF8FC8CF"
+                                      Offset="0" />
+                        <GradientStop Color="#FF56AEE5"
+                                      Offset="1." />
+                    </LinearGradientBrush>
+
+                </Border.Background>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="-20,-5,0,500">
+                        <Image  x:Name="Logo"
+                                Source="/Images/Roselio.png"
+                                Height="78"
+                                Width="89" />
+                    </StackPanel>
+
+                    <RadioButton
+                        Tag=".">
+
+                    </RadioButton>
+               
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="0,14.7,14.7,0"
+                    Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="0,0.5">
+                        <GradientStop Color="#FFA6DBE2"
+                                      Offset="0.0" />
+                        <GradientStop Color="#FF72B5DF"
+                                      Offset="1." />
+                    </LinearGradientBrush>
+
+                </Border.Background>
+            </Border>
+
+        </Grid>
     </Border>
 
 </Window>
