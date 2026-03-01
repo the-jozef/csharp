@@ -35,15 +35,16 @@
                 </Border.Background>
 
                 <StackPanel>
-                    <StackPanel>
+                    <StackPanel
+                        Margin="20,20,55,100">
                         <Image Name="Logo"    
                                Source="/Images/Logo.png"
-                               Height="70"
-                               Width="100"
+                               Height="30"
+                               Width="30"
                                RenderOptions.BitmapScalingMode="HighQuality"
-                               HorizontalAlignment="Left" 
-                               Cursor="Hand"/>
+                               HorizontalAlignment="Left" />
                     </StackPanel>
+                    
                     <RadioButton Background="Transparent"
                                  Cursor="Hand">
                         <RadioButton.Style>
@@ -88,8 +89,184 @@
                         </RadioButton.Style>
 
                         <StackPanel Orientation="Horizontal"
-                                    Margin="10,5,5,5">
-                            <Image Source="/Images/settings.png"
+                                    Margin="15,5,5,5">
+                            <Image Source="/Images/Home_icon.png"
+                                   Height="14"
+                                   Width="14"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
+
+                            <TextBlock Text="Home"
+                                       Margin="10,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Foreground="Black" />
+                        </StackPanel>
+
+                    </RadioButton>
+                    <RadioButton Background="Transparent"
+                                 Cursor="Hand"
+                                 Margin="0,10,0,0">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Grid>
+                                                <Border x:Name="HoverBackground"
+                                                        Background="FloralWhite"
+                                                        CornerRadius="5"
+                                                        Opacity="0"
+                                                        Margin="0" />
+
+                                                <Border x:Name="HoverBar"
+                                                        Width="3"
+                                                        Background="White"
+                                                        HorizontalAlignment="Left"
+                                                        Visibility="Collapsed" />
+
+                                                <ContentPresenter Margin="0"
+                                                                  VerticalAlignment="Center"
+                                                                  HorizontalAlignment="Left" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter TargetName="HoverBackground"
+                                                            Property="Opacity"
+                                                            Value="0.2" />
+                                                    <Setter TargetName="HoverBar"
+                                                            Property="Visibility"
+                                                            Value="Visible" />
+                                                </Trigger>
+
+                                            </ControlTemplate.Triggers>
+
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RadioButton.Style>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="15,5,5,5">
+                            
+                            <Image Source="/Images/heart.png"
+                                   Height="15"
+                                   Width="15"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
+
+                            <TextBlock Text="Favorite"
+                                       Margin="10,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Foreground="Black" />
+                        </StackPanel>
+
+                    </RadioButton>
+                    <RadioButton Background="Transparent"
+                                 Cursor="Hand"
+                                 Margin="0,10,0,0">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Grid>
+                                                <Border x:Name="HoverBackground"
+                                                        Background="FloralWhite"
+                                                        CornerRadius="5"
+                                                        Opacity="0"
+                                                        Margin="0" />
+
+                                                <Border x:Name="HoverBar"
+                                                        Width="3"
+                                                        Background="White"
+                                                        HorizontalAlignment="Left"
+                                                        Visibility="Collapsed" />
+
+                                                <ContentPresenter Margin="0"
+                                                                  VerticalAlignment="Center"
+                                                                  HorizontalAlignment="Left" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter TargetName="HoverBackground"
+                                                            Property="Opacity"
+                                                            Value="0.2" />
+                                                    <Setter TargetName="HoverBar"
+                                                            Property="Visibility"
+                                                            Value="Visible" />
+                                                </Trigger>
+
+                                            </ControlTemplate.Triggers>
+
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RadioButton.Style>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="15,5,5,5">
+                            <Image Source="/Images/filter.png"
+                                   Height="15"
+                                   Width="15"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
+
+                            <TextBlock Text="Filters"
+                                       Margin="10,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Foreground="Black" />
+                        </StackPanel>
+                    </RadioButton>
+                    
+                    <RadioButton Background="Transparent"
+                                 Cursor="Hand"
+                                 Margin="0,10,0,0">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Grid>
+                                                <Border x:Name="HoverBackground"
+                                                        Background="FloralWhite"
+                                                        CornerRadius="5"
+                                                        Opacity="0"
+                                                        Margin="0" />
+
+                                                <Border x:Name="HoverBar"
+                                                        Width="3"
+                                                        Background="White"
+                                                        HorizontalAlignment="Left"
+                                                        Visibility="Collapsed" />
+
+                                                <ContentPresenter Margin="0"
+                                                                  VerticalAlignment="Center"
+                                                                  HorizontalAlignment="Left" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter TargetName="HoverBackground"
+                                                            Property="Opacity"
+                                                            Value="0.2" />
+                                                    <Setter TargetName="HoverBar"
+                                                            Property="Visibility"
+                                                            Value="Visible" />
+                                                </Trigger>
+
+                                            </ControlTemplate.Triggers>
+
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RadioButton.Style>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="15,5,5,5">
+                           
+                            <Image Source="/Images/Settings_icon.png"
                                    Height="15"
                                    Width="15"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
@@ -116,8 +293,71 @@
                     </LinearGradientBrush>
 
                 </Border.Background>
-            </Border>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="45" />
 
+                    </Grid.RowDefinitions>
+
+                    <StackPanel x:Name="ControlBar"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Background="Transparent"
+                                Margin="0,0,5,0"
+                                MouseLeftButtonDown="ControlBar_MouseDown"
+                                MouseEnter="ControlBar_MouseEnter">
+
+                        <Button x:Name="CloseButton"
+                                Width="15"
+                                Height="15"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Margin="0,7,-35,5">
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border x:Name="Bg"
+                                                        Background="Transparent"
+                                                        CornerRadius="5">
+
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center" />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver"
+                                                             Value="True">
+                                                        <Setter TargetName="Bg"
+                                                                Property="Background"
+                                                                Value="#E81123" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsPressed"
+                                                             Value="True">
+                                                        <Setter TargetName="Bg"
+                                                                Property="Opacity"
+                                                                Value="0.8" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                            
+                            <Image Source="/Images/close.png"
+                                   Height="10"
+                                   Width="10"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
         </Grid>
     </Border>
 
