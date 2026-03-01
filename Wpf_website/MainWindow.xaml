@@ -32,22 +32,76 @@
                         <GradientStop Color="#FF56AEE5"
                                       Offset="1." />
                     </LinearGradientBrush>
-
                 </Border.Background>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Margin="-20,-5,0,500">
-                        <Image  x:Name="Logo"
-                                Source="/Images/Roselio.png"
-                                Height="78"
-                                Width="89" />
-                    </StackPanel>
 
-                    <RadioButton
-                        Tag=".">
+                <StackPanel>
+                    <StackPanel>
+                        <Image Name="Logo"    
+                               Source="/Images/Logo.png"
+                               Height="70"
+                               Width="100"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               HorizontalAlignment="Left" 
+                               Cursor="Hand"/>
+                    </StackPanel>
+                    <RadioButton Background="Transparent"
+                                 Cursor="Hand">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Grid>
+                                                <Border x:Name="HoverBackground"
+                                                        Background="White"
+                                                        CornerRadius="5"
+                                                        Opacity="0"
+                                                        Margin="0" />
+
+                                                <Border x:Name="HoverBar"
+                                                        Width="3"
+                                                        Background="White"
+                                                        HorizontalAlignment="Left"
+                                                        Visibility="Collapsed" />
+
+                                                <ContentPresenter Margin="0"
+                                                                  VerticalAlignment="Center"
+                                                                  HorizontalAlignment="Left" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter TargetName="HoverBackground"
+                                                            Property="Opacity"
+                                                            Value="0.2" />
+                                                    <Setter TargetName="HoverBar"
+                                                            Property="Visibility"
+                                                            Value="Visible" />
+                                                </Trigger>
+
+                                            </ControlTemplate.Triggers>
+
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RadioButton.Style>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="10,5,5,5">
+                            <Image Source="/Images/settings.png"
+                                   Height="15"
+                                   Width="15"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
+
+                            <TextBlock Text="Settings"
+                                       Margin="10,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Foreground="Black" />
+                        </StackPanel>
 
                     </RadioButton>
-               
+
                 </StackPanel>
             </Border>
             <Border CornerRadius="0,14.7,14.7,0"

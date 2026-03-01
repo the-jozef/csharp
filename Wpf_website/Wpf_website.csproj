@@ -9,20 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Roselio.png" />
-    <None Remove="Images\roselio_logo.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Images\Roselio.png">
+    <Resource Include="Images\Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Images\roselio_logo.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\Settings.png" />
   </ItemGroup>
 
 </Project>
