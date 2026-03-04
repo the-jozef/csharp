@@ -295,9 +295,9 @@
                 </Border.Background>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="25" />
                         <RowDefinition Height="35" />
                         <RowDefinition Height="45" />
+                        <RowDefinition Height="55" />
 
                     </Grid.RowDefinitions>
 
@@ -311,11 +311,11 @@
                                 MouseEnter="ControlBar_MouseEnter">
 
                         <Button x:Name="CloseButton"
-                                Width="15"
-                                Height="15"
+                                Width="20"
+                                Height="20"
                                 Background="Transparent"
                                 BorderThickness="0"
-                                Margin="0,7,-35,5">
+                                Margin="0,10,-50,5">
 
                             <Button.Style>
                                 <Style TargetType="Button">
@@ -334,7 +334,7 @@
                                                              Value="True">
                                                         <Setter TargetName="Bg"
                                                                 Property="Background"
-                                                                Value="#E81123" />
+                                                                Value="#FFFBFE" />
                                                     </Trigger>
                                                     <Trigger Property="IsPressed"
                                                              Value="True">
@@ -350,8 +350,8 @@
                             </Button.Style>
                             
                             <Image Source="/Images/close.png"
-                                   Height="10"
-                                   Width="10"
+                                   Height="15"
+                                   Width="15"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                         </Button>
 
