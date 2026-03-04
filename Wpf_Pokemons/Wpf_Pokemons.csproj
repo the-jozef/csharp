@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Charizard.png" />
+    <None Remove="Images\Pikachu.png" />
+    <None Remove="Images\Sad.png" />
+    <None Remove="Images\Victory.png" />
+    <None Remove="Images\Water.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Charizard.png" />
+    <Resource Include="Images\Pikachu.png" />
+    <Resource Include="Images\Sad.png" />
+    <Resource Include="Images\Victory.png" />
+    <Resource Include="Images\Water.png" />
+  </ItemGroup>
+
+</Project>
