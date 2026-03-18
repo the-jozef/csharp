@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="Images\Charizard.png" />
+    <None Remove="Images\charmander.png" />
+    <None Remove="Images\charmeleon.png" />
     <None Remove="Images\Pikachu.png" />
     <None Remove="Images\Sad.png" />
     <None Remove="Images\Victory.png" />
@@ -18,6 +20,8 @@
 
   <ItemGroup>
     <Resource Include="Images\Charizard.png" />
+    <Resource Include="Images\charmander.png" />
+    <Resource Include="Images\charmeleon.png" />
     <Resource Include="Images\Pikachu.png" />
     <Resource Include="Images\Sad.png" />
     <Resource Include="Images\Victory.png" />
